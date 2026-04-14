@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFE4EF"/>
+      <stop offset="50%" stop-color="#EEE0FA"/>
+      <stop offset="100%" stop-color="#DDF2E3"/>
+    </linearGradient>
+    <radialGradient id="ogp1" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FFE4EF"/>
+      <stop offset="100%" stop-color="#F4A8C8"/>
+    </radialGradient>
+    <radialGradient id="ogp2" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#EEE0FA"/>
+      <stop offset="100%" stop-color="#C7A8E8"/>
+    </radialGradient>
+    <radialGradient id="ogc" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FFF4A8"/>
+      <stop offset="100%" stop-color="#F4C84A"/>
+    </radialGradient>
+    <linearGradient id="wf" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#D878A8"/>
+      <stop offset="55%" stop-color="#A57FD4"/>
+      <stop offset="100%" stop-color="#7FBE95"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <g transform="translate(140 200) scale(3.2)">
+    <ellipse cx="0" cy="-14" rx="9" ry="13" fill="url(#ogp1)"/>
+    <ellipse cx="13.3" cy="-4.3" rx="9" ry="13" fill="url(#ogp2)" transform="rotate(72 13.3 -4.3)"/>
+    <ellipse cx="8.2" cy="11.3" rx="9" ry="13" fill="url(#ogp1)" transform="rotate(144 8.2 11.3)"/>
+    <ellipse cx="-8.2" cy="11.3" rx="9" ry="13" fill="url(#ogp2)" transform="rotate(216 -8.2 11.3)"/>
+    <ellipse cx="-13.3" cy="-4.3" rx="9" ry="13" fill="url(#ogp1)" transform="rotate(288 -13.3 -4.3)"/>
+    <circle cx="0" cy="0" r="5.5" fill="url(#ogc)"/>
+  </g>
+
+  <text x="260" y="220" font-family="Fraunces, Georgia, serif" font-size="96" font-weight="600" font-style="italic" fill="url(#wf)">soft flowers</text>
+  <text x="264" y="300" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="36" font-weight="500" fill="#4A3B52">handmade forever flowers</text>
+  <text x="264" y="350" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="24" font-weight="400" fill="#6B5A78">twisted, shaped, and styled by hand · allergy-free · ships worldwide</text>
+
+  <g transform="translate(900 380) scale(2.2)" opacity="0.55">
+    <ellipse cx="0" cy="-14" rx="9" ry="13" fill="url(#ogp2)"/>
+    <ellipse cx="13.3" cy="-4.3" rx="9" ry="13" fill="url(#ogp1)" transform="rotate(72 13.3 -4.3)"/>
+    <ellipse cx="8.2" cy="11.3" rx="9" ry="13" fill="url(#ogp2)" transform="rotate(144 8.2 11.3)"/>
+    <ellipse cx="-8.2" cy="11.3" rx="9" ry="13" fill="url(#ogp1)" transform="rotate(216 -8.2 11.3)"/>
+    <ellipse cx="-13.3" cy="-4.3" rx="9" ry="13" fill="url(#ogp2)" transform="rotate(288 -13.3 -4.3)"/>
+    <circle cx="0" cy="0" r="5.5" fill="url(#ogc)"/>
+  </g>
+  <g transform="translate(1050 180) scale(1.6)" opacity="0.45">
+    <ellipse cx="0" cy="-14" rx="9" ry="13" fill="url(#ogp1)"/>
+    <ellipse cx="13.3" cy="-4.3" rx="9" ry="13" fill="url(#ogp2)" transform="rotate(72 13.3 -4.3)"/>
+    <ellipse cx="8.2" cy="11.3" rx="9" ry="13" fill="url(#ogp1)" transform="rotate(144 8.2 11.3)"/>
+    <ellipse cx="-8.2" cy="11.3" rx="9" ry="13" fill="url(#ogp2)" transform="rotate(216 -8.2 11.3)"/>
+    <ellipse cx="-13.3" cy="-4.3" rx="9" ry="13" fill="url(#ogp1)" transform="rotate(288 -13.3 -4.3)"/>
+    <circle cx="0" cy="0" r="5.5" fill="url(#ogc)"/>
+  </g>
+</svg>
