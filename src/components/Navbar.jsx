@@ -16,10 +16,15 @@ export default function Navbar() {
 
   useEffect(() => { setMenuOpen(false) }, [pathname])
 
-  const { brand, nav, cta } = site
+  const { brand, nav, cta, banner } = site
 
   return (
     <header className={`navbar${scrolled ? ' scrolled' : ''}`}>
+      {banner?.enabled && (
+        <div className="navbar__banner" role="region" aria-label="Site announcement">
+          <span>{banner.message}</span>
+        </div>
+      )}
       <div className="navbar__inner">
         <Link to="/" className="navbar__logo" aria-label={brand.name}>
           {brand.logoSrc ? (

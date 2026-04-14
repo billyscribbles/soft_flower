@@ -14,6 +14,17 @@
   background: rgba(255, 249, 251, 0.94);
 }
 
+.navbar__banner {
+  background: var(--color-accent-light, #FFE3F1);
+  color: var(--color-accent-dark, #A8246A);
+  text-align: center;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  padding: 8px 16px;
+  line-height: 1.4;
+}
+
 .navbar__inner {
   max-width: 1280px;
   margin: 0 auto;

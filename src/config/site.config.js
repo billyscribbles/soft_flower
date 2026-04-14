@@ -2,6 +2,11 @@
 // Every new site starts by editing this file.
 
 export const site = {
+  banner: {
+    enabled: true,
+    message: 'Free shipping on all Australian orders over $60 ✿',
+  },
+
   brand: {
     name: 'flowers',
     logoText: 'flowers',
