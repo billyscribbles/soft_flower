@@ -68,6 +68,7 @@ The Shop component reads this list, renders a grid, and wires each card's "Order
 - **Prefer lifting patterns from the foundation/sibling repos** (`my_studio`, `elusive-racing`) over inventing new ones.
 - **Keep it cute and small.** This is a handmade shop, not an enterprise site — resist over-engineering.
 - **Ask before adding cart/checkout.** Default scope is order-by-inquiry.
+- **Always let Billy verify before pushing.** Even with auto mode on, never run `git push` (or `gh pr create`, deploys, anything that publishes) without explicit confirmation in the same turn. Local commits are fine; publishing is not.
 
 ## Sibling reference repos (read-only)
 

@@ -33,7 +33,7 @@ export default function Contact() {
   }
 
   return (
-    <section className="contact section section--dark" id="contact">
+    <section className="contact section section--alt" id="contact">
       <div className="container contact__inner">
         <div className="contact__head">
           <span className="section-eyebrow">Custom orders & hellos</span>
@@ -42,6 +42,25 @@ export default function Contact() {
             Custom bouquets, wedding pieces, gift orders, or just a friendly hello — we reply within one business day.
           </p>
         </div>
+
+        <ul className="contact__details">
+          <li>
+            <span>Email</span>
+            <a href={`mailto:${site.contact.email}`}>{site.contact.email}</a>
+          </li>
+          <li>
+            <span>Phone</span>
+            <a href={`tel:${site.contact.phone.replace(/\s+/g, '')}`}>{site.contact.phone}</a>
+          </li>
+          <li>
+            <span>Studio</span>
+            <p>{site.contact.location}</p>
+          </li>
+          <li>
+            <span>Delivery</span>
+            <p>{site.contact.delivery}</p>
+          </li>
+        </ul>
 
         <form className="contact__form" onSubmit={handleSubmit}>
           <div className="contact__row">

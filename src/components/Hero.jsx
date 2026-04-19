@@ -42,8 +42,11 @@ export default function Hero() {
 
           {hero.trust?.length > 0 && (
             <div className="hero__trust-row hero__fade-up" style={{ animationDelay: '0.4s' }}>
-              {hero.trust.map((t) => (
-                <span key={t} className="hero__trust-item">✓ {t}</span>
+              {hero.trust.map((t, i) => (
+                <span key={t} className="hero__trust-item">
+                  {i > 0 && <span className="hero__trust-sep" aria-hidden="true">·</span>}
+                  {t}
+                </span>
               ))}
             </div>
           )}

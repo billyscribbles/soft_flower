@@ -1,7 +1,27 @@
 import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
+import { Instagram } from 'lucide-react'
 import { site } from '../config/site.config.js'
 import './Navbar.css'
+
+function TikTokIcon({ size = 18, strokeWidth = 1.8 }) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={strokeWidth}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
+    </svg>
+  )
+}
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
@@ -16,13 +36,24 @@ export default function Navbar() {
 
   useEffect(() => { setMenuOpen(false) }, [pathname])
 
-  const { brand, nav, cta, banner } = site
+  const { brand, nav, cta, banner, social } = site
+  const messages = banner?.messages ?? []
+  const durationSec = banner?.durationSec ?? 60
 
   return (
     <header className={`navbar${scrolled ? ' scrolled' : ''}`}>
-      {banner?.enabled && (
+      {banner?.enabled && messages.length > 0 && (
         <div className="navbar__banner" role="region" aria-label="Site announcement">
-          <span>{banner.message}</span>
+          <div
+            className="navbar__banner-track"
+            style={{ animationDuration: `${durationSec}s` }}
+          >
+            {[...messages, ...messages].map((m, i) => (
+              <span key={i} className="navbar__banner-item" aria-hidden={i >= messages.length || undefined}>
+                {m}
+              </span>
+            ))}
+          </div>
         </div>
       )}
       <div className="navbar__inner">
@@ -41,6 +72,30 @@ export default function Navbar() {
           {nav.map((l) => (
             <Link key={l.to} to={l.to} className="navbar__link">{l.label}</Link>
           ))}
+          <div className="navbar__socials">
+            {social?.instagram && (
+              <a
+                href={social.instagram}
+                className="navbar__social"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+              >
+                <Instagram size={18} strokeWidth={1.6} />
+              </a>
+            )}
+            {social?.tiktok && (
+              <a
+                href={social.tiktok}
+                className="navbar__social"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="TikTok"
+              >
+                <TikTokIcon size={18} strokeWidth={1.6} />
+              </a>
+            )}
+          </div>
           {cta && (
             <Link to={cta.to}>
               <button className="navbar__cta">{cta.label}</button>

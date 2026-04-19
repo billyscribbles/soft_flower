@@ -4,7 +4,13 @@
 export const site = {
   banner: {
     enabled: true,
-    message: 'Free shipping on all Australian orders over $60 ✿',
+    durationSec: 60,
+    messages: [
+      'Free shipping on all Australian orders over $60 ✿',
+      'Custom orders open — wedding pieces, gifts, anniversaries',
+      'Handmade in Melbourne · Ships worldwide',
+      'Every flower twisted by hand · Lasts forever',
+    ],
   },
 
   brand: {
@@ -59,15 +65,17 @@ export const site = {
   },
 
   social: {
-    linkedin: '',
     instagram: 'https://instagram.com/softflowers',
+    tiktok: 'https://tiktok.com/@softflowers',
+    linkedin: '',
     twitter: '',
   },
 
   contact: {
-    email: 'hello@softflowers.com',
-    phone: '',
-    location: 'Made by hand · Melbourne, Australia',
+    email: 'hello@softflowers.com.au',
+    phone: '0400 123 456',
+    location: 'Melbourne, Australia',
+    delivery: 'We deliver everywhere in Australia',
   },
 
   seo: {

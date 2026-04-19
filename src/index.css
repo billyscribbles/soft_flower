@@ -22,7 +22,6 @@ body {
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  letter-spacing: 0.005em;
 }
 
 img, svg { display: block; max-width: 100%; }
@@ -33,69 +32,55 @@ input, textarea, select { font-family: var(--font-body); }
 
 /* Utility classes — all section components reach for these. */
 .container {
-  max-width: 1280px;
+  max-width: 1320px;
   margin: 0 auto;
-  padding: 0 32px;
+  padding: 0 40px;
 }
 
 .section {
-  padding: 96px 0;
+  padding: 120px 0;
 }
 
-.section--dark {
-  background: linear-gradient(160deg, var(--color-accent-light), var(--color-secondary-light) 50%, var(--color-tertiary-light));
-  color: var(--color-text);
+.section--alt {
+  background: var(--color-bg-alt);
 }
 
 .section-label {
   font-family: var(--font-display);
-  font-size: clamp(32px, 4vw, 46px);
+  font-size: clamp(32px, 4vw, 48px);
   font-weight: 600;
   letter-spacing: -0.02em;
   color: var(--color-text);
-  margin-bottom: 16px;
+  margin-bottom: 20px;
   line-height: 1.1;
-  font-optical-sizing: auto;
 }
-
-.section--dark .section-label { color: var(--color-text); }
 
 .section-sub {
   font-family: var(--font-body);
   font-size: 17px;
-  color: var(--color-muted);
+  color: var(--color-text-soft);
   max-width: 640px;
-  margin-bottom: 48px;
+  margin-bottom: 56px;
+  line-height: 1.6;
 }
-
-.section--dark .section-sub { color: var(--color-text-soft); }
 
 .section-eyebrow {
   display: inline-block;
   font-family: var(--font-body);
   font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.12em;
+  font-weight: 500;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--color-accent);
-  margin-bottom: 16px;
+  color: var(--color-text-soft);
+  margin-bottom: 20px;
 }
 
-.glow-card {
-  position: relative;
-  border-radius: var(--radius-md);
-  border: 1px solid var(--color-border);
-  background: var(--color-bg-card);
-  transition: border-color var(--transition-base), box-shadow var(--transition-base), transform var(--transition-base);
+@media (max-width: 900px) {
+  .container { padding: 0 32px; }
+  .section { padding: 96px 0; }
 }
 
-.glow-card:hover {
-  border-color: var(--color-accent);
-  box-shadow: 0 0 0 2px var(--color-accent-glow), var(--shadow-lg);
-  transform: translateY(-3px);
-}
-
-@media (max-width: 768px) {
+@media (max-width: 600px) {
   .container { padding: 0 20px; }
-  .section { padding: 64px 0; }
+  .section { padding: 80px 0; }
 }

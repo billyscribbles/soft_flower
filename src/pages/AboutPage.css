@@ -1,26 +1,25 @@
 .about-hero {
-  padding: 112px 0 72px;
+  padding: 140px 0 80px;
   background: var(--color-bg);
 }
 
 .about-hero__title {
   font-family: var(--font-display);
-  font-size: clamp(40px, 5.5vw, 72px);
+  font-size: clamp(40px, 5.5vw, 76px);
   font-weight: 600;
-  letter-spacing: -0.02em;
-  line-height: 1.08;
+  letter-spacing: -0.025em;
+  line-height: 1.05;
   color: var(--color-text);
-  margin-bottom: 20px;
-  font-optical-sizing: auto;
+  margin-bottom: 24px;
 }
 
 .about-hero__sub {
   font-size: 18px;
   line-height: 1.7;
-  color: var(--color-muted);
+  color: var(--color-text-soft);
   max-width: 640px;
 }
 
 @media (max-width: 768px) {
-  .about-hero { padding: 72px 0 48px; }
+  .about-hero { padding: 96px 0 56px; }
 }

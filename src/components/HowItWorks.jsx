@@ -4,7 +4,7 @@ import './HowItWorks.css'
 
 export default function HowItWorks() {
   return (
-    <section className="hiw section section--dark">
+    <section className="hiw section section--alt">
       <div className="container">
         <div className="hiw__head">
           {howItWorks.eyebrow && <span className="section-eyebrow">{howItWorks.eyebrow}</span>}

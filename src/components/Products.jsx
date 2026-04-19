@@ -27,7 +27,7 @@ export default function Products({ featuredOnly = false, limit, excludeSlug, cat
           {items.map((item, i) => (
             <motion.div
               key={item.slug}
-              className="products__card glow-card"
+              className="products__card"
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-40px' }}
@@ -36,16 +36,10 @@ export default function Products({ featuredOnly = false, limit, excludeSlug, cat
               <Link to={`/shop/${item.slug}`} className="products__card-link">
                 <div className="products__media">
                   <img src={item.image} alt={item.name} loading="lazy" />
-                  {item.badge && <span className="products__badge">{item.badge}</span>}
                 </div>
                 <div className="products__body">
-                  <span className="products__category">{item.category}</span>
                   <h3 className="products__title">{item.name}</h3>
-                  <p className="products__blurb">{item.blurb}</p>
-                  <div className="products__foot">
-                    <span className="products__price">${item.price}</span>
-                    <span className="products__view">View →</span>
-                  </div>
+                  <span className="products__price">${item.price}</span>
                 </div>
               </Link>
             </motion.div>

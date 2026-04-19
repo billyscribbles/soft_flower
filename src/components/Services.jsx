@@ -21,14 +21,14 @@ export default function Services() {
             return (
               <motion.div
                 key={item.title}
-                className="services__card glow-card"
+                className="services__card"
                 initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.07, ease: [0.22, 1, 0.36, 1] }}
               >
                 <div className="services__icon">
-                  <Icon size={22} strokeWidth={1.8} />
+                  <Icon size={28} strokeWidth={1.25} />
                 </div>
                 <h3 className="services__title">{item.title}</h3>
                 <p className="services__body">{item.body}</p>

@@ -3,6 +3,25 @@ import { Linkedin, Instagram, Twitter } from 'lucide-react'
 import { site } from '../config/site.config.js'
 import './Footer.css'
 
+function TikTokIcon({ size = 18, strokeWidth = 1.8 }) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={strokeWidth}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
+    </svg>
+  )
+}
+
 export default function Footer() {
   const { brand, footer, social, contact } = site
 
@@ -48,14 +67,19 @@ export default function Footer() {
               </a>
             )}
             <div className="footer__socials">
-              {social.linkedin && (
-                <a href={social.linkedin} className="footer__social" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-                  <Linkedin size={18} strokeWidth={1.8} />
-                </a>
-              )}
               {social.instagram && (
                 <a href={social.instagram} className="footer__social" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
                   <Instagram size={18} strokeWidth={1.8} />
+                </a>
+              )}
+              {social.tiktok && (
+                <a href={social.tiktok} className="footer__social" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+                  <TikTokIcon size={18} strokeWidth={1.8} />
+                </a>
+              )}
+              {social.linkedin && (
+                <a href={social.linkedin} className="footer__social" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                  <Linkedin size={18} strokeWidth={1.8} />
                 </a>
               )}
               {social.twitter && (
