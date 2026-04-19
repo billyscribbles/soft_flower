@@ -1,0 +1,111 @@
+.events__head {
+  max-width: 720px;
+  margin-bottom: 64px;
+}
+
+.events__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 48px;
+}
+
+.events__card {
+  display: flex;
+  flex-direction: column;
+  background: transparent;
+  padding: 0;
+}
+
+.events__media {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  background: var(--color-bg-alt);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+}
+
+.events__media img {
+  width: 68%;
+  height: 68%;
+  object-fit: contain;
+  transition: transform var(--transition-slow);
+}
+
+.events__card:hover .events__media img {
+  transform: scale(1.03);
+}
+
+.events__body {
+  padding: 20px 4px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.events__title {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--color-text);
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+
+.events__blurb {
+  font-size: 14px;
+  color: var(--color-text-soft);
+  line-height: 1.55;
+}
+
+.events__pieces {
+  list-style: none;
+  padding: 0;
+  margin: 4px 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 10px;
+}
+
+.events__pieces li {
+  font-size: 12px;
+  color: var(--color-text-soft);
+  letter-spacing: 0.01em;
+}
+
+.events__pieces li::after {
+  content: '·';
+  margin-left: 10px;
+  color: var(--color-border-strong);
+}
+
+.events__pieces li:last-child::after {
+  content: '';
+}
+
+.events__cta {
+  margin-top: 20px;
+  align-self: flex-start;
+  padding: 12px 22px;
+  background: transparent;
+  color: var(--color-text);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-full);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: background var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.events__cta:hover {
+  background: var(--color-text);
+  color: #fff;
+  border-color: var(--color-text);
+}
+
+@media (max-width: 800px) {
+  .events__grid { grid-template-columns: 1fr; gap: 32px; }
+}
