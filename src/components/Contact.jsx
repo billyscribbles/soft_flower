@@ -63,6 +63,15 @@ export default function Contact() {
         </ul>
 
         <form className="contact__form" onSubmit={handleSubmit}>
+          <input type="hidden" name="_subject" value="New enquiry — soft flowers site" />
+          <input
+            type="text"
+            name="_gotcha"
+            tabIndex="-1"
+            autoComplete="off"
+            aria-hidden="true"
+            style={{ position: 'absolute', left: '-9999px', width: '1px', height: '1px', opacity: 0 }}
+          />
           <div className="contact__row">
             <label className="contact__field">
               <span>Name</span>
