@@ -30,6 +30,7 @@ const ShopPage = lazyWithRetry(() => import('./pages/ShopPage.jsx'))
 const ProductPage = lazyWithRetry(() => import('./pages/ProductPage.jsx'))
 const AboutPage = lazyWithRetry(() => import('./pages/AboutPage.jsx'))
 const ContactPage = lazyWithRetry(() => import('./pages/ContactPage.jsx'))
+const EventsPage = lazyWithRetry(() => import('./pages/EventsPage.jsx'))
 const LegalPage = lazyWithRetry(() => import('./pages/LegalPage.jsx'))
 const NotFoundPage = lazyWithRetry(() => import('./pages/NotFoundPage.jsx'))
 
@@ -59,6 +60,7 @@ export default function App() {
           <Route path="/shop/:slug" element={<ProductPage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/contact" element={<ContactPage />} />
+          <Route path="/events" element={<EventsPage />} />
           <Route path="/privacy" element={<LegalPage type="privacy" />} />
           <Route path="/terms" element={<LegalPage type="terms" />} />
           <Route path="*" element={<NotFoundPage />} />

@@ -23,6 +23,7 @@ export const site = {
 
   nav: [
     { label: 'Shop', to: '/shop' },
+    { label: 'Events', to: '/events' },
     { label: 'About', to: '/about' },
     { label: 'Contact', to: '/contact' },
   ],
@@ -47,7 +48,7 @@ export const site = {
         title: 'Studio',
         links: [
           { label: 'Our story', to: '/about' },
-          { label: 'Custom orders', to: '/contact' },
+          { label: 'Custom orders', to: '/events' },
           { label: 'Contact', to: '/contact' },
         ],
       },
