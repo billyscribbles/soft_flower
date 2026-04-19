@@ -2,9 +2,10 @@ import { motion } from 'framer-motion'
 import { story } from '../content/stats.js'
 import './Stats.css'
 
-export default function Story() {
+export default function Story({ tone }) {
+  const isAlt = tone === 'alt'
   return (
-    <section className="story">
+    <section className={`story${isAlt ? ' story--alt' : ''}`}>
       <div className="container">
         <motion.div
           className="story__inner"

@@ -1,22 +1,23 @@
+.contact.section { padding: 88px 0; }
+
 .contact__inner { max-width: 720px; }
 
 .contact__head {
   text-align: center;
-  margin-bottom: 56px;
+  margin-bottom: 36px;
 }
 
-.contact__head .section-sub { margin-left: auto; margin-right: auto; }
+.contact__head .section-sub { margin-left: auto; margin-right: auto; margin-bottom: 0; }
 
 .contact__details {
   list-style: none;
-  padding: 0;
-  margin: 0 0 48px;
+  margin: 0 0 32px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 28px;
+  gap: 20px;
   border-top: 1px solid var(--color-border);
   border-bottom: 1px solid var(--color-border);
-  padding: 32px 0;
+  padding: 24px 0;
 }
 
 .contact__details li {
@@ -47,7 +48,7 @@
 .contact__form {
   display: flex;
   flex-direction: column;
-  gap: 28px;
+  gap: 22px;
   background: transparent;
   padding: 0;
   border-radius: 0;

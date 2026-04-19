@@ -19,10 +19,10 @@ export default function Home() {
       {editorial.map((e) => (
         <EditorialSection key={e.heading} {...e} />
       ))}
-      <Story />
-      <HowItWorks />
-      <Testimonials />
-      <Contact />
+      <Story tone="alt" />
+      <HowItWorks tone="plain" />
+      <Testimonials tone="alt" />
+      <Contact tone="plain" />
     </main>
   )
 }

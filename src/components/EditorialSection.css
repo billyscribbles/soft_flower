@@ -1,8 +1,8 @@
 .editorial {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 5fr 6fr;
   align-items: stretch;
-  min-height: clamp(440px, 70vh, 720px);
+  min-height: clamp(360px, 52vh, 520px);
 }
 
 .editorial--reverse .editorial__media { order: 2; }
@@ -28,7 +28,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 80px 64px;
+  padding: 64px 56px;
   background: var(--color-bg);
 }
 

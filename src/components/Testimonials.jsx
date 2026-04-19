@@ -2,9 +2,10 @@ import { motion } from 'framer-motion'
 import { testimonials } from '../content/testimonials.js'
 import './Testimonials.css'
 
-export default function Testimonials() {
+export default function Testimonials({ tone }) {
+  const isAlt = tone === 'alt'
   return (
-    <section className="testimonials section">
+    <section className={`testimonials section${isAlt ? ' section--alt' : ''}`}>
       <div className="container">
         <div className="testimonials__head">
           {testimonials.eyebrow && <span className="section-eyebrow">{testimonials.eyebrow}</span>}

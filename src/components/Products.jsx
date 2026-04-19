@@ -10,7 +10,7 @@ export default function Products({ featuredOnly = false, limit, excludeSlug, cat
   let items = products.items
   if (category) items = items.filter((p) => p.category === category)
   if (excludeSlug) items = items.filter((p) => p.slug !== excludeSlug)
-  if (featuredOnly) items = items.slice(0, 6)
+  if (featuredOnly) items = items.slice(0, 4)
   if (limit) items = items.slice(0, limit)
 
   return (
@@ -56,6 +56,14 @@ export default function Products({ featuredOnly = false, limit, excludeSlug, cat
             </motion.div>
           ))}
         </div>
+
+        {featuredOnly && (
+          <div className="products__more">
+            <Link to="/shop" className="products__more-cta">
+              See the whole shop →
+            </Link>
+          </div>
+        )}
       </div>
     </section>
   )

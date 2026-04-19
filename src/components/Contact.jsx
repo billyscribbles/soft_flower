@@ -29,7 +29,8 @@ function buildPrefill(productSlug, addonSlugs) {
   return { message: lines.join('\n'), subject }
 }
 
-export default function Contact() {
+export default function Contact({ tone = 'alt' }) {
+  const isAlt = tone === 'alt'
   const [status, setStatus] = useState('idle') // idle | submitting | success | error
   const [searchParams] = useSearchParams()
   const formspreeId = site.integrations.formspreeId
@@ -72,7 +73,7 @@ export default function Contact() {
   }
 
   return (
-    <section className="contact section section--alt" id="contact">
+    <section className={`contact section${isAlt ? ' section--alt' : ''}`} id="contact">
       <div className="container contact__inner">
         <div className="contact__head">
           <span className="section-eyebrow">Custom orders & hellos</span>

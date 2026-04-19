@@ -2,9 +2,10 @@ import { motion } from 'framer-motion'
 import { howItWorks } from '../content/howItWorks.js'
 import './HowItWorks.css'
 
-export default function HowItWorks() {
+export default function HowItWorks({ tone = 'alt' }) {
+  const isAlt = tone === 'alt'
   return (
-    <section className="hiw section section--alt">
+    <section className={`hiw section${isAlt ? ' section--alt' : ''}`}>
       <div className="container">
         <div className="hiw__head">
           {howItWorks.eyebrow && <span className="section-eyebrow">{howItWorks.eyebrow}</span>}
