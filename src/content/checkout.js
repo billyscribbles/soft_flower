@@ -1,0 +1,111 @@
+export const checkout = {
+  cart: {
+    eyebrow: 'Your cart',
+    heading: 'Bouquets in your basket.',
+    sub: 'Adjust quantities, remove pieces, or head to checkout when you are ready.',
+    empty: {
+      heading: 'Your cart is empty.',
+      body: 'Browse our handmade bouquets, frames and gift sets — each one twisted by hand.',
+      ctaLabel: 'Shop flowers',
+      ctaTo: '/shop',
+    },
+    checkoutCta: 'Checkout →',
+    continueCta: 'Continue shopping',
+    subtotalLabel: 'Subtotal',
+    subtotalNote: 'Shipping and delivery details calculated at checkout.',
+  },
+  drawer: {
+    heading: 'Added to cart',
+    viewCart: 'View cart',
+    checkout: 'Checkout →',
+    close: 'Close cart',
+  },
+  page: {
+    eyebrow: 'Checkout',
+    heading: 'Delivery details.',
+    sub: 'Tell us where it is going and when you need it by. We will confirm your order within one business day.',
+  },
+  delivery: {
+    legend: 'Delivery method',
+    options: [
+      { value: 'delivery', label: 'Deliver to me', note: 'Flat rate shipping across Australia. Free on orders over $60.' },
+      { value: 'pickup', label: 'Pick up', note: 'We will message you to arrange a pickup time in Melbourne.' },
+    ],
+  },
+  address: {
+    legend: 'Shipping address',
+    fields: {
+      street: 'Street address',
+      suburb: 'Suburb',
+      state: 'State',
+      postcode: 'Postcode',
+    },
+    states: [
+      { value: 'VIC', label: 'VIC' },
+      { value: 'NSW', label: 'NSW' },
+      { value: 'QLD', label: 'QLD' },
+      { value: 'WA', label: 'WA' },
+      { value: 'SA', label: 'SA' },
+      { value: 'TAS', label: 'TAS' },
+      { value: 'ACT', label: 'ACT' },
+      { value: 'NT', label: 'NT' },
+    ],
+  },
+  pickup: {
+    heading: 'Pickup in Melbourne',
+    body: 'Once your order is placed, Christine will send you a message to arrange a convenient pickup time and location in Melbourne.',
+  },
+  date: {
+    legend: 'Preferred delivery date',
+    helper: (days) => `We need at least ${days} days to twist every petal by hand. Choose any date from then on.`,
+  },
+  contact: {
+    legend: 'Your details',
+    fields: {
+      name: 'Full name',
+      email: 'Email',
+      phone: 'Phone',
+    },
+  },
+  notes: {
+    label: 'Notes (optional)',
+    placeholder: 'Card message, colour preferences, special timing — anything you would like us to know.',
+  },
+  terms: {
+    label: 'I have read and agree to the',
+    linkLabel: 'terms',
+    linkTo: '/terms',
+  },
+  submit: {
+    idle: 'Place order →',
+    submitting: 'Placing order…',
+    error: 'Something went wrong. Please try again or email us directly.',
+  },
+  summary: {
+    heading: 'Order summary',
+    subtotal: 'Subtotal',
+    shipping: 'Shipping',
+    shippingFree: 'Free',
+    pickup: 'Pickup',
+    total: 'Total',
+  },
+  confirmation: {
+    eyebrow: 'Order received',
+    heading: 'Thank you — your order is in.',
+    sub: 'Christine will be in touch within one business day to confirm payment and the finer details. A summary of your order is below.',
+    referenceLabel: 'Order reference',
+    deliveryLabel: 'Delivery',
+    dateLabel: 'Preferred date',
+    addressLabel: 'Ship to',
+    pickupLabel: 'Pickup',
+    notesLabel: 'Notes',
+    ctaLabel: 'Back to shop',
+    ctaTo: '/shop',
+    fallback: {
+      heading: 'No recent order found.',
+      body: 'Looks like you landed here without placing an order.',
+      ctaLabel: 'Browse the shop',
+      ctaTo: '/shop',
+    },
+  },
+}

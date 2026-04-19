@@ -1,0 +1,120 @@
+.line-item {
+  display: grid;
+  grid-template-columns: 96px 1fr;
+  gap: 20px;
+  padding: 24px 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.line-item:last-child { border-bottom: none; }
+
+.line-item--compact { grid-template-columns: 72px 1fr; gap: 16px; padding: 16px 0; }
+
+.line-item__media {
+  display: block;
+  background: var(--color-bg-alt);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  aspect-ratio: 1;
+}
+
+.line-item__media img { width: 100%; height: 100%; object-fit: cover; }
+
+.line-item__body { display: flex; flex-direction: column; gap: 8px; }
+
+.line-item__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+}
+
+.line-item__name {
+  font-size: 16px;
+  color: var(--color-text);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.line-item__name:hover { color: var(--color-accent-dark); }
+
+.line-item__price { font-size: 15px; color: var(--color-text); font-weight: 500; }
+
+.line-item__unit {
+  font-size: 12px;
+  color: var(--color-text-soft);
+  letter-spacing: 0.02em;
+}
+
+.line-item__note {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--color-text-soft);
+  font-style: italic;
+  margin: 4px 0 0;
+  padding: 8px 10px;
+  background: var(--color-bg-alt);
+  border-radius: var(--radius-sm);
+}
+
+.line-item__note-label {
+  font-style: normal;
+  font-weight: 500;
+  color: var(--color-text);
+  margin-right: 4px;
+}
+
+.line-item__controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 4px;
+}
+
+.line-item__stepper {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  padding: 4px 6px;
+}
+
+.line-item__stepper button {
+  width: 26px;
+  height: 26px;
+  border-radius: var(--radius-full);
+  background: transparent;
+  color: var(--color-text);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--transition-fast);
+}
+
+.line-item__stepper button:hover:not(:disabled) { background: var(--color-bg-alt); }
+.line-item__stepper button:disabled { opacity: 0.35; cursor: not-allowed; }
+
+.line-item__stepper span {
+  min-width: 18px;
+  text-align: center;
+  font-size: 14px;
+  color: var(--color-text);
+}
+
+.line-item__remove {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  color: var(--color-text-soft);
+  font-size: 13px;
+  transition: color var(--transition-fast);
+}
+
+.line-item__remove:hover { color: var(--color-accent-dark); }
+
+@media (max-width: 600px) {
+  .line-item { grid-template-columns: 80px 1fr; gap: 14px; }
+  .line-item__remove span { display: none; }
+}

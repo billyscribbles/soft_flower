@@ -1,10 +1,49 @@
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import { site } from '../config/site.config.js'
+import { products } from '../content/products.js'
+import { addons } from '../content/addons.js'
 import './Contact.css'
+
+function buildPrefill(productSlug, addonSlugs) {
+  const product = productSlug
+    ? products.items.find((p) => p.slug === productSlug)
+    : null
+  const pickedAddons = addonSlugs
+    .map((slug) => addons.items.find((a) => a.slug === slug))
+    .filter(Boolean)
+
+  if (!product && pickedAddons.length === 0) return { message: '', subject: null }
+
+  const lines = ["Hi! I'd love to order:"]
+  if (product) lines.push(`• ${product.name} ($${product.price})`)
+  for (const a of pickedAddons) {
+    lines.push(`• + ${a.name}${a.price > 0 ? ` (+$${a.price})` : ' (free)'}`)
+  }
+  lines.push('', '')
+
+  const subject = product
+    ? `New enquiry — ${product.name}`
+    : 'New enquiry — soft flowers site'
+
+  return { message: lines.join('\n'), subject }
+}
 
 export default function Contact() {
   const [status, setStatus] = useState('idle') // idle | submitting | success | error
+  const [searchParams] = useSearchParams()
   const formspreeId = site.integrations.formspreeId
+
+  const { message: prefilledMessage, subject: prefilledSubject } = useMemo(() => {
+    const productSlug = searchParams.get('product') || ''
+    const addonSlugs = (searchParams.get('addons') || '')
+      .split(',')
+      .map((s) => s.trim())
+      .filter(Boolean)
+    return buildPrefill(productSlug, addonSlugs)
+  }, [searchParams])
+
+  const subjectValue = prefilledSubject || 'New enquiry — soft flowers site'
 
   async function handleSubmit(e) {
     e.preventDefault()
@@ -62,8 +101,12 @@ export default function Contact() {
           </li>
         </ul>
 
-        <form className="contact__form" onSubmit={handleSubmit}>
-          <input type="hidden" name="_subject" value="New enquiry — soft flowers site" />
+        <form
+          key={searchParams.toString()}
+          className="contact__form"
+          onSubmit={handleSubmit}
+        >
+          <input type="hidden" name="_subject" value={subjectValue} />
           <input
             type="text"
             name="_gotcha"
@@ -84,7 +127,12 @@ export default function Contact() {
           </div>
           <label className="contact__field">
             <span>Message</span>
-            <textarea name="message" rows="5" required />
+            <textarea
+              name="message"
+              rows="6"
+              required
+              defaultValue={prefilledMessage}
+            />
           </label>
           <button
             type="submit"

@@ -43,6 +43,10 @@ export const legal = {
         heading: 'Liability',
         body: 'We love our little flowers, but we cannot be held responsible for damage caused by misuse, rough handling, or attempts to water them like real flowers (please do not).',
       },
+      {
+        heading: 'Checkout, delivery & pickup',
+        body: 'When you place an order through our checkout, you confirm that your delivery date, address and contact details are correct. Pickup orders are arranged privately by message once your order is placed. Payment and final confirmation happen after Christine reviews your order.',
+      },
     ],
   },
 }

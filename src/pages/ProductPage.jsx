@@ -1,21 +1,70 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useParams, Link, Navigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { ChevronDown, ArrowLeft, Heart } from 'lucide-react'
+import { ChevronDown, ArrowLeft, Heart, Minus, Plus } from 'lucide-react'
 import SEO from '../lib/seo.jsx'
 import Products from '../components/Products.jsx'
+import AddOns from '../components/AddOns.jsx'
+import RecentlyViewed from '../components/RecentlyViewed.jsx'
+import FAQ from '../components/FAQ.jsx'
 import Contact from '../components/Contact.jsx'
 import { products } from '../content/products.js'
+import { addons as addonsContent } from '../content/addons.js'
+import { useCart } from '../context/CartContext.jsx'
+import { track as trackViewed } from '../lib/recentlyViewed.js'
 import './ProductPage.css'
 
 export default function ProductPage() {
   const { slug } = useParams()
   const product = products.items.find((p) => p.slug === slug)
   const [openSection, setOpenSection] = useState(null)
+  const [selectedAddons, setSelectedAddons] = useState([])
+  const [addonNotes, setAddonNotes] = useState({})
+  const [quantity, setQuantity] = useState(1)
+  const { addItem } = useCart()
+
+  useEffect(() => {
+    if (product) trackViewed(product.slug)
+    setSelectedAddons([])
+    setAddonNotes({})
+    setQuantity(1)
+  }, [product])
 
   if (!product) return <Navigate to="/shop" replace />
 
   const toggle = (id) => setOpenSection(openSection === id ? null : id)
+  const toggleAddon = (addonSlug) =>
+    setSelectedAddons((cur) => {
+      if (cur.includes(addonSlug)) {
+        setAddonNotes((notes) => {
+          const { [addonSlug]: _drop, ...rest } = notes
+          return rest
+        })
+        return cur.filter((s) => s !== addonSlug)
+      }
+      return [...cur, addonSlug]
+    })
+  const handleNoteChange = (addonSlug, value) =>
+    setAddonNotes((cur) => ({ ...cur, [addonSlug]: value }))
+
+  const handleAddToCart = () => {
+    addItem(product, quantity)
+    for (const addonSlug of selectedAddons) {
+      const addon = addonsContent.items.find((a) => a.slug === addonSlug)
+      if (!addon || addon.price <= 0) continue
+      const note = addonNotes[addonSlug]?.trim() || undefined
+      addItem(
+        {
+          slug: `addon-${addon.slug}`,
+          name: addon.name,
+          price: addon.price,
+          image: product.image,
+        },
+        1,
+        note ? { note } : undefined,
+      )
+    }
+  }
 
   return (
     <main className="product-page">
@@ -56,13 +105,45 @@ export default function ProductPage() {
               <div className="product-page__price">${product.price}</div>
               <p className="product-page__desc">{product.description}</p>
 
+              <AddOns
+                selected={selectedAddons}
+                notes={addonNotes}
+                onToggle={toggleAddon}
+                onNoteChange={handleNoteChange}
+              />
+
+              <div className="product-page__quantity" role="group" aria-label="Quantity">
+                <span className="product-page__quantity-label">Quantity</span>
+                <div className="product-page__quantity-stepper">
+                  <button
+                    type="button"
+                    onClick={() => setQuantity((q) => Math.max(1, q - 1))}
+                    disabled={quantity <= 1}
+                    aria-label="Decrease quantity"
+                  >
+                    <Minus size={14} strokeWidth={1.8} />
+                  </button>
+                  <span aria-live="polite">{quantity}</span>
+                  <button
+                    type="button"
+                    onClick={() => setQuantity((q) => q + 1)}
+                    aria-label="Increase quantity"
+                  >
+                    <Plus size={14} strokeWidth={1.8} />
+                  </button>
+                </div>
+              </div>
+
               <div className="product-page__ctas">
-                <Link
-                  to={`/contact?product=${product.slug}`}
+                <button
+                  type="button"
                   className="product-page__cta-primary"
+                  onClick={handleAddToCart}
                 >
-                  Add to cart →
-                </Link>
+                  {selectedAddons.length > 0
+                    ? `Add ${quantity + selectedAddons.length} to cart →`
+                    : `Add ${quantity > 1 ? `${quantity} ` : ''}to cart →`}
+                </button>
                 <button className="product-page__cta-secondary" aria-label="Save for later">
                   <Heart size={18} strokeWidth={1.8} />
                   Save
@@ -126,8 +207,12 @@ export default function ProductPage() {
         sub={null}
         category={product.category}
         excludeSlug={product.slug}
-        limit={3}
+        limit={4}
       />
+
+      <RecentlyViewed excludeSlug={product.slug} />
+
+      <FAQ />
 
       <Contact />
     </main>

@@ -17,6 +17,8 @@ export const theme = {
     border: 'rgba(0, 0, 0, 0.08)',
     'border-strong': 'rgba(0, 0, 0, 0.16)',
     dark: '#1A1A1A',
+    'badge-bg': '#1A1A1A',
+    'badge-text': '#FFFFFF',
   },
   fonts: {
     display: "'Inter', system-ui, sans-serif",

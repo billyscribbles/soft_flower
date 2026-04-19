@@ -93,4 +93,12 @@ export const site = {
     formspreeId: import.meta.env.VITE_FORMSPREE_ID || '',
     gaId: import.meta.env.VITE_GA_ID || '',
   },
+
+  checkout: {
+    leadTimeDays: 3,
+    flatShippingAUD: 10,
+    freeShippingThresholdAUD: 60,
+    pickupEnabled: true,
+    currency: 'AUD',
+  },
 }

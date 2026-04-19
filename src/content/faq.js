@@ -3,6 +3,22 @@ export const faq = {
   heading: 'Your forever flower questions, answered.',
   items: [
     {
+      q: 'How long until my order arrives?',
+      a: 'Ready-made pieces ship within 2–3 business days from our Melbourne studio. Custom orders take 1–3 weeks depending on size. Australia-wide delivery is 2–5 days; international is 7–14 days. We will send a tracking link the moment your order goes out.',
+    },
+    {
+      q: 'Can my flowers be left at the door if no one is home?',
+      a: 'Yes — and that is one of the lovely things about soft flowers. They do not wilt, do not need water, and do not mind a hot or cold doorstep. We pack everything in a cushioned box so it is happy waiting until someone gets home.',
+    },
+    {
+      q: 'Can I change or cancel my order after placing it?',
+      a: 'Absolutely, as long as we have not started making it yet. Send us a message within 24 hours of ordering and we will adjust colours, swap items, change the delivery address, or cancel the order. Once your piece is in progress we cannot change the design, but we can usually still tweak shipping details.',
+    },
+    {
+      q: 'Will my arrangement look exactly like the photo?',
+      a: 'Almost — but not exactly. Every flower is twisted and shaped by hand, so each piece is gently unique. Stems sit slightly differently, petals lean their own way, and colours can shift a touch between batches. The overall feel, palette and size will match the photo; the little details are part of the handmade charm.',
+    },
+    {
       q: 'What are pipe cleaner flowers made of?',
       a: 'Each flower is hand-twisted from soft chenille stems — a fuzzy, bendy wire that holds its shape forever. No silk, no paper, no pollen, no plastic petals. Just hand-shaped fuzz and love.',
     },
@@ -13,10 +29,6 @@ export const faq = {
     {
       q: 'Do you take custom orders?',
       a: 'Yes! We love making custom bouquets for weddings, birthdays, and big life moments. Send us a message with your colours, budget and deadline — we will reply within one working day.',
-    },
-    {
-      q: 'How long does shipping take?',
-      a: 'Most ready-made pieces ship within 2–3 business days. Custom orders take 1–3 weeks depending on size. Everything is packed with extra tissue so it arrives looking perfect.',
     },
     {
       q: 'Can I return a flower?',

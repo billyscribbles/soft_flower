@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { Instagram } from 'lucide-react'
 import { site } from '../config/site.config.js'
+import CartIcon, { CartLink } from './CartIcon.jsx'
 import './Navbar.css'
 
 function TikTokIcon({ size = 18, strokeWidth = 1.8 }) {
@@ -103,14 +104,17 @@ export default function Navbar() {
           )}
         </nav>
 
-        <button
-          className={`navbar__hamburger${menuOpen ? ' open' : ''}`}
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Toggle menu"
-          aria-expanded={menuOpen}
-        >
-          <span /><span /><span />
-        </button>
+        <div className="navbar__right">
+          <CartIcon />
+          <button
+            className={`navbar__hamburger${menuOpen ? ' open' : ''}`}
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label="Toggle menu"
+            aria-expanded={menuOpen}
+          >
+            <span /><span /><span />
+          </button>
+        </div>
       </div>
 
       <nav
@@ -132,6 +136,11 @@ export default function Navbar() {
             <button className="navbar__mobile-cta">{cta.label}</button>
           </Link>
         )}
+        <CartLink
+          className="navbar__mobile-cart"
+          to="/cart"
+          label="Go to cart"
+        />
       </nav>
     </header>
   )

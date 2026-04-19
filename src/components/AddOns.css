@@ -1,0 +1,198 @@
+.addons {
+  margin-bottom: 36px;
+  padding: 24px 0;
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.addons__head {
+  margin-bottom: 18px;
+}
+
+.addons__eyebrow {
+  display: block;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-text-soft);
+  margin-bottom: 6px;
+}
+
+.addons__heading {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  color: var(--color-text);
+}
+
+.addons__list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.addons__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-bg);
+  text-align: left;
+  cursor: pointer;
+  transition: border-color var(--transition-fast), background var(--transition-fast);
+}
+
+.addons__item:hover {
+  border-color: var(--color-accent);
+}
+
+.addons__item--on {
+  border-color: var(--color-accent);
+  background: var(--color-accent-light);
+}
+
+.addons__item-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.addons__item-name {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text);
+  margin-bottom: 4px;
+  letter-spacing: -0.005em;
+}
+
+.addons__item-free {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-soft);
+  background: var(--color-bg-alt);
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+}
+
+.addons__item-blurb {
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--color-text-soft);
+}
+
+.addons__item-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.addons__item-price {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text);
+  letter-spacing: -0.005em;
+}
+
+.addons__item-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-full);
+  background: var(--color-bg-alt);
+  color: var(--color-text);
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.addons__item--on .addons__item-icon {
+  background: var(--color-text);
+  color: #fff;
+}
+
+.addons__item-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.addons__note {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 12px 14px 14px;
+  border: 1px solid var(--color-border);
+  border-top: none;
+  border-radius: 0 0 var(--radius-md) var(--radius-md);
+  background: var(--color-bg);
+  margin-top: -8px;
+}
+
+.addons__note-input {
+  width: 100%;
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--color-text);
+  background: var(--color-bg-alt);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
+  resize: vertical;
+  transition: border-color var(--transition-fast);
+}
+
+.addons__note-input:focus {
+  outline: none;
+  border-color: var(--color-accent);
+}
+
+.addons__note-counter {
+  align-self: flex-end;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: var(--color-text-soft);
+}
+
+.addons__note-counter--over {
+  color: #b04a4a;
+}
+
+.addons__card-cta {
+  display: inline-block;
+  margin-top: 18px;
+  padding: 0;
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--color-text-soft);
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: var(--color-border);
+  transition: color var(--transition-fast), text-decoration-color var(--transition-fast);
+}
+
+.addons__card-cta:hover {
+  color: var(--color-text);
+  text-decoration-color: var(--color-accent);
+}
+
+@media (max-width: 600px) {
+  .addons__item { flex-direction: column; align-items: flex-start; gap: 10px; }
+  .addons__item-meta { width: 100%; justify-content: space-between; }
+}

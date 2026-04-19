@@ -1,5 +1,6 @@
 import SEO from '../lib/seo.jsx'
 import Products from '../components/Products.jsx'
+import RecentlyViewed from '../components/RecentlyViewed.jsx'
 import FAQ from '../components/FAQ.jsx'
 import Contact from '../components/Contact.jsx'
 
@@ -17,6 +18,7 @@ export default function ShopPage() {
         heading="Every little flower we make."
         sub="Our full collection of forever flowers — bouquets, frames, bud vases, gift sets and DIY kits. Each one twisted, shaped and styled by hand."
       />
+      <RecentlyViewed />
       <FAQ />
       <Contact />
     </main>

@@ -1,0 +1,43 @@
+.checkout-page__section {
+  padding-top: 120px;
+  padding-bottom: 96px;
+}
+
+.checkout-page__head {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto 64px;
+}
+
+.checkout-page__head .section-sub {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.checkout-page__back {
+  display: inline-block;
+  margin-top: 24px;
+  color: var(--color-text-soft);
+  font-size: 13px;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  transition: color var(--transition-fast);
+}
+
+.checkout-page__back:hover { color: var(--color-text); }
+
+.checkout-page__grid {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 64px;
+  align-items: start;
+  max-width: 1160px;
+  margin: 0 auto;
+}
+
+@media (max-width: 900px) {
+  .checkout-page__grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}

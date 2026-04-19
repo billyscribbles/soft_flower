@@ -1,9 +1,12 @@
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { products } from '../content/products.js'
+import { useCart } from '../context/CartContext.jsx'
 import './Products.css'
 
 export default function Products({ featuredOnly = false, limit, excludeSlug, category, heading, sub, eyebrow }) {
+  const { addItem } = useCart()
+
   let items = products.items
   if (category) items = items.filter((p) => p.category === category)
   if (excludeSlug) items = items.filter((p) => p.slug !== excludeSlug)
@@ -42,6 +45,14 @@ export default function Products({ featuredOnly = false, limit, excludeSlug, cat
                   <span className="products__price">${item.price}</span>
                 </div>
               </Link>
+              <button
+                type="button"
+                className="products__add"
+                onClick={() => addItem(item)}
+                aria-label={`Add ${item.name} to cart`}
+              >
+                Add to cart
+              </button>
             </motion.div>
           ))}
         </div>

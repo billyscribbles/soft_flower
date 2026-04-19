@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import { useEffect, useLayoutEffect, lazy, Suspense } from 'react'
 import Navbar from './components/Navbar.jsx'
 import Footer from './components/Footer.jsx'
+import CartDrawer from './components/CartDrawer.jsx'
 import Home from './pages/Home.jsx'
 
 // Retry lazy imports once, then force a reload if the chunk is gone.
@@ -33,6 +34,9 @@ const ContactPage = lazyWithRetry(() => import('./pages/ContactPage.jsx'))
 const EventsPage = lazyWithRetry(() => import('./pages/EventsPage.jsx'))
 const LegalPage = lazyWithRetry(() => import('./pages/LegalPage.jsx'))
 const NotFoundPage = lazyWithRetry(() => import('./pages/NotFoundPage.jsx'))
+const CartPage = lazyWithRetry(() => import('./pages/CartPage.jsx'))
+const CheckoutPage = lazyWithRetry(() => import('./pages/CheckoutPage.jsx'))
+const OrderConfirmationPage = lazyWithRetry(() => import('./pages/OrderConfirmationPage.jsx'))
 
 function ScrollToTop() {
   const { pathname, hash } = useLocation()
@@ -61,11 +65,15 @@ export default function App() {
           <Route path="/about" element={<AboutPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/events" element={<EventsPage />} />
+          <Route path="/cart" element={<CartPage />} />
+          <Route path="/checkout" element={<CheckoutPage />} />
+          <Route path="/order/thanks" element={<OrderConfirmationPage />} />
           <Route path="/privacy" element={<LegalPage type="privacy" />} />
           <Route path="/terms" element={<LegalPage type="terms" />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Suspense>
+      <CartDrawer />
       <Footer />
     </BrowserRouter>
   )
