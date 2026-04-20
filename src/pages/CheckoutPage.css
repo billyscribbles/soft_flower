@@ -35,9 +35,20 @@
   margin: 0 auto;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1024px) {
   .checkout-page__grid {
     grid-template-columns: 1fr;
     gap: 40px;
   }
+}
+
+@media (max-width: 768px) {
+  .checkout-page__section { padding-top: 88px; padding-bottom: 72px; }
+  .checkout-page__head { margin-bottom: 44px; }
+}
+
+@media (max-width: 480px) {
+  .checkout-page__section { padding-top: 64px; padding-bottom: 56px; }
+  .checkout-page__head { margin-bottom: 32px; }
+  .checkout-page__grid { gap: 28px; }
 }

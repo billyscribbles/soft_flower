@@ -106,6 +106,13 @@
   border-color: var(--color-text);
 }
 
-@media (max-width: 800px) {
+@media (max-width: 768px) {
   .events__grid { grid-template-columns: 1fr; gap: 32px; }
+  .events__head { margin-bottom: 40px; }
+}
+
+@media (max-width: 480px) {
+  .events__title { font-size: 20px; }
+  .events__cta { padding: 11px 20px; font-size: 12px; }
+  .events__media img { width: 76%; height: 76%; }
 }

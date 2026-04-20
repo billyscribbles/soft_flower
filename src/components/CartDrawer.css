@@ -144,8 +144,9 @@
 
 .cart-drawer__primary:hover { background: #000; transform: translateY(-1px); }
 
-@media (max-width: 500px) {
+@media (max-width: 480px) {
   .cart-drawer__head { padding: 20px; }
   .cart-drawer__body { padding: 4px 20px; }
   .cart-drawer__foot { padding: 20px; }
+  .cart-drawer__actions { grid-template-columns: 1fr; }
 }

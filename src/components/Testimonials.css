@@ -46,4 +46,9 @@
   letter-spacing: 0.02em;
 }
 
-@media (max-width: 900px) { .testimonials__grid { grid-template-columns: 1fr; gap: 32px; } }
+@media (max-width: 1024px) { .testimonials__grid { grid-template-columns: repeat(2, 1fr); gap: 40px; } }
+@media (max-width: 768px)  { .testimonials__grid { grid-template-columns: 1fr; gap: 32px; } .testimonials__head { margin-bottom: 40px; } }
+@media (max-width: 480px)  {
+  .testimonials__quote { font-size: 16px; }
+  .testimonials__card { gap: 20px; padding-top: 24px; }
+}

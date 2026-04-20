@@ -135,7 +135,15 @@
   border: 1px solid var(--color-accent);
 }
 
-@media (max-width: 600px) {
-  .contact__row { grid-template-columns: 1fr; gap: 28px; }
-  .contact__details { grid-template-columns: 1fr; gap: 20px; }
+@media (max-width: 768px) {
+  .contact__row { grid-template-columns: 1fr; gap: 24px; }
+  .contact__head { margin-bottom: 28px; }
+}
+
+@media (max-width: 480px) {
+  .contact.section { padding: 64px 0; }
+  .contact__details { grid-template-columns: 1fr; gap: 18px; padding: 20px 0; margin-bottom: 24px; }
+  .contact__field input,
+  .contact__field textarea { padding: 12px 0; font-size: 15px; }
+  .contact__submit { padding: 14px 32px; width: 100%; }
 }

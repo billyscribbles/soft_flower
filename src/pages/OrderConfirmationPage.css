@@ -157,7 +157,17 @@
   align-items: center;
 }
 
-@media (max-width: 600px) {
-  .order-page__card { padding: 28px; }
+@media (max-width: 768px) {
+  .order-page__section { padding-top: 88px; padding-bottom: 72px; }
+  .order-page__card { padding: 28px; gap: 24px; }
   .order-page__meta { grid-template-columns: 1fr; gap: 16px; }
+  .order-page__head { margin-bottom: 36px; }
+}
+
+@media (max-width: 480px) {
+  .order-page__section { padding-top: 64px; padding-bottom: 56px; }
+  .order-page__card { padding: 20px; gap: 20px; }
+  .order-page__items { padding-top: 16px; }
+  .order-page__totals { padding-top: 16px; }
+  .order-page__cta { margin-top: 28px; }
 }

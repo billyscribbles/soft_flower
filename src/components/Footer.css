@@ -143,6 +143,13 @@
 }
 
 @media (max-width: 768px) {
-  .footer__main { grid-template-columns: 1fr; padding: 64px 20px 40px; gap: 36px; }
-  .footer__bottom { padding: 24px 20px; flex-direction: column; align-items: flex-start; gap: 12px; }
+  .footer__main { grid-template-columns: 1fr 1fr; padding: 64px 24px 40px; gap: 32px; }
+  .footer__brand { grid-column: 1 / -1; max-width: 440px; }
+  .footer__bottom { padding: 24px 24px; flex-direction: column; align-items: flex-start; gap: 12px; }
+}
+
+@media (max-width: 480px) {
+  .footer__main { grid-template-columns: 1fr; padding: 48px 16px 32px; gap: 28px; }
+  .footer__bottom { padding: 20px 16px; }
+  .footer__legal { flex-wrap: wrap; gap: 14px; }
 }

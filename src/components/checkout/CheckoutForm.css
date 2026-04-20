@@ -227,10 +227,24 @@
   border: 0;
 }
 
-@media (max-width: 600px) {
-  .checkout-form__row,
-  .checkout-form__section > .checkout-form__row:has(> .checkout-form__field:nth-child(3)),
+@media (max-width: 768px) {
+  .checkout-form { gap: 32px; }
+  .checkout-form__section > .checkout-form__row:has(> .checkout-form__field:nth-child(3)) {
+    grid-template-columns: 1fr 1fr;
+  }
   .checkout-form__methods {
     grid-template-columns: 1fr;
   }
+  .checkout-form__submit { padding: 15px 28px; }
+}
+
+@media (max-width: 480px) {
+  .checkout-form__row,
+  .checkout-form__section > .checkout-form__row:has(> .checkout-form__field:nth-child(3)) {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .checkout-form__method { padding: 16px 18px; }
+  .checkout-form__pickup { padding: 18px 20px; }
+  .checkout-form__textarea { padding: 12px 14px; }
 }

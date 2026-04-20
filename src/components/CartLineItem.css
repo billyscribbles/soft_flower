@@ -114,7 +114,15 @@
 
 .line-item__remove:hover { color: var(--color-accent-dark); }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .line-item { grid-template-columns: 80px 1fr; gap: 14px; }
   .line-item__remove span { display: none; }
+}
+
+@media (max-width: 480px) {
+  .line-item { grid-template-columns: 64px 1fr; gap: 12px; padding: 18px 0; }
+  .line-item__name { font-size: 15px; }
+  .line-item__price { font-size: 14px; }
+  .line-item__head { gap: 10px; }
+  .line-item__note { font-size: 12px; padding: 6px 8px; }
 }

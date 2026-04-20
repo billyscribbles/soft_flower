@@ -55,3 +55,14 @@
   color: var(--color-text-soft);
   max-width: 680px;
 }
+
+@media (max-width: 768px) {
+  .faq__head { margin-bottom: 40px; }
+  .faq__question { padding: 24px 4px; font-size: 15px; }
+  .faq__answer-inner { padding: 0 4px 24px; }
+}
+
+@media (max-width: 480px) {
+  .faq__question { padding: 20px 2px; font-size: 14px; gap: 12px; }
+  .faq__answer-inner { padding: 0 2px 20px; font-size: 14px; }
+}

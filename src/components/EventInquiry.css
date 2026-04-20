@@ -92,6 +92,15 @@
 .event-inquiry__status--success { color: var(--color-text); }
 .event-inquiry__status--error { color: #b3261e; }
 
-@media (max-width: 640px) {
-  .event-inquiry__row { grid-template-columns: 1fr; }
+@media (max-width: 768px) {
+  .event-inquiry__row { grid-template-columns: 1fr; gap: 18px; }
+  .event-inquiry__head { margin-bottom: 36px; }
+}
+
+@media (max-width: 480px) {
+  .event-inquiry__form { gap: 18px; }
+  .event-inquiry__field input,
+  .event-inquiry__field select,
+  .event-inquiry__field textarea { padding: 12px 14px; font-size: 14px; }
+  .event-inquiry__submit { width: 100%; padding: 13px 24px; }
 }

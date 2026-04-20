@@ -41,3 +41,9 @@
   .story { padding: 80px 0; }
   .story__body { font-size: 16px; }
 }
+
+@media (max-width: 480px) {
+  .story { padding: 64px 0; }
+  .story__body { font-size: 15px; }
+  .story__signature { margin-top: 20px; }
+}

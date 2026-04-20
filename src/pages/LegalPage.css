@@ -35,4 +35,14 @@
   color: var(--color-text-soft);
 }
 
-@media (max-width: 768px) { .legal { padding: 96px 0 64px; } }
+@media (max-width: 768px) {
+  .legal { padding: 96px 0 64px; }
+  .legal__updated { margin-bottom: 40px; }
+}
+
+@media (max-width: 480px) {
+  .legal { padding: 72px 0 48px; }
+  .legal__section { margin-bottom: 32px; }
+  .legal__heading { font-size: 18px; margin-bottom: 12px; }
+  .legal__body { font-size: 15px; }
+}

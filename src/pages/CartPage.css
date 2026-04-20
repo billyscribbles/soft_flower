@@ -121,7 +121,22 @@
 
 .cart-page__empty-cta:hover { background: #000; }
 
-@media (max-width: 900px) {
+@media (max-width: 1024px) {
   .cart-page__grid { grid-template-columns: 1fr; gap: 40px; }
   .cart-page__summary { position: static; }
+}
+
+@media (max-width: 768px) {
+  .cart-page__section { padding-top: 88px; padding-bottom: 72px; }
+  .cart-page__head { margin-bottom: 36px; }
+  .cart-page__summary { padding: 24px; }
+}
+
+@media (max-width: 480px) {
+  .cart-page__section { padding-top: 64px; padding-bottom: 56px; }
+  .cart-page__grid { gap: 28px; }
+  .cart-page__summary { padding: 20px; }
+  .cart-page__subtotal { font-size: 16px; }
+  .cart-page__checkout { padding: 13px 20px; }
+  .cart-page__empty { padding: 40px 12px 24px; }
 }

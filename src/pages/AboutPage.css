@@ -22,4 +22,11 @@
 
 @media (max-width: 768px) {
   .about-hero { padding: 96px 0 56px; }
+  .about-hero__sub { font-size: 16px; }
+}
+
+@media (max-width: 480px) {
+  .about-hero { padding: 72px 0 40px; }
+  .about-hero__title { margin-bottom: 18px; }
+  .about-hero__sub { font-size: 15px; }
 }
