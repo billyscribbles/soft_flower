@@ -14,8 +14,8 @@ export default function Home() {
     <main>
       <SEO />
       <Hero />
-      <Services />
       <Products featuredOnly />
+      <Services />
       {editorial.map((e) => (
         <EditorialSection key={e.heading} {...e} />
       ))}
