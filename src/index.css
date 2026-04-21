@@ -3,6 +3,10 @@
  * Reference them via var(--color-accent), var(--font-display), etc.
  */
 
+:root {
+  --navbar-height: 104px;
+}
+
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -87,6 +91,7 @@ input, textarea, select { font-family: var(--font-body); }
 }
 
 @media (max-width: 480px) {
+  :root { --navbar-height: 96px; }
   .container { padding: 0 16px; }
   .section { padding: 64px 0; }
   .section-sub { font-size: 16px; margin-bottom: 32px; }

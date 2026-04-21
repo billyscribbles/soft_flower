@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { Instagram } from 'lucide-react'
 import { site } from '../config/site.config.js'
@@ -28,11 +28,28 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const { pathname } = useLocation()
+  const headerRef = useRef(null)
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10)
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
+  useEffect(() => {
+    const el = headerRef.current
+    if (!el) return
+    const setVar = () => {
+      document.documentElement.style.setProperty('--navbar-height', `${el.offsetHeight}px`)
+    }
+    setVar()
+    const ro = new ResizeObserver(setVar)
+    ro.observe(el)
+    window.addEventListener('resize', setVar)
+    return () => {
+      ro.disconnect()
+      window.removeEventListener('resize', setVar)
+    }
   }, [])
 
   useEffect(() => { setMenuOpen(false) }, [pathname])
@@ -42,7 +59,7 @@ export default function Navbar() {
   const durationSec = banner?.durationSec ?? 60
 
   return (
-    <header className={`navbar${scrolled ? ' scrolled' : ''}`}>
+    <header ref={headerRef} className={`navbar${scrolled ? ' scrolled' : ''}`}>
       {banner?.enabled && messages.length > 0 && (
         <div className="navbar__banner" role="region" aria-label="Site announcement">
           <div
@@ -63,8 +80,13 @@ export default function Navbar() {
             <img src={brand.logoSrc} alt={brand.name} className="navbar__logo-img" />
           ) : (
             <>
-              {brand.logoText}
-              <span className="navbar__logo-dot" aria-hidden="true" />
+              <img
+                src="/brand/favicon.svg"
+                alt=""
+                aria-hidden="true"
+                className="navbar__logo-mark"
+              />
+              <span className="navbar__logo-text">{brand.logoText}</span>
             </>
           )}
         </Link>

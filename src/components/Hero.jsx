@@ -52,25 +52,6 @@ export default function Hero() {
           )}
 
         </div>
-
-        <div className="hero__media hero__fade-up" style={{ animationDelay: '0.15s' }}>
-          <div className="hero__media-card">
-            <img
-              src="/images/flowers/flower-9.png"
-              alt="Blush Lily Bouquet — soft pink and white lilies in cream wrap"
-              className="hero__media-img"
-              loading="eager"
-            />
-          </div>
-
-          <Link to="/shop/blush-lily-bouquet" className="hero__media-info">
-            <div className="hero__media-info-text">
-              <strong>Blush Lily Bouquet</strong>
-            </div>
-            <span className="hero__media-info-price">$68</span>
-            <span className="hero__media-info-cta" aria-hidden="true">→</span>
-          </Link>
-        </div>
       </div>
     </section>
   )

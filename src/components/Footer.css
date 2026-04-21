@@ -29,6 +29,18 @@
 
 .footer__logo-img { height: 36px; width: auto; }
 
+.footer__logo-mark {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  display: block;
+}
+
+.footer__logo-text {
+  display: inline-flex;
+  align-items: center;
+}
+
 .footer__logo-dot {
   width: 6px;
   height: 6px;

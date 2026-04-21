@@ -34,8 +34,13 @@ export default function Footer() {
               <img src={brand.logoSrc} alt={brand.name} className="footer__logo-img" />
             ) : (
               <>
-                {brand.logoText}
-                <span className="footer__logo-dot" aria-hidden="true" />
+                <img
+                  src="/brand/favicon.svg"
+                  alt=""
+                  aria-hidden="true"
+                  className="footer__logo-mark"
+                />
+                <span className="footer__logo-text">{brand.logoText}</span>
               </>
             )}
           </div>
