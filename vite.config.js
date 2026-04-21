@@ -6,6 +6,11 @@ export default defineConfig({
   preview: {
     host: '0.0.0.0',
     port: 4173,
+    allowedHosts: [
+      'softflorals.com',
+      'www.softflorals.com',
+      '.up.railway.app',
+    ],
   },
   build: {
     sourcemap: false,
