@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "start": "vite preview --host 0.0.0.0 --port 4173"
+    "start": "npm run build && npm run preview"
   },
   "dependencies": {
     "framer-motion": "^11.0.0",
