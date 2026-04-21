@@ -7,7 +7,7 @@
   padding: calc(96px + var(--navbar-height)) 24px 96px;
   display: flex;
   align-items: center;
-  background-color: var(--color-bg);
+  background-color: var(--color-accent-light);
   background-image: url('/brand/hero-wallpaper.png');
   background-size: cover;
   background-position: center;
