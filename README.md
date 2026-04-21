@@ -1,4 +1,4 @@
-# soft flowers
+# soft florals
 
 A cute little online shop for **handmade pipecleaner flowers**. Forever bouquets, twisted and shaped by hand.
 

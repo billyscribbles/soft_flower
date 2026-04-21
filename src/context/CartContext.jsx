@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useMemo, useReducer, useState } from 'react'
 import { computeSubtotal } from '../lib/cart-totals.js'
 
-const STORAGE_KEY = 'soft_flowers_cart_v1'
+const STORAGE_KEY = 'soft_florals_cart_v1'
 
 const CartContext = createContext(null)
 

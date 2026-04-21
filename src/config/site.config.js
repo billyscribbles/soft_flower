@@ -14,8 +14,8 @@ export const site = {
   },
 
   brand: {
-    name: 'flowers',
-    logoText: 'flowers',
+    name: 'florals',
+    logoText: 'florals',
     tagline: 'Handmade forever flowers — twisted, shaped, and styled by hand in our studio.',
     // Optional image logo — if set, Navbar/Footer render this instead of logoText.
     logoSrc: null,
@@ -62,29 +62,29 @@ export const site = {
         ],
       },
     ],
-    copyright: '© 2026 Soft Flowers. Handmade with love.',
+    copyright: '© 2026 Soft Florals. Handmade with love.',
   },
 
   social: {
-    instagram: 'https://instagram.com/softflowers',
-    tiktok: 'https://tiktok.com/@softflowers',
+    instagram: 'https://instagram.com/softflorals',
+    tiktok: 'https://tiktok.com/@softflorals',
     linkedin: '',
     twitter: '',
   },
 
   contact: {
-    email: 'hello@softflowers.com.au',
+    email: 'hello@softflorals.com.au',
     phone: '0400 123 456',
     location: 'Melbourne, Australia',
     delivery: 'We deliver everywhere in Australia',
   },
 
   seo: {
-    defaultTitle: 'Soft Flowers — Handmade Forever Flowers',
-    titleTemplate: '%s · Soft Flowers',
+    defaultTitle: 'Soft Florals — Handmade Forever Flowers',
+    titleTemplate: '%s · Soft Florals',
     description:
       'Handmade pipe cleaner flowers that never fade. Allergy-free forever bouquets, flower frames, bud vases, gifts and DIY kits — twisted and styled by hand.',
-    siteUrl: import.meta.env.VITE_SITE_URL || 'https://softflowers.com',
+    siteUrl: import.meta.env.VITE_SITE_URL || 'https://softflorals.com',
     ogImage: '/brand/og-image.svg',
     locale: 'en_AU',
   },

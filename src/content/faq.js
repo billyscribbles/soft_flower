@@ -8,7 +8,7 @@ export const faq = {
     },
     {
       q: 'Can my flowers be left at the door if no one is home?',
-      a: 'Yes — and that is one of the lovely things about soft flowers. They do not wilt, do not need water, and do not mind a hot or cold doorstep. We pack everything in a cushioned box so it is happy waiting until someone gets home.',
+      a: 'Yes — and that is one of the lovely things about soft florals. They do not wilt, do not need water, and do not mind a hot or cold doorstep. We pack everything in a cushioned box so it is happy waiting until someone gets home.',
     },
     {
       q: 'Can I change or cancel my order after placing it?',

@@ -19,7 +19,7 @@ export const legal = {
       },
       {
         heading: 'Questions',
-        body: 'Email us any time at hello@softflowers.com — we read every message.',
+        body: 'Email us any time at hello@softflorals.com — we read every message.',
       },
     ],
   },
@@ -37,7 +37,7 @@ export const legal = {
       },
       {
         heading: 'Care & longevity',
-        body: 'With basic care (no direct sunlight, gentle dusting), Soft Flowers will look gorgeous for years. They are decorative objects — please keep them away from children under 3 and pets who love to chew.',
+        body: 'With basic care (no direct sunlight, gentle dusting), Soft Florals will look gorgeous for years. They are decorative objects — please keep them away from children under 3 and pets who love to chew.',
       },
       {
         heading: 'Liability',

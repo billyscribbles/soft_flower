@@ -1,7 +1,7 @@
 // `icon` is a Lucide React icon name (e.g. "Flower2"). See lucide.dev.
 // Three value props shown as a feature trio under the hero.
 export const services = {
-  eyebrow: 'Why soft flowers',
+  eyebrow: 'Why soft florals',
   heading: 'Made by hand. Made to last.',
   sub: 'A small studio in Melbourne making forever bouquets you can keep on the shelf for as long as you like.',
   items: [

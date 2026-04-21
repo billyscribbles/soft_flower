@@ -1638,9 +1638,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"soft-flowers@workspace:.":
+"soft-florals@workspace:.":
   version: 0.0.0-use.local
-  resolution: "soft-flowers@workspace:."
+  resolution: "soft-florals@workspace:."
   dependencies:
     "@types/react": "npm:^18.3.1"
     "@types/react-dom": "npm:^18.3.1"

@@ -1,6 +1,6 @@
 // Tracks recently-viewed product slugs in localStorage so we can show a
 // "Recently viewed" rail on product pages and in the shop.
-const KEY = 'softflowers:recentlyViewed'
+const KEY = 'softflorals:recentlyViewed'
 const MAX = 8
 
 function read() {

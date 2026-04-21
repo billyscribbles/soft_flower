@@ -1,7 +1,7 @@
 export const howItWorks = {
   eyebrow: 'Caring for your flowers',
   heading: 'A keepsake, not a consumable.',
-  sub: 'Soft Flowers are made to be kept. A little love goes a long way — here is how to help your bouquet stay beautiful for years.',
+  sub: 'Soft Florals are made to be kept. A little love goes a long way — here is how to help your bouquet stay beautiful for years.',
   steps: [
     {
       number: '',

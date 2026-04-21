@@ -8,7 +8,7 @@
 
 Give big-event customers a dedicated destination that:
 
-1. Makes it obvious Soft Flowers does bespoke event work (currently hinted at in the banner and footer, but the links go nowhere meaningful).
+1. Makes it obvious Soft Florals does bespoke event work (currently hinted at in the banner and footer, but the links go nowhere meaningful).
 2. Differentiates event inquiries from regular catalog "Order this daisy" messages, because event work needs context the current Contact form doesn't capture (event date, scale, vibe).
 3. Gives Christine a pre-qualified inquiry that arrives with enough info to write a first-draft quote.
 

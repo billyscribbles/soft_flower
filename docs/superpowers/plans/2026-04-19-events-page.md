@@ -829,7 +829,7 @@ Click the "Enquire →" button on each of the 4 cards in turn. For each:
 
 Fill out the form with test values and submit.
 - If `VITE_FORMSPREE_ID` is set in the local `.env`: expect a success message (`Thanks — we'll be in touch shortly.`) and the form to clear.
-- If `VITE_FORMSPREE_ID` is NOT set: expect the error message (`Something went wrong. Email us directly at hello@softflowers.com.au.`). This matches `Contact.jsx` behavior and is correct.
+- If `VITE_FORMSPREE_ID` is NOT set: expect the error message (`Something went wrong. Email us directly at hello@softflorals.com.au.`). This matches `Contact.jsx` behavior and is correct.
 
 - [ ] **Step 5: Verify nav and footer**
 

@@ -24,7 +24,7 @@ function buildPrefill(productSlug, addonSlugs) {
 
   const subject = product
     ? `New enquiry — ${product.name}`
-    : 'New enquiry — soft flowers site'
+    : 'New enquiry — soft florals site'
 
   return { message: lines.join('\n'), subject }
 }
@@ -44,7 +44,7 @@ export default function Contact({ tone = 'alt' }) {
     return buildPrefill(productSlug, addonSlugs)
   }, [searchParams])
 
-  const subjectValue = prefilledSubject || 'New enquiry — soft flowers site'
+  const subjectValue = prefilledSubject || 'New enquiry — soft florals site'
 
   async function handleSubmit(e) {
     e.preventDefault()

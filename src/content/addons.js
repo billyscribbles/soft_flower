@@ -35,7 +35,7 @@ export const addons = {
   ],
   cardOnly: {
     slug: 'branded-card',
-    name: 'Soft Flowers branded card',
+    name: 'Soft Florals branded card',
     price: 6,
     image: '/images/flowers/branded-card.jpg',
     blurb: 'Our handmade-print A6 card, blank inside. Posted on its own.',

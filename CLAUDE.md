@@ -1,4 +1,4 @@
-# CLAUDE.md — soft_flowers
+# CLAUDE.md — soft_florals
 
 A cute little online shop selling **handmade pipecleaner flowers**. This repo started from Billy's foundation starter and is now its own project — treat it as a real site, not a template.
 
@@ -79,7 +79,7 @@ The Shop component reads this list, renders a grid, and wires each card's "Order
 
 If the current `src/` still looks like the untouched foundation, the first pass is:
 
-1. Set `site.config.js` — brand "soft flowers" (or whatever Billy decides), tagline, nav (Home, Shop, About, Contact), contact email, Formspree ID.
+1. Set `site.config.js` — brand "soft florals" (or whatever Billy decides), tagline, nav (Home, Shop, About, Contact), contact email, Formspree ID.
 2. Set `theme.config.js` — soft pastel palette, rounded radii, friendly display font + clean body font.
 3. Drop brand assets into `public/brand/` (generate SVG placeholders if none provided).
 4. Rewrite `src/content/hero.js`, `about`, `testimonials`, `faq` with warm handmade-shop copy.
