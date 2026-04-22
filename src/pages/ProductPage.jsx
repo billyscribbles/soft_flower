@@ -156,7 +156,7 @@ export default function ProductPage() {
                     id: 'shipping',
                     title: 'Shipping & delivery',
                     body:
-                      'Ready-made pieces ship in 2–3 business days. We post worldwide with tracked shipping. Every order is wrapped in soft tissue inside a cushioned box so it arrives looking perfect.',
+                      'Ready-made pieces ship in 2–3 business days. We post Australia-wide with tracked shipping. Every order is wrapped in soft tissue inside a cushioned box so it arrives looking perfect.',
                   },
                   {
                     id: 'care',

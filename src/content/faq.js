@@ -4,7 +4,7 @@ export const faq = {
   items: [
     {
       q: 'How long until my order arrives?',
-      a: 'Ready-made pieces ship within 2–3 business days from our Melbourne studio. Custom orders take 1–3 weeks depending on size. Australia-wide delivery is 2–5 days; international is 7–14 days. We will send a tracking link the moment your order goes out.',
+      a: 'Ready-made pieces ship within 2–3 business days from our Melbourne studio. Custom orders take 1–3 weeks depending on size. Australia-wide delivery is 2–5 days — we ship within Australia only. We will send a tracking link the moment your order goes out.',
     },
     {
       q: 'Can my flowers be left at the door if no one is home?',

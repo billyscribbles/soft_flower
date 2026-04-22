@@ -8,7 +8,7 @@ export const site = {
     messages: [
       'Free shipping on all Australian orders over $60 ✿',
       'Custom orders open — wedding pieces, gifts, anniversaries',
-      'Handmade in Melbourne · Ships worldwide',
+      'Handmade in Melbourne · Ships Australia-wide',
       'Every flower twisted by hand · Lasts forever',
     ],
   },

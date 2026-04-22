@@ -17,8 +17,8 @@ export const services = {
     },
     {
       icon: 'Gift',
-      title: 'Wrapped & shipped worldwide',
-      body: 'Carefully packed and sent anywhere. Arrives ready to display, with care notes inside.',
+      title: 'Wrapped & shipped Australia-wide',
+      body: 'Carefully packed and sent anywhere in Australia. Arrives ready to display, with care notes inside.',
     },
   ],
 }
