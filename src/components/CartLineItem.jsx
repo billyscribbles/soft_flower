@@ -11,7 +11,11 @@ export default function CartLineItem({ item, compact = false }) {
   return (
     <div className={`line-item${compact ? ' line-item--compact' : ''}`}>
       <Link to={`/shop/${item.slug}`} className="line-item__media">
-        <MediaPlaceholder label="" />
+        {item.hasPhoto && item.image ? (
+          <img src={item.image} alt={item.name} loading="lazy" />
+        ) : (
+          <MediaPlaceholder label="" />
+        )}
       </Link>
 
       <div className="line-item__body">

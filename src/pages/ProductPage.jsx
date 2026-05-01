@@ -88,7 +88,11 @@ export default function ProductPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
             >
-              <MediaPlaceholder />
+              {product.hasPhoto && product.image ? (
+                <img src={product.image} alt={product.name} />
+              ) : (
+                <MediaPlaceholder />
+              )}
               {product.badge && (
                 <span className="product-page__badge">{product.badge}</span>
               )}

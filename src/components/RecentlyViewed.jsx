@@ -32,7 +32,11 @@ export default function RecentlyViewed({ excludeSlug, limit = 4 }) {
               className="recently__card"
             >
               <div className="recently__media">
-                <MediaPlaceholder />
+                {item.hasPhoto && item.image ? (
+                  <img src={item.image} alt={item.name} loading="lazy" />
+                ) : (
+                  <MediaPlaceholder />
+                )}
               </div>
               <div className="recently__body">
                 <h3 className="recently__title">{item.name}</h3>
