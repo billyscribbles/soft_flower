@@ -81,7 +81,7 @@ export default function Navbar() {
           ) : (
             <>
               <img
-                src="/brand/favicon.svg"
+                src="/brand/logo-mark.png"
                 alt=""
                 aria-hidden="true"
                 className="navbar__logo-mark"

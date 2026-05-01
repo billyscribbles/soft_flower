@@ -65,7 +65,7 @@ export const site = {
 
   social: {
     instagram: 'https://www.instagram.com/soft.florals',
-    tiktok: 'https://tiktok.com/@softflorals',
+    tiktok: '',
     linkedin: '',
     twitter: '',
   },

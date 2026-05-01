@@ -35,7 +35,7 @@ export default function Footer() {
             ) : (
               <>
                 <img
-                  src="/brand/favicon.svg"
+                  src="/brand/logo-mark.png"
                   alt=""
                   aria-hidden="true"
                   className="footer__logo-mark"
@@ -102,6 +102,14 @@ export default function Footer() {
         <div className="footer__legal">
           <Link to="/privacy" className="footer__legal-btn">Privacy</Link>
           <Link to="/terms" className="footer__legal-btn">Terms</Link>
+          <a
+            href="https://www.onraistudio.com"
+            className="footer__legal-btn"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Site by Onrai Studio
+          </a>
         </div>
       </div>
     </footer>
