@@ -1,12 +1,13 @@
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
+import MediaPlaceholder from './MediaPlaceholder.jsx'
 import './EditorialSection.css'
 
 export default function EditorialSection({ image, alt, eyebrow, heading, body, cta, reverse = false }) {
   return (
     <section className={`editorial${reverse ? ' editorial--reverse' : ''}`}>
       <div className="editorial__media">
-        <img src={image} alt={alt} loading="lazy" />
+        <MediaPlaceholder />
       </div>
 
       <motion.div

@@ -2,6 +2,7 @@ import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { products } from '../content/products.js'
 import { useCart } from '../context/CartContext.jsx'
+import MediaPlaceholder from './MediaPlaceholder.jsx'
 import './Products.css'
 
 export default function Products({ featuredOnly = false, limit, excludeSlug, category, heading, sub, eyebrow }) {
@@ -38,7 +39,7 @@ export default function Products({ featuredOnly = false, limit, excludeSlug, cat
             >
               <Link to={`/shop/${item.slug}`} className="products__card-link">
                 <div className="products__media">
-                  <img src={item.image} alt={item.name} loading="lazy" />
+                  <MediaPlaceholder />
                 </div>
                 <div className="products__body">
                   <h3 className="products__title">{item.name}</h3>

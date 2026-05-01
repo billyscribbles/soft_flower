@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { events } from '../content/events.js'
+import MediaPlaceholder from './MediaPlaceholder.jsx'
 import './Events.css'
 
 export default function Events({ onEnquire }) {
@@ -23,7 +24,7 @@ export default function Events({ onEnquire }) {
               transition={{ duration: 0.5, delay: i * 0.06, ease: [0.22, 1, 0.36, 1] }}
             >
               <div className="events__media">
-                <img src={item.image} alt={item.title} loading="lazy" />
+                <MediaPlaceholder />
               </div>
               <div className="events__body">
                 <h3 className="events__title">{item.title}</h3>

@@ -4,7 +4,6 @@ import Products from '../components/Products.jsx'
 import Services from '../components/Services.jsx'
 import Story from '../components/Stats.jsx'
 import HowItWorks from '../components/HowItWorks.jsx'
-import Testimonials from '../components/Testimonials.jsx'
 import Contact from '../components/Contact.jsx'
 import EditorialSection from '../components/EditorialSection.jsx'
 import { editorial } from '../content/editorial.js'
@@ -21,7 +20,6 @@ export default function Home() {
       ))}
       <Story tone="alt" />
       <HowItWorks tone="plain" />
-      <Testimonials tone="alt" />
       <Contact tone="plain" />
     </main>
   )

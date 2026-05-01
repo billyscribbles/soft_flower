@@ -8,6 +8,7 @@ import AddOns from '../components/AddOns.jsx'
 import RecentlyViewed from '../components/RecentlyViewed.jsx'
 import FAQ from '../components/FAQ.jsx'
 import Contact from '../components/Contact.jsx'
+import MediaPlaceholder from '../components/MediaPlaceholder.jsx'
 import { products } from '../content/products.js'
 import { addons as addonsContent } from '../content/addons.js'
 import { useCart } from '../context/CartContext.jsx'
@@ -87,7 +88,7 @@ export default function ProductPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
             >
-              <img src={product.image} alt={product.name} />
+              <MediaPlaceholder />
               {product.badge && (
                 <span className="product-page__badge">{product.badge}</span>
               )}

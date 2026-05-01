@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { products } from '../content/products.js'
 import { get as getRecentlyViewed } from '../lib/recentlyViewed.js'
+import MediaPlaceholder from './MediaPlaceholder.jsx'
 import './RecentlyViewed.css'
 
 export default function RecentlyViewed({ excludeSlug, limit = 4 }) {
@@ -31,7 +32,7 @@ export default function RecentlyViewed({ excludeSlug, limit = 4 }) {
               className="recently__card"
             >
               <div className="recently__media">
-                <img src={item.image} alt={item.name} loading="lazy" />
+                <MediaPlaceholder />
               </div>
               <div className="recently__body">
                 <h3 className="recently__title">{item.name}</h3>

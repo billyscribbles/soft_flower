@@ -1,7 +1,6 @@
 import SEO from '../lib/seo.jsx'
 import { site } from '../config/site.config.js'
 import Stats from '../components/Stats.jsx'
-import Testimonials from '../components/Testimonials.jsx'
 import Contact from '../components/Contact.jsx'
 import './AboutPage.css'
 
@@ -17,7 +16,6 @@ export default function AboutPage() {
         </div>
       </section>
       <Stats />
-      <Testimonials />
       <Contact />
     </main>
   )

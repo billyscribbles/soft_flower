@@ -2,6 +2,7 @@ import { Minus, Plus, Trash2 } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { useCart } from '../context/CartContext.jsx'
 import { formatAUD } from '../lib/money.js'
+import MediaPlaceholder from './MediaPlaceholder.jsx'
 import './CartLineItem.css'
 
 export default function CartLineItem({ item, compact = false }) {
@@ -10,7 +11,7 @@ export default function CartLineItem({ item, compact = false }) {
   return (
     <div className={`line-item${compact ? ' line-item--compact' : ''}`}>
       <Link to={`/shop/${item.slug}`} className="line-item__media">
-        <img src={item.image} alt={item.name} loading="lazy" />
+        <MediaPlaceholder label="" />
       </Link>
 
       <div className="line-item__body">
