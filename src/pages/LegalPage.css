@@ -1,4 +1,4 @@
-.legal { padding: 140px 0 96px; }
+.legal { padding: 120px 0 72px; }
 
 .legal__inner { max-width: 720px; }
 
@@ -36,12 +36,12 @@
 }
 
 @media (max-width: 768px) {
-  .legal { padding: 96px 0 64px; }
+  .legal { padding: 88px 0 56px; }
   .legal__updated { margin-bottom: 40px; }
 }
 
 @media (max-width: 480px) {
-  .legal { padding: 72px 0 48px; }
+  .legal { padding: 64px 0 40px; }
   .legal__section { margin-bottom: 32px; }
   .legal__heading { font-size: 18px; margin-bottom: 12px; }
   .legal__body { font-size: 15px; }

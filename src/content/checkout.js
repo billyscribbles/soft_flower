@@ -27,17 +27,17 @@ export const checkout = {
   },
   comingSoon: {
     seoTitle: 'Checkout — coming soon',
+    banner: 'Sorry, checkout is coming soon.',
     eyebrow: 'Checkout',
     heading: 'Online payments — coming soon.',
     sub: 'We are still wiring up online checkout. In the meantime, send us your wishlist and Christine will reply with a custom invoice within one business day.',
     wishlistHeading: 'Your wishlist',
-    invoiceNote: 'Final pricing — including shipping or pickup — will be confirmed on your invoice.',
-    ctaLabel: 'Request custom invoice →',
+    nextCta: 'Request custom invoice →',
   },
   delivery: {
     legend: 'Delivery method',
     options: [
-      { value: 'delivery', label: 'Deliver to me', note: 'Flat rate shipping across Australia. Free on orders over $60.' },
+      { value: 'delivery', label: 'Deliver to me', note: 'Flat rate shipping across Australia. Free on orders over $150.' },
       { value: 'pickup', label: 'Pick up', note: 'We will message you to arrange a pickup time in Melbourne.' },
     ],
   },
@@ -93,6 +93,7 @@ export const checkout = {
   summary: {
     heading: 'Order summary',
     subtotal: 'Subtotal',
+    subtotalNote: '* excludes shipping fee',
     shipping: 'Shipping',
     shippingFree: 'Free',
     pickup: 'Pickup',

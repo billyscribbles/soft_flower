@@ -6,7 +6,7 @@ export const site = {
     enabled: true,
     durationSec: 60,
     messages: [
-      'Free shipping on all Australian orders over $60 ✿',
+      'Free shipping on all Australian orders over $150 ✿',
       'Custom orders open — wedding pieces, gifts, anniversaries',
       'Handmade in Melbourne · Ships Australia-wide',
       'Every flower twisted by hand · Lasts forever',
@@ -94,7 +94,7 @@ export const site = {
   checkout: {
     leadTimeDays: 3,
     flatShippingAUD: 10,
-    freeShippingThresholdAUD: 60,
+    freeShippingThresholdAUD: 150,
     pickupEnabled: true,
     currency: 'AUD',
   },

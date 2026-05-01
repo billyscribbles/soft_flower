@@ -1,5 +1,5 @@
 .contact-hero {
-  padding: 140px 0 56px;
+  padding: 120px 0 40px;
   background: var(--color-bg);
 }
 
@@ -21,12 +21,12 @@
 }
 
 @media (max-width: 768px) {
-  .contact-hero { padding: 96px 0 40px; }
+  .contact-hero { padding: 88px 0 32px; }
   .contact-hero__sub { font-size: 16px; }
 }
 
 @media (max-width: 480px) {
-  .contact-hero { padding: 72px 0 32px; }
+  .contact-hero { padding: 64px 0 24px; }
   .contact-hero__title { margin-bottom: 18px; }
   .contact-hero__sub { font-size: 15px; }
 }

@@ -2,7 +2,7 @@
   min-height: 70vh;
   display: flex;
   align-items: center;
-  padding: 120px 0;
+  padding: 88px 0;
 }
 
 .notfound__inner { text-align: center; }
@@ -40,11 +40,11 @@
 }
 
 @media (max-width: 768px) {
-  .notfound { padding: 96px 0; min-height: 60vh; }
+  .notfound { padding: 72px 0; min-height: 60vh; }
   .notfound__sub { margin-bottom: 28px; }
 }
 
 @media (max-width: 480px) {
-  .notfound { padding: 72px 0; }
+  .notfound { padding: 56px 0; }
   .notfound__sub { font-size: 15px; }
 }

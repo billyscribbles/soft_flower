@@ -5,7 +5,7 @@ import { useCart } from '../context/CartContext.jsx'
 import MediaPlaceholder from './MediaPlaceholder.jsx'
 import './Products.css'
 
-export default function Products({ featuredOnly = false, limit, excludeSlug, category, heading, sub, eyebrow }) {
+export default function Products({ featuredOnly = false, limit, excludeSlug, category, heading, sub, eyebrow, className = '' }) {
   const { addItem } = useCart()
 
   let items = products.items
@@ -15,7 +15,7 @@ export default function Products({ featuredOnly = false, limit, excludeSlug, cat
   if (limit) items = items.slice(0, limit)
 
   return (
-    <section className="products section">
+    <section className={`products section ${className}`.trim()}>
       <div className="container">
         <div className="products__head">
           {(eyebrow ?? products.eyebrow) && (

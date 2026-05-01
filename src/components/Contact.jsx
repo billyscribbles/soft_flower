@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { site } from '../config/site.config.js'
 import { products } from '../content/products.js'
@@ -58,11 +58,27 @@ function buildPrefill(productSlug, addonSlugs, cartParam) {
   return { message: lines.join('\n'), subject }
 }
 
-export default function Contact({ tone = 'alt' }) {
+export default function Contact({
+  tone = 'alt',
+  cartParam: cartParamProp,
+  autoFocusName = false,
+  hideHead = false,
+  includeAddress = false,
+}) {
   const isAlt = tone === 'alt'
   const [status, setStatus] = useState('idle') // idle | submitting | success | error
   const [searchParams] = useSearchParams()
   const formspreeId = site.integrations.formspreeId
+  const formRef = useRef(null)
+
+  useEffect(() => {
+    if (!autoFocusName) return
+    const form = formRef.current
+    if (!form) return
+    form.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    const nameInput = form.querySelector('input[name="name"]')
+    if (nameInput) nameInput.focus({ preventScroll: true })
+  }, [autoFocusName])
 
   const { message: prefilledMessage, subject: prefilledSubject } = useMemo(() => {
     const productSlug = searchParams.get('product') || ''
@@ -70,9 +86,9 @@ export default function Contact({ tone = 'alt' }) {
       .split(',')
       .map((s) => s.trim())
       .filter(Boolean)
-    const cartParam = searchParams.get('cart') || ''
+    const cartParam = cartParamProp ?? searchParams.get('cart') ?? ''
     return buildPrefill(productSlug, addonSlugs, cartParam)
-  }, [searchParams])
+  }, [searchParams, cartParamProp])
 
   const subjectValue = prefilledSubject || 'New enquiry — soft florals site'
 
@@ -105,13 +121,15 @@ export default function Contact({ tone = 'alt' }) {
   return (
     <section className={`contact section${isAlt ? ' section--alt' : ''}`} id="contact">
       <div className="container contact__inner">
-        <div className="contact__head">
-          <span className="section-eyebrow">Custom orders & hellos</span>
-          <h2 className="section-label">Tell us what you're dreaming up.</h2>
-          <p className="section-sub">
-            Custom bouquets, wedding pieces, gift orders, or just a friendly hello — we reply within one business day.
-          </p>
-        </div>
+        {!hideHead && (
+          <div className="contact__head">
+            <span className="section-eyebrow">Custom orders & hellos</span>
+            <h2 className="section-label">Tell us what you're dreaming up.</h2>
+            <p className="section-sub">
+              Custom bouquets, wedding pieces, gift orders, or just a friendly hello — we reply within one business day.
+            </p>
+          </div>
+        )}
 
         <ul className="contact__details">
           <li>
@@ -130,6 +148,7 @@ export default function Contact({ tone = 'alt' }) {
 
         <form
           key={searchParams.toString()}
+          ref={formRef}
           className="contact__form"
           onSubmit={handleSubmit}
         >
@@ -162,6 +181,17 @@ export default function Contact({ tone = 'alt' }) {
               required
             />
           </label>
+          {includeAddress && (
+            <label className="contact__field">
+              <span>Address (optional)</span>
+              <textarea
+                name="address"
+                rows="3"
+                autoComplete="street-address"
+                placeholder="Street, suburb, postcode — for delivery quotes"
+              />
+            </label>
+          )}
           <label className="contact__field">
             <span>Message</span>
             <textarea

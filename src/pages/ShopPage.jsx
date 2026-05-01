@@ -11,8 +11,8 @@ export default function ShopPage() {
         description="Shop handmade pipe cleaner bouquets, single stems, flower frames, bud vases, gift sets, and DIY kits. Every piece twisted by hand."
         path="/shop"
       />
-      <div style={{ paddingTop: 96 }} />
       <Products
+        className="section--page-top"
         eyebrow="The shop"
         heading="Every little flower we make."
         sub="Our full collection of forever flowers — bouquets, frames, bud vases, gift sets and DIY kits. Each one twisted, shaped and styled by hand."

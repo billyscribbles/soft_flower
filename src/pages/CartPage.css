@@ -1,6 +1,6 @@
 .cart-page__section {
-  padding-top: 120px;
-  padding-bottom: 96px;
+  padding-top: 96px;
+  padding-bottom: 72px;
 }
 
 .cart-page__inner { max-width: 1160px; }
@@ -127,13 +127,13 @@
 }
 
 @media (max-width: 768px) {
-  .cart-page__section { padding-top: 88px; padding-bottom: 72px; }
+  .cart-page__section { padding-top: 72px; padding-bottom: 56px; }
   .cart-page__head { margin-bottom: 36px; }
   .cart-page__summary { padding: 24px; }
 }
 
 @media (max-width: 480px) {
-  .cart-page__section { padding-top: 64px; padding-bottom: 56px; }
+  .cart-page__section { padding-top: 56px; padding-bottom: 40px; }
   .cart-page__grid { gap: 28px; }
   .cart-page__summary { padding: 20px; }
   .cart-page__subtotal { font-size: 16px; }

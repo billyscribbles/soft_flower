@@ -4,7 +4,7 @@
   margin-top: calc(-1 * var(--navbar-height));
   min-height: 100vh;
   min-height: 100dvh;
-  padding: calc(96px + var(--navbar-height)) 24px 96px;
+  padding: calc(96px + var(--navbar-height)) 24px 72px;
   display: flex;
   align-items: center;
   background-color: var(--color-accent-light);
@@ -159,14 +159,14 @@
 
 @media (max-width: 1024px) {
   .hero {
-    padding: calc(80px + var(--navbar-height)) 32px 80px;
+    padding: calc(80px + var(--navbar-height)) 32px 64px;
   }
   .hero__content { max-width: 520px; }
 }
 
 @media (max-width: 768px) {
   .hero {
-    padding: calc(72px + var(--navbar-height)) 24px 72px;
+    padding: calc(72px + var(--navbar-height)) 24px 56px;
     background-position: center bottom;
   }
   .hero::before {
@@ -188,7 +188,7 @@
 
 @media (max-width: 480px) {
   .hero {
-    padding: calc(56px + var(--navbar-height)) 16px 72px;
+    padding: calc(56px + var(--navbar-height)) 16px 56px;
   }
   .hero__cta-primary,
   .hero__cta-secondary { padding: 14px 24px; }
