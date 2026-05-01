@@ -2,7 +2,7 @@
   display: grid;
   grid-template-columns: 5fr 6fr;
   align-items: stretch;
-  min-height: clamp(360px, 52vh, 520px);
+  min-height: clamp(360px, 46vh, 460px);
 }
 
 .editorial--reverse .editorial__media { order: 2; }
@@ -20,7 +20,7 @@
 .editorial__media img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   display: block;
 }
 
@@ -28,7 +28,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 64px 56px;
+  padding: 40px 56px;
   background: var(--color-bg);
 }
 
@@ -45,24 +45,24 @@
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--color-text-soft);
-  margin-bottom: 24px;
+  margin-bottom: 14px;
 }
 
 .editorial__heading {
   font-family: var(--font-display);
-  font-size: clamp(32px, 4vw, 48px);
+  font-size: clamp(26px, 2.6vw, 34px);
   font-weight: 600;
-  line-height: 1.1;
+  line-height: 1.15;
   letter-spacing: -0.02em;
   color: var(--color-text);
-  margin-bottom: 24px;
+  margin-bottom: 14px;
 }
 
 .editorial__body {
-  font-size: 16px;
-  line-height: 1.75;
+  font-size: 15px;
+  line-height: 1.6;
   color: var(--color-text-soft);
-  margin-bottom: 36px;
+  margin-bottom: 22px;
   max-width: 440px;
 }
 
@@ -88,19 +88,20 @@
     grid-template-columns: 1fr;
     min-height: auto;
   }
-  .editorial__media { aspect-ratio: 4 / 3; }
+  .editorial__media { aspect-ratio: 4 / 5; }
+  .editorial__media img { object-fit: cover; }
   .editorial--reverse .editorial__media { order: 0; }
   .editorial--reverse .editorial__content { order: 0; }
-  .editorial__content { padding: 56px 32px; }
+  .editorial__content { padding: 36px 32px; }
 }
 
 @media (max-width: 768px) {
-  .editorial__content { padding: 48px 24px; }
+  .editorial__content { padding: 32px 24px; }
   .editorial__body { margin-bottom: 28px; }
 }
 
 @media (max-width: 480px) {
-  .editorial__content { padding: 40px 16px; }
+  .editorial__content { padding: 28px 16px; }
   .editorial__body { font-size: 15px; margin-bottom: 24px; }
   .editorial__cta { padding: 13px 24px; font-size: 13px; }
   .editorial__eyebrow { margin-bottom: 16px; }

@@ -7,7 +7,7 @@ export default function EditorialSection({ image, alt, eyebrow, heading, body, c
   return (
     <section className={`editorial${reverse ? ' editorial--reverse' : ''}`}>
       <div className="editorial__media">
-        <MediaPlaceholder />
+        {image ? <img src={image} alt={alt ?? ''} loading="lazy" /> : <MediaPlaceholder />}
       </div>
 
       <motion.div
