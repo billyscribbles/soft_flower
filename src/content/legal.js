@@ -19,7 +19,7 @@ export const legal = {
       },
       {
         heading: 'Questions',
-        body: 'Email us any time at hello@softflorals.com — we read every message.',
+        body: 'Email us any time at Hello.softflorals@gmail.com — we read every message.',
       },
     ],
   },

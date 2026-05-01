@@ -73,7 +73,7 @@ export const site = {
   },
 
   contact: {
-    email: 'hello@softflorals.com.au',
+    email: 'Hello.softflorals@gmail.com',
     phone: '0400 123 456',
     location: 'Melbourne, Australia',
     delivery: 'We deliver everywhere in Australia',
