@@ -40,8 +40,6 @@ export const site = {
         links: [
           { label: 'All flowers', to: '/shop' },
           { label: 'Bouquets', to: '/shop' },
-          { label: 'Flower frames', to: '/shop' },
-          { label: 'DIY kits', to: '/shop' },
         ],
       },
       {
@@ -73,7 +71,7 @@ export const site = {
   },
 
   contact: {
-    email: 'Hello.softflorals@gmail.com',
+    email: 'hello.softflorals@gmail.com',
     location: 'Melbourne, Australia',
     delivery: 'We deliver everywhere in Australia',
   },
