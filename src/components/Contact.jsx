@@ -5,7 +5,20 @@ import { products } from '../content/products.js'
 import { addons } from '../content/addons.js'
 import './Contact.css'
 
-function buildPrefill(productSlug, addonSlugs) {
+function buildPrefill(productSlug, addonSlugs, cartParam) {
+  const cartItems = cartParam
+    ? cartParam
+        .split(',')
+        .map((entry) => {
+          const [slug, qtyRaw] = entry.split(':')
+          const product = products.items.find((p) => p.slug === slug)
+          if (!product) return null
+          const quantity = Math.max(1, parseInt(qtyRaw, 10) || 1)
+          return { product, quantity }
+        })
+        .filter(Boolean)
+    : []
+
   const product = productSlug
     ? products.items.find((p) => p.slug === productSlug)
     : null
@@ -13,18 +26,34 @@ function buildPrefill(productSlug, addonSlugs) {
     .map((slug) => addons.items.find((a) => a.slug === slug))
     .filter(Boolean)
 
-  if (!product && pickedAddons.length === 0) return { message: '', subject: null }
+  if (!product && pickedAddons.length === 0 && cartItems.length === 0) {
+    return { message: '', subject: null }
+  }
 
   const lines = ["Hi! I'd love to order:"]
+  let cartTotal = 0
+  for (const { product: p, quantity } of cartItems) {
+    const lineTotal = p.price * quantity
+    cartTotal += lineTotal
+    lines.push(`• ${p.name} × ${quantity} ($${lineTotal})`)
+  }
   if (product) lines.push(`• ${product.name} ($${product.price})`)
   for (const a of pickedAddons) {
     lines.push(`• + ${a.name}${a.price > 0 ? ` (+$${a.price})` : ' (free)'}`)
   }
+  if (cartItems.length > 0) {
+    lines.push('', `Estimated subtotal: $${cartTotal} (final invoice will confirm shipping).`)
+  }
   lines.push('', '')
 
-  const subject = product
-    ? `New enquiry — ${product.name}`
-    : 'New enquiry — soft florals site'
+  let subject
+  if (cartItems.length > 0) {
+    subject = `Custom order request — ${cartItems.length} item${cartItems.length > 1 ? 's' : ''}`
+  } else if (product) {
+    subject = `New enquiry — ${product.name}`
+  } else {
+    subject = 'New enquiry — soft florals site'
+  }
 
   return { message: lines.join('\n'), subject }
 }
@@ -41,7 +70,8 @@ export default function Contact({ tone = 'alt' }) {
       .split(',')
       .map((s) => s.trim())
       .filter(Boolean)
-    return buildPrefill(productSlug, addonSlugs)
+    const cartParam = searchParams.get('cart') || ''
+    return buildPrefill(productSlug, addonSlugs, cartParam)
   }, [searchParams])
 
   const subjectValue = prefilledSubject || 'New enquiry — soft florals site'
@@ -87,10 +117,6 @@ export default function Contact({ tone = 'alt' }) {
           <li>
             <span>Email</span>
             <a href={`mailto:${site.contact.email}`}>{site.contact.email}</a>
-          </li>
-          <li>
-            <span>Phone</span>
-            <a href={`tel:${site.contact.phone.replace(/\s+/g, '')}`}>{site.contact.phone}</a>
           </li>
           <li>
             <span>Studio</span>

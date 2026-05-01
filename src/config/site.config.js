@@ -74,7 +74,6 @@ export const site = {
 
   contact: {
     email: 'Hello.softflorals@gmail.com',
-    phone: '0400 123 456',
     location: 'Melbourne, Australia',
     delivery: 'We deliver everywhere in Australia',
   },
@@ -90,7 +89,7 @@ export const site = {
   },
 
   integrations: {
-    formspreeId: import.meta.env.VITE_FORMSPREE_ID || '',
+    formspreeId: import.meta.env.VITE_FORMSPREE_ID || 'mpqbznwd',
     gaId: import.meta.env.VITE_GA_ID || '',
   },
 

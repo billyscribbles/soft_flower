@@ -25,6 +25,15 @@ export const checkout = {
     heading: 'Delivery details.',
     sub: 'Tell us where it is going and when you need it by. We will confirm your order within one business day.',
   },
+  comingSoon: {
+    seoTitle: 'Checkout — coming soon',
+    eyebrow: 'Checkout',
+    heading: 'Online payments — coming soon.',
+    sub: 'We are still wiring up online checkout. In the meantime, send us your wishlist and Christine will reply with a custom invoice within one business day.',
+    wishlistHeading: 'Your wishlist',
+    invoiceNote: 'Final pricing — including shipping or pickup — will be confirmed on your invoice.',
+    ctaLabel: 'Request custom invoice →',
+  },
   delivery: {
     legend: 'Delivery method',
     options: [
