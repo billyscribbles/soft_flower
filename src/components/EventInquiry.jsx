@@ -84,6 +84,17 @@ const EventInquiry = forwardRef(function EventInquiry(_, ref) {
             </label>
           </div>
 
+          <label className="event-inquiry__field">
+            <span>Phone</span>
+            <input
+              type="tel"
+              name="phone"
+              inputMode="tel"
+              autoComplete="tel"
+              required
+            />
+          </label>
+
           <div className="event-inquiry__row">
             <label className="event-inquiry__field">
               <span>Event type</span>

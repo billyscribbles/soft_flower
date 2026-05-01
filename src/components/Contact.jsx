@@ -153,6 +153,16 @@ export default function Contact({ tone = 'alt' }) {
             </label>
           </div>
           <label className="contact__field">
+            <span>Phone</span>
+            <input
+              type="tel"
+              name="phone"
+              inputMode="tel"
+              autoComplete="tel"
+              required
+            />
+          </label>
+          <label className="contact__field">
             <span>Message</span>
             <textarea
               name="message"
