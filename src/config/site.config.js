@@ -82,7 +82,7 @@ export const site = {
     description:
       'Handmade pipe cleaner flowers that never fade. Allergy-free forever bouquets, flower frames, bud vases, gifts and DIY kits — twisted and styled by hand.',
     siteUrl: import.meta.env.VITE_SITE_URL || 'https://softflorals.com',
-    ogImage: '/brand/og-image.svg',
+    ogImage: '/brand/og-image.png',
     locale: 'en_AU',
   },
 
