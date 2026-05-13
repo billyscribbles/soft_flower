@@ -40,7 +40,23 @@ export default function Products({ featuredOnly = false, limit, excludeSlug, cat
               <Link to={`/shop/${item.slug}`} className="products__card-link">
                 <div className="products__media">
                   {item.hasPhoto && item.image ? (
-                    <img src={item.image} alt={item.name} loading="lazy" />
+                    <>
+                      <img
+                        className="products__media-img products__media-img--primary"
+                        src={item.image}
+                        alt={item.name}
+                        loading="lazy"
+                      />
+                      {item.images?.[1] && (
+                        <img
+                          className="products__media-img products__media-img--hover"
+                          src={item.images[1]}
+                          alt=""
+                          aria-hidden="true"
+                          loading="lazy"
+                        />
+                      )}
+                    </>
                   ) : (
                     <MediaPlaceholder />
                   )}

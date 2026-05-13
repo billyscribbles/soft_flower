@@ -22,13 +22,17 @@ export default function ProductPage() {
   const [selectedAddons, setSelectedAddons] = useState([])
   const [addonNotes, setAddonNotes] = useState({})
   const [quantity, setQuantity] = useState(1)
+  const [activeImage, setActiveImage] = useState(0)
   const { addItem } = useCart()
+
+  const gallery = product?.images?.length ? product.images : product?.image ? [product.image] : []
 
   useEffect(() => {
     if (product) trackViewed(product.slug)
     setSelectedAddons([])
     setAddonNotes({})
     setQuantity(1)
+    setActiveImage(0)
   }, [product])
 
   if (!product) return <Navigate to="/shop" replace />
@@ -83,18 +87,41 @@ export default function ProductPage() {
 
           <div className="product-page__grid">
             <motion.div
-              className="product-page__media"
+              className="product-page__gallery"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
             >
-              {product.hasPhoto && product.image ? (
-                <img src={product.image} alt={product.name} />
-              ) : (
-                <MediaPlaceholder />
-              )}
-              {product.badge && (
-                <span className="product-page__badge">{product.badge}</span>
+              <div className="product-page__media">
+                {product.hasPhoto && gallery.length > 0 ? (
+                  <img
+                    key={gallery[activeImage]}
+                    src={gallery[activeImage]}
+                    alt={product.name}
+                  />
+                ) : (
+                  <MediaPlaceholder />
+                )}
+                {product.badge && (
+                  <span className="product-page__badge">{product.badge}</span>
+                )}
+              </div>
+              {gallery.length > 1 && (
+                <div className="product-page__thumbs" role="tablist" aria-label={`${product.name} images`}>
+                  {gallery.map((src, idx) => (
+                    <button
+                      key={src}
+                      type="button"
+                      role="tab"
+                      aria-selected={activeImage === idx}
+                      className={`product-page__thumb${activeImage === idx ? ' is-active' : ''}`}
+                      onClick={() => setActiveImage(idx)}
+                      onMouseEnter={() => setActiveImage(idx)}
+                    >
+                      <img src={src} alt="" loading="lazy" />
+                    </button>
+                  ))}
+                </div>
               )}
             </motion.div>
 
