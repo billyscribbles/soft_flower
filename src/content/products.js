@@ -24,7 +24,10 @@ export const products = {
       category: 'Bouquets',
       price: 50,
       image: '/images/products/soft-purple.png',
-      images: ['/images/products/soft-purple.png'],
+      images: [
+        '/images/products/soft-purple.png',
+        '/images/products/soft-purple-alt.png',
+      ],
       hasPhoto: true,
       blurb: 'A dreamy lavender bouquet of lilies, tulips and a single deep-purple rose.',
       description:
@@ -38,6 +41,7 @@ export const products = {
       image: '/images/products/soft-pink.png',
       images: [
         '/images/products/soft-pink.png',
+        '/images/products/soft-pink-alt.png',
         '/images/products/soft-pink-blossom.png',
       ],
       hasPhoto: true,
