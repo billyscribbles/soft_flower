@@ -20,7 +20,7 @@ export default function Home() {
       ))}
       <Story tone="alt" />
       <HowItWorks tone="plain" />
-      <Contact tone="plain" />
+      <Contact />
     </main>
   )
 }
