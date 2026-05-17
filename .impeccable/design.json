@@ -1,0 +1,209 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-05-17T00:00:00.000Z",
+  "title": "Design System: soft florals",
+  "extensions": {
+    "colorMeta": {
+      "petal-pink": {
+        "role": "primary",
+        "displayName": "Petal Pink",
+        "canonical": "oklch(91.5% 0.035 4)",
+        "tonalRamp": [
+          "oklch(22% 0.03 4)",
+          "oklch(34% 0.05 4)",
+          "oklch(46% 0.07 4)",
+          "oklch(58% 0.08 4)",
+          "oklch(70% 0.06 4)",
+          "oklch(80% 0.05 4)",
+          "oklch(88% 0.04 4)",
+          "oklch(95% 0.02 4)"
+        ]
+      },
+      "dusty-rose": {
+        "role": "primary",
+        "displayName": "Dusty Rose",
+        "canonical": "oklch(66% 0.085 4)",
+        "tonalRamp": [
+          "oklch(24% 0.05 4)",
+          "oklch(36% 0.08 4)",
+          "oklch(48% 0.10 4)",
+          "oklch(58% 0.10 4)",
+          "oklch(66% 0.085 4)",
+          "oklch(76% 0.06 4)",
+          "oklch(86% 0.04 4)",
+          "oklch(94% 0.02 4)"
+        ]
+      },
+      "petal-wash": {
+        "role": "secondary",
+        "displayName": "Petal Wash",
+        "canonical": "oklch(96.5% 0.012 4)",
+        "tonalRamp": [
+          "oklch(24% 0.012 4)",
+          "oklch(36% 0.012 4)",
+          "oklch(48% 0.012 4)",
+          "oklch(60% 0.012 4)",
+          "oklch(72% 0.012 4)",
+          "oklch(84% 0.012 4)",
+          "oklch(92% 0.012 4)",
+          "oklch(96.5% 0.012 4)"
+        ]
+      },
+      "paper-cream": {
+        "role": "neutral",
+        "displayName": "Warm Paper Cream",
+        "canonical": "oklch(97.5% 0.004 70)",
+        "tonalRamp": [
+          "oklch(22% 0.004 70)",
+          "oklch(34% 0.004 70)",
+          "oklch(46% 0.004 70)",
+          "oklch(58% 0.004 70)",
+          "oklch(70% 0.004 70)",
+          "oklch(82% 0.004 70)",
+          "oklch(91% 0.004 70)",
+          "oklch(97.5% 0.004 70)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Pressed Ink",
+        "canonical": "oklch(24% 0.003 350)",
+        "tonalRamp": [
+          "oklch(15% 0.003 350)",
+          "oklch(20% 0.003 350)",
+          "oklch(24% 0.003 350)",
+          "oklch(36% 0.003 350)",
+          "oklch(50% 0.003 350)",
+          "oklch(66% 0.003 350)",
+          "oklch(82% 0.003 350)",
+          "oklch(95% 0.003 350)"
+        ]
+      },
+      "stem-grey": {
+        "role": "neutral",
+        "displayName": "Stem Grey",
+        "canonical": "oklch(48% 0.002 350)",
+        "tonalRamp": [
+          "oklch(20% 0.002 350)",
+          "oklch(30% 0.002 350)",
+          "oklch(40% 0.002 350)",
+          "oklch(48% 0.002 350)",
+          "oklch(60% 0.002 350)",
+          "oklch(72% 0.002 350)",
+          "oklch(84% 0.002 350)",
+          "oklch(94% 0.002 350)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "The hero headline only. One per page, oversized, tightly tracked." },
+      "headline": { "displayName": "Headline", "purpose": "Section titles." },
+      "title": { "displayName": "Title", "purpose": "Product names and prices in the catalogue grid. Quiet; the photo is the headline." },
+      "body": { "displayName": "Body", "purpose": "Paragraph copy and subheadlines in Stem Grey. Measure capped at 65 to 75 characters." },
+      "label": { "displayName": "Label", "purpose": "Uppercase tracked eyebrows above section titles and field labels." }
+    },
+    "shadows": [
+      { "name": "sm", "value": "0 1px 2px rgba(0,0,0,0.04)", "purpose": "Reserved. Minimal contact shadow; not used at rest." },
+      { "name": "md", "value": "0 4px 16px rgba(0,0,0,0.06)", "purpose": "Reserved. Available for hover elevation if a surface ever needs it." },
+      { "name": "lg", "value": "0 12px 40px rgba(0,0,0,0.08)", "purpose": "Reserved. Diffuse lift for overlays such as the cart drawer." },
+      { "name": "accent", "value": "0 8px 24px rgba(237,166,175,0.20)", "purpose": "Reserved. A warm rose-tinted glow for accent moments." }
+    ],
+    "motion": [
+      { "name": "fast", "value": "150ms cubic-bezier(0.4, 0, 0.2, 1)", "purpose": "Default easing for button, link, and color state changes." },
+      { "name": "base", "value": "220ms cubic-bezier(0.4, 0, 0.2, 1)", "purpose": "Navbar background and border transitions, hamburger." },
+      { "name": "slow", "value": "350ms cubic-bezier(0.4, 0, 0.2, 1)", "purpose": "Product image scale on hover." },
+      { "name": "hero-reveal", "value": "0.5s cubic-bezier(0.22, 1, 0.36, 1)", "purpose": "Staggered fade-up of hero content on first load (ease-out-quint)." }
+    ],
+    "breakpoints": [
+      { "name": "lg", "value": "1024px" },
+      { "name": "md", "value": "768px" },
+      { "name": "sm", "value": "480px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The committed action: 'Shop now', nav CTA, hero primary. Pressed Ink pill, never pink.",
+      "html": "<button class=\"ds-btn-primary\">Shop now</button>",
+      "css": ".ds-btn-primary { background: var(--color-text); color: #fff; font-family: var(--font-body); font-size: 14px; font-weight: 500; letter-spacing: 0.02em; padding: 16px 32px; border: none; border-radius: var(--radius-full); transition: background var(--transition-fast), transform var(--transition-fast); } .ds-btn-primary:hover { background: #0F0F0F; transform: translateY(-1px); } .ds-btn-primary:focus-visible { outline: 2px solid var(--color-accent-dark); outline-offset: 2px; }"
+    },
+    {
+      "name": "Outline Button",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "The per-product 'add to cart' action. Transparent with a hairline border; fills to Ink on hover.",
+      "html": "<button class=\"ds-btn-outline\">Add to cart</button>",
+      "css": ".ds-btn-outline { background: transparent; color: var(--color-text); font-family: var(--font-body); font-size: 13px; font-weight: 500; letter-spacing: 0.02em; padding: 12px 18px; border: 1px solid var(--color-border-strong); border-radius: var(--radius-full); transition: background var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast); } .ds-btn-outline:hover { background: var(--color-text); color: #fff; border-color: var(--color-text); } .ds-btn-outline:focus-visible { outline: 2px solid var(--color-accent-dark); outline-offset: 2px; }"
+    },
+    {
+      "name": "Underline Input",
+      "kind": "input",
+      "refersTo": "input-underline",
+      "description": "Form field: no box, no radius. A Petal Pink bottom rule that deepens to Dusty Rose on focus, with an uppercase tracked label above.",
+      "html": "<label class=\"ds-field\"><span class=\"ds-field-label\">Your name</span><input class=\"ds-field-input\" type=\"text\" placeholder=\"Christine\" /></label>",
+      "css": ".ds-field { display: flex; flex-direction: column; gap: 8px; } .ds-field-label { font-family: var(--font-body); font-size: 11px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-text-soft); } .ds-field-input { padding: 14px 0; border: none; border-bottom: 1.5px solid var(--color-accent); border-radius: 0; background: transparent; color: var(--color-text); font-family: var(--font-body); font-size: 16px; transition: border-color var(--transition-fast); } .ds-field-input:focus { outline: none; border-bottom-color: var(--color-accent-dark); }"
+    },
+    {
+      "name": "Product Item",
+      "kind": "card",
+      "refersTo": "product-media",
+      "description": "The signature component. Not a card: borderless, shadowless. A square photo over Warm Paper Cream with name and price set quietly below; image blooms 1.03 on hover.",
+      "html": "<a class=\"ds-product\" href=\"#\"><div class=\"ds-product-media\"><img src=\"/images/flowers/flower-1.png\" alt=\"Blush lily bouquet, hand-twisted, wrapped in cream tissue\" /></div><div class=\"ds-product-body\"><span class=\"ds-product-title\">Blush Lily Bouquet</span><span class=\"ds-product-price\">$68</span></div></a>",
+      "css": ".ds-product { display: block; color: inherit; text-decoration: none; } .ds-product-media { aspect-ratio: 1 / 1; overflow: hidden; border-radius: var(--radius-md); background: var(--color-bg-alt); } .ds-product-media img { width: 100%; height: 100%; object-fit: cover; transition: transform 350ms cubic-bezier(0.4,0,0.2,1); } .ds-product:hover .ds-product-media img { transform: scale(1.03); } .ds-product-body { display: flex; flex-direction: column; gap: 6px; padding: 18px 4px 4px; } .ds-product-title { font-family: var(--font-display); font-size: 16px; font-weight: 500; letter-spacing: -0.005em; color: var(--color-text); } .ds-product-price { font-family: var(--font-display); font-size: 15px; font-weight: 500; color: var(--color-text-soft); }"
+    },
+    {
+      "name": "Section Eyebrow",
+      "kind": "custom",
+      "refersTo": null,
+      "description": "The uppercase tracked kicker above section titles. Stem Grey, never Ink, never pink.",
+      "html": "<span class=\"ds-eyebrow\">Made by hand</span>",
+      "css": ".ds-eyebrow { display: inline-block; font-family: var(--font-body); font-size: 12px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-text-soft); }"
+    },
+    {
+      "name": "Marquee Banner",
+      "kind": "nav",
+      "refersTo": null,
+      "description": "The full-width Petal Pink announcement strip above the navbar. Slow horizontal marquee, pauses on hover, static under reduced-motion.",
+      "html": "<div class=\"ds-banner\"><div class=\"ds-banner-track\"><span class=\"ds-banner-item\">Handmade in Melbourne · Ships Australia-wide</span><span class=\"ds-banner-item\">Every flower twisted by hand · Lasts forever</span></div></div>",
+      "css": ".ds-banner { background: var(--color-accent); color: var(--color-text-soft); min-height: 36px; display: flex; align-items: center; overflow: hidden; } .ds-banner-track { display: flex; align-items: center; gap: 72px; padding-left: 72px; width: max-content; animation: ds-marquee 60s linear infinite; } .ds-banner:hover .ds-banner-track { animation-play-state: paused; } .ds-banner-item { font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; } @keyframes ds-marquee { from { transform: translate3d(0,0,0); } to { transform: translate3d(-50%,0,0); } } @media (prefers-reduced-motion: reduce) { .ds-banner-track { animation: none; padding-left: 0; justify-content: center; } }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Pressed-Flower Keepsake",
+    "overview": "soft florals sells flowers that never wilt: pipe cleaner bouquets twisted by hand in a Melbourne studio. The interface treats each piece the way you would treat a flower worth keeping forever, something pressed flat between pages, saved, and given as a gift. The site is the tissue paper, not the bouquet. It stays soft, quiet, and deliberately plain so the photography of the actual handmade work carries every screen. The system is built on warmth and restraint. Backgrounds are studio white and a warm paper cream; the only saturated color is a pale Petal Pink used as a signature, never as decoration. Action is carried by near-black Ink, so the shop reads as calm and confident rather than busy or sugary. Surfaces are flat at rest. Depth comes from generous whitespace, the cream-on-white tonal shift, and gentle motion on interaction, not from shadows or boxes.",
+    "keyCharacteristics": [
+      "Photography leads; chrome recedes. The flowers are the loudest thing on screen.",
+      "Restrained color: Petal Pink as a rare signature, Ink as the action color.",
+      "Flat by default. No resting shadows, no card frames around products.",
+      "Pill-shaped actions, underline-only inputs, hairline dividers.",
+      "Warm, unhurried, gift-worthy. Premium but never cold."
+    ],
+    "rules": [
+      { "name": "The Signature Rule", "body": "Petal Pink appears on roughly 5% of any screen or less. It is a signature, not a theme. If pink is filling space or tinting components by reflex, remove it. Its rarity is what makes it read as the brand.", "section": "colors" },
+      { "name": "The Black-Is-The-Action Rule", "body": "Every committed action (primary button, nav CTA, add to cart) is Pressed Ink, never pink. Pink invites; Ink commits. Do not swap a primary button to pink to make it softer.", "section": "colors" },
+      { "name": "The One-Family Rule", "body": "Inter carries the entire system. Hierarchy is built from size and weight contrast (steps stay at or above a 1.25 ratio), never from introducing a second typeface.", "section": "typography" },
+      { "name": "The Tight-Headline Rule", "body": "Headlines and display type carry negative tracking (-0.02em to -0.025em). Body and labels never do; labels are loosely tracked (+0.18em) instead.", "section": "typography" },
+      { "name": "The Flat-At-Rest Rule", "body": "If a surface has a shadow when nothing is happening to it, the shadow is wrong. Elevation is a verb here: it is what hover and focus do, not how a component looks by default.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do keep Petal Pink (#F9DEE5) under roughly 5% of any screen. It is a signature: banner, logo dot, one hero accent word, input underlines. Nothing else.",
+      "Do make every committed action Pressed Ink (#1A1A1A), pill-shaped, with a translateY(-1px) hover lift. Pink invites, Ink commits.",
+      "Do let product photography lead. Items are borderless and shadowless; the photo sits directly in whitespace over Warm Paper Cream.",
+      "Do convey depth through whitespace and the white/cream tonal step, not shadows. Surfaces are flat at rest.",
+      "Do build hierarchy from Inter's size and weight contrast alone, with tight negative tracking on headlines and loose +0.18em tracking on uppercase labels.",
+      "Do ship real, well-lit photography of the actual handmade flowers. This is an imagery-led shop; a colored block where a product photo belongs is a bug."
+    ],
+    "donts": [
+      "Don't look corporate or SaaS: no cold gradients, no hero-metric stat blocks, no stock-photo gloss, no generic startup polish.",
+      "Don't look cutesy-cluttered: no tiled florals, no sticker overload, no comic-energy type, no discount-store loudness. Playful is a few details, not many.",
+      "Don't wrap products in card frames, borders, or resting shadows. The borderless product item is the signature; a bordered grid kills it.",
+      "Don't use border-left or border-right greater than 1px as a colored accent stripe on anything. Use full hairline borders or background tints.",
+      "Don't introduce a second typeface. One family, Inter, carries the system.",
+      "Don't flood the page with pink to seem soft. Restraint is the softness.",
+      "Don't add background-clip: text gradient headings, decorative glassmorphism, or bounce/elastic easing. Ease out; the one sanctioned blur is the scrolled navbar.",
+      "Don't ship pure #FFF or #000 in new work; new surfaces should warm neutrals toward the brand hue and deepen to Ink Deep (#0F0F0F), not pure black."
+    ]
+  }
+}
