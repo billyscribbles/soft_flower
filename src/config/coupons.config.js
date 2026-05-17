@@ -6,7 +6,8 @@
 //        'fixed'    — value is an AUD amount off the subtotal
 //        'shipping' — waives the delivery fee; value is ignored
 // expiresAt: ISO date string, or null to never expire. The code stops working
-//            on and after this date.
+//            on and after this date. A bare date ('2026-09-01') is read as
+//            midnight UTC; a malformed string disables the code.
 
 export const coupons = [
   { code: 'SPRING10', type: 'percent', value: 10, expiresAt: '2026-09-01', label: '10% off' },

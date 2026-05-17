@@ -17,10 +17,17 @@ export function findCoupon(code) {
 // Check whether a coupon is usable right now. `now` is a Date (passed in so
 // this stays pure and testable). Returns { valid, reason } where reason is
 // one of null | 'unknown' | 'expired'.
+//
+// A bare `expiresAt` date ('2026-09-01') is parsed as midnight UTC. A
+// malformed date string is treated as 'unknown' so a config typo disables
+// the code rather than making it valid forever.
 export function validateCoupon(coupon, now) {
   if (!coupon) return { valid: false, reason: 'unknown' }
   if (coupon.expiresAt) {
     const expiry = new Date(coupon.expiresAt)
+    if (Number.isNaN(expiry.getTime())) {
+      return { valid: false, reason: 'unknown' }
+    }
     if (now.getTime() >= expiry.getTime()) {
       return { valid: false, reason: 'expired' }
     }
@@ -33,16 +40,23 @@ export function validateCoupon(coupon, now) {
 //   discount      — AUD taken off the subtotal (0 for free-shipping coupons)
 //   shippingAfter — the shipping fee after the coupon (0 for free shipping)
 // Final order total = subtotal - discount + shippingAfter.
+//
+// Money is rounded to whole cents. A non-finite subtotal or coupon value
+// yields a zero discount rather than letting NaN reach the charged total.
 export function applyCoupon({ coupon, subtotal, shipping }) {
-  if (!coupon) return { discount: 0, shippingAfter: shipping }
+  if (!coupon || !Number.isFinite(subtotal)) {
+    return { discount: 0, shippingAfter: shipping }
+  }
 
   if (coupon.type === 'percent') {
-    const discount = Math.round(subtotal * (coupon.value / 100) * 100) / 100
+    const value = Number.isFinite(coupon.value) ? coupon.value : 0
+    const discount = Math.round(subtotal * (value / 100) * 100) / 100
     return { discount, shippingAfter: shipping }
   }
 
   if (coupon.type === 'fixed') {
-    return { discount: Math.min(coupon.value, subtotal), shippingAfter: shipping }
+    const value = Number.isFinite(coupon.value) ? coupon.value : 0
+    return { discount: Math.min(value, subtotal), shippingAfter: shipping }
   }
 
   if (coupon.type === 'shipping') {

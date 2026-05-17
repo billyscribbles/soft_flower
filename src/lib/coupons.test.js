@@ -43,6 +43,11 @@ describe('validateCoupon', () => {
     })
     expect(validateCoupon(coupon, new Date('2026-10-01T00:00:00Z')).valid).toBe(false)
   })
+
+  it('treats a malformed expiry date as unknown', () => {
+    const coupon = { code: 'X', type: 'fixed', value: 5, expiresAt: 'not-a-date' }
+    expect(validateCoupon(coupon, new Date())).toEqual({ valid: false, reason: 'unknown' })
+  })
 })
 
 describe('applyCoupon', () => {
@@ -82,5 +87,18 @@ describe('applyCoupon', () => {
       discount: 0,
       shippingAfter: 0,
     })
+  })
+
+  it('returns no discount for an unrecognised coupon type', () => {
+    const coupon = { code: 'X', type: 'mystery', value: 10 }
+    expect(applyCoupon({ coupon, subtotal: 100, shipping: 12 })).toEqual({
+      discount: 0,
+      shippingAfter: 12,
+    })
+  })
+
+  it('returns no discount when the coupon value is not a number', () => {
+    const coupon = { code: 'X', type: 'percent', value: undefined }
+    expect(applyCoupon({ coupon, subtotal: 100, shipping: 12 }).discount).toBe(0)
   })
 })
