@@ -2,7 +2,6 @@ import { motion } from 'framer-motion'
 import SEO from '../lib/seo.jsx'
 import { site } from '../config/site.config.js'
 import Stats from '../components/Stats.jsx'
-import Contact from '../components/Contact.jsx'
 import { aboutSections } from '../content/about.js'
 import './AboutPage.css'
 
@@ -41,7 +40,6 @@ export default function AboutPage() {
         </div>
       </section>
       <Stats />
-      <Contact />
     </main>
   )
 }

@@ -1,7 +1,6 @@
 import SEO from '../lib/seo.jsx'
 import Products from '../components/Products.jsx'
 import FAQ from '../components/FAQ.jsx'
-import Contact from '../components/Contact.jsx'
 
 export default function ShopPage() {
   return (
@@ -20,7 +19,6 @@ export default function ShopPage() {
         sub="Our full collection of handmade forever bouquets. Each one twisted, shaped and styled by hand."
       />
       <FAQ />
-      <Contact />
     </main>
   )
 }
