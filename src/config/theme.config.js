@@ -19,6 +19,8 @@ export const theme = {
     'accent-glow': 'rgba(249, 222, 229, 0.40)',
     border: 'rgba(0, 0, 0, 0.08)',
     'border-strong': 'rgba(0, 0, 0, 0.16)',
+    // Muted rose-red for inline form errors — pastel, not harsh.
+    error: '#B23A48',
     dark: '#1A1A1A',
     // Hover state for Ink surfaces — a deepening, not a jump to pure black.
     'ink-deep': '#0F0F0F',
