@@ -196,7 +196,7 @@
   letter-spacing: 0;
 }
 
-.navbar__logo-img { height: 36px; width: auto; }
+.navbar__logo-img { height: 56px; width: auto; }
 
 .navbar__right {
   display: flex;
@@ -317,7 +317,7 @@
 @media (max-width: 480px) {
   .navbar__inner { padding: 0 16px; height: 60px; }
   .navbar__logo { font-size: 20px; }
-  .navbar__logo-img { height: 30px; }
+  .navbar__logo-img { height: 46px; }
   .navbar__logo-mark { width: 22px; height: 22px; }
   .navbar__mobile-link { padding: 14px 20px; }
   .navbar__mobile-cta { margin: 16px 20px 20px; }

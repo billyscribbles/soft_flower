@@ -20,7 +20,7 @@ export const site = {
     logoText: 'soft florals',
     tagline: 'Handmade forever flowers — twisted, shaped, and styled by hand in our studio.',
     // Optional image logo — if set, Navbar/Footer render this instead of logoText.
-    logoSrc: null,
+    logoSrc: '/brand/logo.png',
   },
 
   nav: [
