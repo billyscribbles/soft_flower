@@ -176,7 +176,6 @@ app.post('/api/create-payment-intent', async (req, res) => {
       deliveryMethod,
       customer = {},
       shipping = {},
-      deliveryDate,
       notes,
       idempotencyKey,
     } = req.body || {}
@@ -198,7 +197,7 @@ app.post('/api/create-payment-intent', async (req, res) => {
       lineItems.push({ slug: entry.slug, name: found.name, price: found.price, quantity })
     }
 
-    if (deliveryMethod !== 'delivery' && deliveryMethod !== 'pickup') {
+    if (!['standard', 'express', 'pickup'].includes(deliveryMethod)) {
       return res.status(400).json({ error: 'Choose a delivery method.' })
     }
     if (deliveryMethod === 'pickup' && !checkoutConfig.pickupEnabled) {
@@ -210,7 +209,7 @@ app.post('/api/create-payment-intent', async (req, res) => {
       return res.status(400).json({ error: 'A valid email is required.' })
     }
 
-    if (deliveryMethod === 'delivery') {
+    if (deliveryMethod !== 'pickup') {
       const missing = ['street', 'suburb', 'state', 'postcode'].filter(
         (f) => !String(shipping[f] || '').trim(),
       )
@@ -224,7 +223,8 @@ app.post('/api/create-payment-intent', async (req, res) => {
     const shippingFee = computeShipping({
       subtotal,
       deliveryMethod,
-      flatRate: checkoutConfig.flatShippingAUD,
+      standardRate: checkoutConfig.standardShippingAUD,
+      expressRate: checkoutConfig.expressShippingAUD,
       freeThreshold: checkoutConfig.freeShippingThresholdAUD,
     })
     const total = subtotal + shippingFee
@@ -249,7 +249,6 @@ app.post('/api/create-payment-intent', async (req, res) => {
         order_ref: orderRef,
         items: itemSummary,
         delivery_method: deliveryMethod,
-        delivery_date: String(deliveryDate || '').slice(0, 40),
         customer_name: String(customer.name || '').slice(0, 100),
         customer_phone: String(customer.phone || '').slice(0, 40),
         notes: String(notes || '').slice(0, 480),
@@ -259,7 +258,7 @@ app.post('/api/create-payment-intent', async (req, res) => {
       },
     }
 
-    if (deliveryMethod === 'delivery') {
+    if (deliveryMethod !== 'pickup') {
       params.shipping = {
         name: String(customer.name || '').slice(0, 100) || 'Soft Florals customer',
         phone: String(customer.phone || '').slice(0, 40) || undefined,

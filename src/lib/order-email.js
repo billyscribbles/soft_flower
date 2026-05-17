@@ -27,9 +27,7 @@ function buildLines(pi) {
     `Delivery:  ${m.delivery_method || '(unknown)'}`,
   ]
 
-  if (m.delivery_date) lines.push(`Preferred: ${m.delivery_date}`)
-
-  if (m.delivery_method === 'delivery' && pi.shipping?.address) {
+  if (m.delivery_method !== 'pickup' && pi.shipping?.address) {
     const a = pi.shipping.address
     lines.push(
       `Address:   ${a.line1 || ''}, ${a.city || ''} ${a.state || ''} ${a.postal_code || ''}`.trim(),

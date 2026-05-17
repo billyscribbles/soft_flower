@@ -7,20 +7,6 @@ import { useCart } from '../context/CartContext.jsx'
 import { stripePromise } from '../lib/stripe.js'
 import './OrderConfirmationPage.css'
 
-function formatDate(iso) {
-  if (!iso) return '—'
-  try {
-    return new Date(iso).toLocaleDateString('en-AU', {
-      weekday: 'long',
-      day: 'numeric',
-      month: 'long',
-      year: 'numeric',
-    })
-  } catch {
-    return iso
-  }
-}
-
 export default function OrderConfirmationPage() {
   const { state } = useLocation()
   const { confirmation } = checkout
@@ -53,7 +39,6 @@ export default function OrderConfirmationPage() {
             reference: m.order_ref || paymentIntent.id,
             items: m.items || '',
             deliveryMethod: m.delivery_method || '',
-            deliveryDate: m.delivery_date || '',
             total: Number(m.total) || paymentIntent.amount / 100,
             shipping: paymentIntent.shipping || null,
           })
@@ -109,11 +94,10 @@ export default function OrderConfirmationPage() {
               <dl className="order-page__meta">
                 <div>
                   <dt>{confirmation.deliveryLabel}</dt>
-                  <dd>{isPickup ? confirmation.pickupLabel : 'Delivery'}</dd>
-                </div>
-                <div>
-                  <dt>{confirmation.dateLabel}</dt>
-                  <dd>{formatDate(recovered.deliveryDate)}</dd>
+                  <dd>
+                    {confirmation.methodLabels[recovered.deliveryMethod] ||
+                      confirmation.deliveryLabel}
+                  </dd>
                 </div>
                 {recovered.shipping?.address && !isPickup && (
                   <div className="order-page__address">
@@ -173,7 +157,7 @@ export default function OrderConfirmationPage() {
   }
 
   // --- Full summary (in-page card payment) ---
-  const { contact, address, deliveryMethod, deliveryDate, notes, items, totals } = order
+  const { contact, address, deliveryMethod, notes, items, totals } = order
   const isPickup = deliveryMethod === 'pickup'
 
   return (
@@ -210,11 +194,10 @@ export default function OrderConfirmationPage() {
               </div>
               <div>
                 <dt>{confirmation.deliveryLabel}</dt>
-                <dd>{isPickup ? confirmation.pickupLabel : 'Delivery'}</dd>
-              </div>
-              <div>
-                <dt>{confirmation.dateLabel}</dt>
-                <dd>{formatDate(deliveryDate)}</dd>
+                <dd>
+                  {confirmation.methodLabels[deliveryMethod] ||
+                    confirmation.deliveryLabel}
+                </dd>
               </div>
               {address && !isPickup && (
                 <div className="order-page__address">

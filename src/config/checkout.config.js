@@ -3,8 +3,8 @@
 // imports it directly, and site.config.js uses import.meta.env (Vite-only).
 
 export const checkoutConfig = {
-  leadTimeDays: 3,
-  flatShippingAUD: 10,
+  standardShippingAUD: 12,
+  expressShippingAUD: 15,
   freeShippingThresholdAUD: 150,
   pickupEnabled: false,
   currency: 'AUD',

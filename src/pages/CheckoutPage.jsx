@@ -16,7 +16,7 @@ export default function CheckoutPage() {
   const { checkout: config } = site
   const { page, testMode } = checkout
 
-  const [deliveryMethod, setDeliveryMethod] = useState('delivery')
+  const [deliveryMethod, setDeliveryMethod] = useState('standard')
   // null while filling in details; set once the server opens a PaymentIntent.
   const [intent, setIntent] = useState(null)
 
@@ -29,7 +29,8 @@ export default function CheckoutPage() {
   const shipping = computeShipping({
     subtotal,
     deliveryMethod,
-    flatRate: config.flatShippingAUD,
+    standardRate: config.standardShippingAUD,
+    expressRate: config.expressShippingAUD,
     freeThreshold: config.freeShippingThresholdAUD,
   })
   const total = computeTotal({ subtotal, shipping })

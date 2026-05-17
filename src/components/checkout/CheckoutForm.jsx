@@ -5,12 +5,6 @@ import { site } from '../../config/site.config.js'
 import { checkout } from '../../content/checkout.js'
 import './CheckoutForm.css'
 
-function minDeliveryDate(leadTimeDays) {
-  const d = new Date()
-  d.setDate(d.getDate() + leadTimeDays)
-  return d.toISOString().slice(0, 10)
-}
-
 // Collects delivery details, then asks the server to open a Stripe
 // PaymentIntent. On success it hands the clientSecret + order summary up to
 // CheckoutPage, which reveals the payment step.
@@ -26,15 +20,14 @@ export default function CheckoutForm({ deliveryMethod, onDeliveryMethodChange, o
     suburb: '',
     state: 'VIC',
     postcode: '',
-    deliveryDate: '',
     notes: '',
     agreeTerms: false,
   })
   const [status, setStatus] = useState('idle')
   const [error, setError] = useState(null)
 
-  const minDate = minDeliveryDate(config.leadTimeDays)
-  const isDelivery = deliveryMethod === 'delivery'
+  // Pickup is the only method without a shipping address.
+  const isDelivery = deliveryMethod !== 'pickup'
 
   const update = (field) => (e) => {
     const value = e.target.type === 'checkbox' ? e.target.checked : e.target.value
@@ -63,7 +56,6 @@ export default function CheckoutForm({ deliveryMethod, onDeliveryMethodChange, o
       deliveryMethod,
       customer: { name: form.name, email: form.email, phone: form.phone },
       shipping: address || {},
-      deliveryDate: form.deliveryDate,
       notes: form.notes,
       idempotencyKey: crypto.randomUUID(),
     }
@@ -86,7 +78,6 @@ export default function CheckoutForm({ deliveryMethod, onDeliveryMethodChange, o
         contact: { name: form.name, email: form.email, phone: form.phone },
         deliveryMethod,
         address,
-        deliveryDate: form.deliveryDate,
         notes: form.notes,
         items,
         totals: {
@@ -225,21 +216,6 @@ export default function CheckoutForm({ deliveryMethod, onDeliveryMethodChange, o
           <p>{checkout.pickup.body}</p>
         </div>
       )}
-
-      <fieldset className="checkout-form__section">
-        <legend>{checkout.date.legend}</legend>
-        <label className="checkout-form__field">
-          <span className="sr-only">{checkout.date.legend}</span>
-          <input
-            type="date"
-            min={minDate}
-            value={form.deliveryDate}
-            onChange={update('deliveryDate')}
-            required
-          />
-        </label>
-        <p className="checkout-form__helper">{checkout.date.helper(config.leadTimeDays)}</p>
-      </fieldset>
 
       <fieldset className="checkout-form__section">
         <legend>{checkout.notes.label}</legend>

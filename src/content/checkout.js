@@ -24,7 +24,7 @@ export const checkout = {
     seoTitle: 'Checkout',
     eyebrow: 'Checkout',
     heading: 'Delivery details.',
-    sub: 'Tell us where it is going and when you need it by, then pay securely below.',
+    sub: 'Tell us where it is going, then pay securely below.',
   },
   testMode: {
     banner:
@@ -45,8 +45,21 @@ export const checkout = {
   delivery: {
     legend: 'Delivery method',
     options: [
-      { value: 'delivery', label: 'Deliver to me', note: 'Flat rate shipping across Australia. Free on orders over $150.' },
-      { value: 'pickup', label: 'Pick up', note: 'We will message you to arrange a pickup time in Melbourne.' },
+      {
+        value: 'standard',
+        label: 'Standard delivery',
+        note: 'Flat $12 across Australia, free on orders over $150. Allow a few days — every petal is twisted by hand.',
+      },
+      {
+        value: 'express',
+        label: 'Express delivery',
+        note: 'Flat $15 across Australia. Bumped to the front of the bench and sent priority.',
+      },
+      {
+        value: 'pickup',
+        label: 'Pick up',
+        note: 'We will message you to arrange a pickup time in Melbourne.',
+      },
     ],
   },
   address: {
@@ -71,10 +84,6 @@ export const checkout = {
   pickup: {
     heading: 'Pickup in Melbourne',
     body: 'Once your order is placed, Christine will send you a message to arrange a convenient pickup time and location in Melbourne.',
-  },
-  date: {
-    legend: 'Preferred delivery date',
-    helper: (days) => `We need at least ${days} days to twist every petal by hand. Choose any date from then on.`,
   },
   contact: {
     legend: 'Your details',
@@ -114,7 +123,11 @@ export const checkout = {
     verifying: 'Confirming your payment…',
     referenceLabel: 'Order reference',
     deliveryLabel: 'Delivery',
-    dateLabel: 'Preferred date',
+    methodLabels: {
+      standard: 'Standard delivery',
+      express: 'Express delivery',
+      pickup: 'Pickup',
+    },
     addressLabel: 'Ship to',
     pickupLabel: 'Pickup',
     notesLabel: 'Notes',

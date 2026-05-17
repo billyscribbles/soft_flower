@@ -45,7 +45,7 @@ export const legal = {
       },
       {
         heading: 'Checkout, delivery & pickup',
-        body: 'When you place an order through our checkout, you confirm that your delivery date, address and contact details are correct. Pickup orders are arranged privately by message once your order is placed. Payment and final confirmation happen after Christine reviews your order.',
+        body: 'When you place an order through our checkout, you confirm that your delivery address and contact details are correct. Pickup orders are arranged privately by message once your order is placed. Payment and final confirmation happen after Christine reviews your order.',
       },
     ],
   },

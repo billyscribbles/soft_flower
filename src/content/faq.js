@@ -4,7 +4,7 @@ export const faq = {
   items: [
     {
       q: 'How long until my order arrives?',
-      a: 'Ready-made pieces ship within 2–3 business days from our Melbourne studio. Custom orders take 1–3 weeks depending on size. For Australia-wide delivery, express shipping is $15 (1–3 business days) and standard shipping is $10 (3–6 business days) — we ship within Australia only. We will send a tracking link the moment your order goes out.',
+      a: 'Ready-made pieces ship within 2–3 business days from our Melbourne studio. Custom orders take 1–3 weeks depending on size. For Australia-wide delivery, express shipping is $15 (1–3 business days) and standard shipping is $12 (3–6 business days) — we ship within Australia only. We will send a tracking link the moment your order goes out.',
     },
     {
       q: 'Can my flowers be left at the door if no one is home?',
