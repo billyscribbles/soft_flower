@@ -5,6 +5,7 @@ import Services from '../components/Services.jsx'
 import Story from '../components/Stats.jsx'
 import HowItWorks from '../components/HowItWorks.jsx'
 import Contact from '../components/Contact.jsx'
+import Brands from '../components/Brands.jsx'
 import EditorialSection from '../components/EditorialSection.jsx'
 import { editorial } from '../content/editorial.js'
 
@@ -21,6 +22,7 @@ export default function Home() {
       <Story tone="alt" />
       <HowItWorks tone="plain" />
       <Contact />
+      <Brands />
     </main>
   )
 }
