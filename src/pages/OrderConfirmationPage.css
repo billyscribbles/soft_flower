@@ -3,7 +3,11 @@
   padding-bottom: 72px;
 }
 
-.order-page__inner { max-width: 760px; }
+.order-page__inner {
+  max-width: 760px;
+  display: flex;
+  flex-direction: column;
+}
 
 .order-page__head {
   text-align: center;
