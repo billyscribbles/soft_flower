@@ -3,7 +3,7 @@
 // the marquee tiles and loops them automatically.
 export const brands = {
   eyebrow: 'Out & about',
-  heading: 'Markets & pop-ups we’ve loved',
+  heading: 'Markets & pop-ups we’ve been to',
   items: [
     { name: 'M-CITY Monash', logo: '/images/brands/m-city.png' },
     { name: 'Livingstone Bali', logo: '/images/brands/livingstone.png' },
