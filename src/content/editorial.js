@@ -18,5 +18,6 @@ export const editorial = [
     body: 'Wedding pieces, anniversary keepsakes, gifts for the people who matter — tell us what you have in mind and we will make it by hand in our Melbourne studio.',
     cta: { label: 'Start a custom order', to: '/contact' },
     reverse: true,
+    tone: 'alt',
   },
 ]

@@ -3,9 +3,10 @@ import { Link } from 'react-router-dom'
 import MediaPlaceholder from './MediaPlaceholder.jsx'
 import './EditorialSection.css'
 
-export default function EditorialSection({ image, alt, eyebrow, heading, body, cta, reverse = false }) {
+export default function EditorialSection({ image, alt, eyebrow, heading, body, cta, reverse = false, tone }) {
+  const isAlt = tone === 'alt'
   return (
-    <section className={`editorial${reverse ? ' editorial--reverse' : ''}`}>
+    <section className={`editorial${reverse ? ' editorial--reverse' : ''}${isAlt ? ' editorial--alt' : ''}`}>
       <div className="editorial__media">
         {image ? <img src={image} alt={alt ?? ''} loading="lazy" /> : <MediaPlaceholder />}
       </div>

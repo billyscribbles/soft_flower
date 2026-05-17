@@ -18,8 +18,8 @@ export default function Home() {
       {editorial.map((e) => (
         <EditorialSection key={e.heading} {...e} />
       ))}
-      <Story tone="alt" />
-      <HowItWorks tone="plain" />
+      <Story />
+      <HowItWorks />
       <Brands />
     </main>
   )

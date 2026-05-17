@@ -32,6 +32,12 @@
   background: var(--color-bg);
 }
 
+/* Grey variant — text pane matches the cream media pane so the
+   whole section reads as one tinted band. */
+.editorial--alt .editorial__content {
+  background: var(--color-bg-alt);
+}
+
 .editorial__content-inner {
   max-width: 480px;
   width: 100%;
