@@ -8,12 +8,13 @@ import { useCart } from '../context/CartContext.jsx'
 import { site } from '../config/site.config.js'
 import { checkout } from '../content/checkout.js'
 import { computeShipping, computeTotal } from '../lib/cart-totals.js'
+import { isTestMode } from '../lib/stripe.js'
 import './CheckoutPage.css'
 
 export default function CheckoutPage() {
   const { items, subtotal } = useCart()
   const { checkout: config } = site
-  const { page } = checkout
+  const { page, testMode } = checkout
 
   const [deliveryMethod, setDeliveryMethod] = useState('delivery')
   // null while filling in details; set once the server opens a PaymentIntent.
@@ -41,6 +42,12 @@ export default function CheckoutPage() {
 
       <section className="checkout-page__section section">
         <div className="container">
+          {isTestMode && (
+            <p className="checkout-page__test-banner" role="status">
+              {testMode.banner}
+            </p>
+          )}
+
           <div className="checkout-page__head">
             <span className="section-eyebrow">{page.eyebrow}</span>
             <h1 className="section-label">{page.heading}</h1>
