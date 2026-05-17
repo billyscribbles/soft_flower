@@ -235,7 +235,8 @@ app.post('/api/create-payment-intent', async (req, res) => {
     let shippingAfterCoupon = shippingFee
     let appliedCoupon = null
     if (couponCode) {
-      const coupon = findCoupon(String(couponCode))
+      // Slice before lookup — every other user-supplied field is length-capped.
+      const coupon = findCoupon(String(couponCode).slice(0, 64))
       const { valid, reason } = validateCoupon(coupon, new Date())
       if (!valid) {
         return res.status(400).json({
@@ -278,7 +279,7 @@ app.post('/api/create-payment-intent', async (req, res) => {
         notes: String(notes || '').slice(0, 480),
         subtotal: subtotal.toFixed(2),
         coupon_code: appliedCoupon ? appliedCoupon.code : '',
-        coupon_label: appliedCoupon ? appliedCoupon.label : '',
+        coupon_label: appliedCoupon ? appliedCoupon.label || '' : '',
         discount: discount.toFixed(2),
         shipping_fee: shippingAfterCoupon.toFixed(2),
         total: total.toFixed(2),
@@ -312,7 +313,7 @@ app.post('/api/create-payment-intent', async (req, res) => {
       shippingFee: shippingAfterCoupon,
       discount,
       couponCode: appliedCoupon ? appliedCoupon.code : null,
-      couponLabel: appliedCoupon ? appliedCoupon.label : null,
+      couponLabel: appliedCoupon ? appliedCoupon.label || null : null,
       orderRef,
     })
   } catch (err) {
