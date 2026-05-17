@@ -69,7 +69,7 @@ export default function CheckoutSummary({
             </button>
           </div>
         ) : (
-          <form className="checkout-summary__coupon-form" onSubmit={handleApply}>
+          <form onSubmit={handleApply}>
             <label className="checkout-summary__coupon-label" htmlFor="coupon-code">
               {couponCopy.label}
             </label>
@@ -81,13 +81,14 @@ export default function CheckoutSummary({
                 onChange={(e) => setCode(e.target.value)}
                 placeholder={couponCopy.placeholder}
                 autoComplete="off"
+                aria-describedby="coupon-error"
               />
               <button type="submit">{couponCopy.apply}</button>
             </div>
           </form>
         )}
         {error && (
-          <p className="checkout-summary__coupon-error" role="alert">
+          <p id="coupon-error" className="checkout-summary__coupon-error" role="alert">
             {error}
           </p>
         )}
@@ -98,7 +99,7 @@ export default function CheckoutSummary({
           <dt>{summary.subtotal}</dt>
           <dd>{formatAUD(subtotal)}</dd>
         </div>
-        {discount > 0 && (
+        {discount > 0 && coupon && (
           <div className="checkout-summary__discount">
             <dt>
               {couponCopy.discountLabel}
