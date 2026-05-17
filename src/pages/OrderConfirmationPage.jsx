@@ -239,6 +239,15 @@ export default function OrderConfirmationPage() {
                 <dt>Subtotal</dt>
                 <dd>{formatAUD(totals.subtotal)}</dd>
               </div>
+              {totals.discount > 0 && (
+                <div>
+                  <dt>
+                    Discount
+                    {totals.coupon ? ` (${totals.coupon.code})` : ''}
+                  </dt>
+                  <dd>−{formatAUD(totals.discount)}</dd>
+                </div>
+              )}
               <div>
                 <dt>Shipping</dt>
                 <dd>
