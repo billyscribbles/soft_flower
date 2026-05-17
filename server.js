@@ -55,8 +55,12 @@ if (!STRIPE_SECRET_KEY) {
   }
   console.warn(`[server] WARNING: ${msg} /api/create-payment-intent will return 503.`)
 } else if (IS_PROD && STRIPE_SECRET_KEY.startsWith('sk_test_')) {
-  console.error('[server] FATAL: a Stripe TEST key is set in production. Use a live key.')
-  process.exit(1)
+  const allowTestKeys = process.env.ALLOW_TEST_KEYS === 'true'
+  if (!allowTestKeys) {
+    console.error('[server] FATAL: a Stripe TEST key is set in production. Use a live key.')
+    process.exit(1)
+  }
+  console.warn('[server] WARNING: Stripe test key is in use in production (ALLOW_TEST_KEYS=true).')
 }
 
 const stripe = STRIPE_SECRET_KEY ? new Stripe(STRIPE_SECRET_KEY) : null
