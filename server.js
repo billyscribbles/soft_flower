@@ -18,6 +18,7 @@ import { products } from './src/content/products.js'
 import { addons } from './src/content/addons.js'
 import { checkoutConfig } from './src/config/checkout.config.js'
 import { computeSubtotal, computeShipping } from './src/lib/cart-totals.js'
+import { findCoupon, validateCoupon, applyCoupon } from './src/lib/coupons.js'
 import { sendOrderEmail } from './src/lib/order-email.js'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
@@ -177,6 +178,7 @@ app.post('/api/create-payment-intent', async (req, res) => {
       customer = {},
       shipping = {},
       notes,
+      couponCode,
       idempotencyKey,
     } = req.body || {}
 
@@ -227,7 +229,29 @@ app.post('/api/create-payment-intent', async (req, res) => {
       expressRate: checkoutConfig.expressShippingAUD,
       freeThreshold: checkoutConfig.freeShippingThresholdAUD,
     })
-    const total = subtotal + shippingFee
+
+    // --- Apply the coupon, if any (re-validated here — never trust the browser) ---
+    let discount = 0
+    let shippingAfterCoupon = shippingFee
+    let appliedCoupon = null
+    if (couponCode) {
+      const coupon = findCoupon(String(couponCode))
+      const { valid, reason } = validateCoupon(coupon, new Date())
+      if (!valid) {
+        return res.status(400).json({
+          error:
+            reason === 'expired'
+              ? 'That coupon code has expired.'
+              : 'We could not apply that coupon code.',
+        })
+      }
+      const result = applyCoupon({ coupon, subtotal, shipping: shippingFee })
+      discount = result.discount
+      shippingAfterCoupon = result.shippingAfter
+      appliedCoupon = coupon
+    }
+
+    const total = subtotal - discount + shippingAfterCoupon
     const amount = Math.round(total * 100)
     if (amount < 50) {
       return res.status(400).json({ error: 'Order total is below the minimum.' })
@@ -253,7 +277,10 @@ app.post('/api/create-payment-intent', async (req, res) => {
         customer_phone: String(customer.phone || '').slice(0, 40),
         notes: String(notes || '').slice(0, 480),
         subtotal: subtotal.toFixed(2),
-        shipping_fee: shippingFee.toFixed(2),
+        coupon_code: appliedCoupon ? appliedCoupon.code : '',
+        coupon_label: appliedCoupon ? appliedCoupon.label : '',
+        discount: discount.toFixed(2),
+        shipping_fee: shippingAfterCoupon.toFixed(2),
         total: total.toFixed(2),
       },
     }
@@ -282,7 +309,10 @@ app.post('/api/create-payment-intent', async (req, res) => {
       clientSecret: intent.client_secret,
       amount: total,
       subtotal,
-      shippingFee,
+      shippingFee: shippingAfterCoupon,
+      discount,
+      couponCode: appliedCoupon ? appliedCoupon.code : null,
+      couponLabel: appliedCoupon ? appliedCoupon.label : null,
       orderRef,
     })
   } catch (err) {
