@@ -21,8 +21,8 @@ export default function Home() {
       ))}
       <Story tone="alt" />
       <HowItWorks tone="plain" />
+      <Brands tone="alt" />
       <Contact />
-      <Brands />
     </main>
   )
 }
