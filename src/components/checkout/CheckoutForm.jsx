@@ -1,9 +1,8 @@
 import { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { useCart } from '../../context/CartContext.jsx'
 import { site } from '../../config/site.config.js'
 import { checkout } from '../../content/checkout.js'
-import { submitOrder } from '../../lib/order-submit.js'
 import './CheckoutForm.css'
 
 function minDeliveryDate(leadTimeDays) {
@@ -12,9 +11,11 @@ function minDeliveryDate(leadTimeDays) {
   return d.toISOString().slice(0, 10)
 }
 
-export default function CheckoutForm({ deliveryMethod, onDeliveryMethodChange, shipping, total }) {
-  const { items, subtotal, clearCart } = useCart()
-  const navigate = useNavigate()
+// Collects delivery details, then asks the server to open a Stripe
+// PaymentIntent. On success it hands the clientSecret + order summary up to
+// CheckoutPage, which reveals the payment step.
+export default function CheckoutForm({ deliveryMethod, onDeliveryMethodChange, onIntentReady }) {
+  const { items } = useCart()
   const { checkout: config } = site
 
   const [form, setForm] = useState({
@@ -33,6 +34,7 @@ export default function CheckoutForm({ deliveryMethod, onDeliveryMethodChange, s
   const [error, setError] = useState(null)
 
   const minDate = minDeliveryDate(config.leadTimeDays)
+  const isDelivery = deliveryMethod === 'delivery'
 
   const update = (field) => (e) => {
     const value = e.target.type === 'checkbox' ? e.target.checked : e.target.value
@@ -47,44 +49,65 @@ export default function CheckoutForm({ deliveryMethod, onDeliveryMethodChange, s
     setStatus('submitting')
     setError(null)
 
-    const order = {
-      contact: { name: form.name, email: form.email, phone: form.phone },
+    const address = isDelivery
+      ? {
+          street: form.street,
+          suburb: form.suburb,
+          state: form.state,
+          postcode: form.postcode,
+        }
+      : null
+
+    const payload = {
+      items: items.map((i) => ({ slug: i.slug, quantity: i.quantity, note: i.note })),
       deliveryMethod,
-      address:
-        deliveryMethod === 'delivery'
-          ? {
-              street: form.street,
-              suburb: form.suburb,
-              state: form.state,
-              postcode: form.postcode,
-            }
-          : null,
+      customer: { name: form.name, email: form.email, phone: form.phone },
+      shipping: address || {},
       deliveryDate: form.deliveryDate,
       notes: form.notes,
-      items,
-      totals: { subtotal, shipping, total },
-      placedAt: new Date().toISOString(),
+      idempotencyKey: crypto.randomUUID(),
     }
 
     try {
-      const result = await submitOrder(order)
-      if (result.ok) {
-        clearCart()
-        navigate('/order/thanks', {
-          state: { order, reference: result.reference },
-          replace: true,
-        })
-      } else {
+      const res = await fetch('/api/create-payment-intent', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      })
+      const data = await res.json().catch(() => ({}))
+
+      if (!res.ok || !data.clientSecret) {
         setStatus('error')
-        setError(result.error || checkout.submit.error)
+        setError(data.error || checkout.submit.error)
+        return
       }
+
+      const order = {
+        contact: { name: form.name, email: form.email, phone: form.phone },
+        deliveryMethod,
+        address,
+        deliveryDate: form.deliveryDate,
+        notes: form.notes,
+        items,
+        totals: {
+          subtotal: data.subtotal,
+          shipping: data.shippingFee,
+          total: data.amount,
+        },
+        placedAt: new Date().toISOString(),
+      }
+
+      onIntentReady({
+        clientSecret: data.clientSecret,
+        orderRef: data.orderRef,
+        total: data.amount,
+        order,
+      })
     } catch (err) {
       setStatus('error')
       setError(err?.message || checkout.submit.error)
     }
   }
-
-  const isDelivery = deliveryMethod === 'delivery'
 
   return (
     <form className="checkout-form" onSubmit={handleSubmit}>
