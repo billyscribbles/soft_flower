@@ -2,6 +2,7 @@ import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { products } from '../content/products.js'
 import { useCart } from '../context/CartContext.jsx'
+import { formatAUD } from '../lib/money.js'
 import MediaPlaceholder from './MediaPlaceholder.jsx'
 import './Products.css'
 
@@ -40,7 +41,7 @@ function ProductCard({ item, index, addItem }) {
         </div>
         <div className="products__body">
           <h3 className="products__title">{item.name}</h3>
-          <span className="products__price">${item.price}</span>
+          <span className="products__price">{formatAUD(item.price)}</span>
         </div>
       </Link>
       <button

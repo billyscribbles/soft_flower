@@ -3,6 +3,7 @@ import { useSearchParams } from 'react-router-dom'
 import { site } from '../config/site.config.js'
 import { products } from '../content/products.js'
 import { addons } from '../content/addons.js'
+import { formatAUD } from '../lib/money.js'
 import './Contact.css'
 
 function buildPrefill(productSlug, addonSlugs, cartParam) {
@@ -35,14 +36,14 @@ function buildPrefill(productSlug, addonSlugs, cartParam) {
   for (const { product: p, quantity } of cartItems) {
     const lineTotal = p.price * quantity
     cartTotal += lineTotal
-    lines.push(`• ${p.name} × ${quantity} ($${lineTotal})`)
+    lines.push(`• ${p.name} × ${quantity} (${formatAUD(lineTotal)})`)
   }
-  if (product) lines.push(`• ${product.name} ($${product.price})`)
+  if (product) lines.push(`• ${product.name} (${formatAUD(product.price)})`)
   for (const a of pickedAddons) {
-    lines.push(`• + ${a.name}${a.price > 0 ? ` (+$${a.price})` : ' (free)'}`)
+    lines.push(`• + ${a.name}${a.price > 0 ? ` (+${formatAUD(a.price)})` : ' (free)'}`)
   }
   if (cartItems.length > 0) {
-    lines.push('', `Estimated subtotal: $${cartTotal} (final invoice will confirm shipping).`)
+    lines.push('', `Estimated subtotal: ${formatAUD(cartTotal)} (final invoice will confirm shipping).`)
   }
   lines.push('', '')
 

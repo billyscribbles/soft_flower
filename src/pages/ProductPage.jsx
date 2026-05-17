@@ -12,6 +12,7 @@ import MediaPlaceholder from '../components/MediaPlaceholder.jsx'
 import NotFoundPage from './NotFoundPage.jsx'
 import { products } from '../content/products.js'
 import { addons as addonsContent } from '../content/addons.js'
+import { formatAUD } from '../lib/money.js'
 import { productPanels } from '../content/productPanels.js'
 import { useCart } from '../context/CartContext.jsx'
 import { track as trackViewed } from '../lib/recentlyViewed.js'
@@ -139,7 +140,7 @@ export default function ProductPage() {
               <span className="product-page__category">{product.category}</span>
               <h1 className="product-page__title">{product.name}</h1>
               <p className="product-page__blurb">{product.blurb}</p>
-              <div className="product-page__price">${product.price}</div>
+              <div className="product-page__price">{formatAUD(product.price)}</div>
               <p className="product-page__desc">{product.description}</p>
 
               <AddOns

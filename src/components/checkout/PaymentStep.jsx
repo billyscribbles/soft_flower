@@ -7,18 +7,6 @@ import { checkout } from '../../content/checkout.js'
 import { formatAUD } from '../../lib/money.js'
 import './PaymentStep.css'
 
-// Light theming so the Stripe iframe blends with the soft florals palette.
-const appearance = {
-  theme: 'stripe',
-  variables: {
-    fontFamily: 'inherit',
-    borderRadius: '12px',
-    colorPrimary: '#b98a9e',
-    colorText: '#333333',
-    spacingUnit: '4px',
-  },
-}
-
 function PaymentForm({ order, orderRef, total }) {
   const stripe = useStripe()
   const elements = useElements()
@@ -109,7 +97,7 @@ export default function PaymentStep({ clientSecret, order, orderRef, total, onEd
         </button>
       </div>
 
-      <Elements stripe={stripePromise} options={{ clientSecret, appearance }}>
+      <Elements stripe={stripePromise} options={{ clientSecret }}>
         <PaymentForm order={order} orderRef={orderRef} total={total} />
       </Elements>
     </div>

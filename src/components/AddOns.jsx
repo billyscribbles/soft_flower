@@ -1,6 +1,7 @@
 import { Plus, Check } from 'lucide-react'
 import { addons } from '../content/addons.js'
 import { useCart } from '../context/CartContext.jsx'
+import { formatAUD } from '../lib/money.js'
 import './AddOns.css'
 
 function countWords(str) {
@@ -61,7 +62,7 @@ export default function AddOns({
                 </div>
                 <div className="addons__item-meta">
                   <span className="addons__item-price">
-                    {item.price > 0 ? `+$${item.price}` : 'Included'}
+                    {item.price > 0 ? `+${formatAUD(item.price)}` : 'Included'}
                   </span>
                   <span className="addons__item-icon" aria-hidden="true">
                     {isSelected ? (

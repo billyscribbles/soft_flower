@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { products } from '../content/products.js'
 import { get as getRecentlyViewed } from '../lib/recentlyViewed.js'
+import { formatAUD } from '../lib/money.js'
 import MediaPlaceholder from './MediaPlaceholder.jsx'
 import './RecentlyViewed.css'
 
@@ -40,7 +41,7 @@ export default function RecentlyViewed({ excludeSlug, limit = 4 }) {
               </div>
               <div className="recently__body">
                 <h3 className="recently__title">{item.name}</h3>
-                <span className="recently__price">${item.price}</span>
+                <span className="recently__price">{formatAUD(item.price)}</span>
               </div>
             </Link>
           ))}
