@@ -6,7 +6,7 @@ export const products = {
   heading: 'Forever flowers, made by hand.',
   sub: 'A little collection of single-tone posies and bigger mixed bouquets. Each one twisted, shaped and styled in our studio.',
   groups: [
-    { size: 'medium', title: 'Medium Bouquets', sub: 'Single-tone bouquets — $60 each.' },
+    { size: 'medium', title: 'Medium Bouquets', sub: 'Single-tone bouquets.' },
     { size: 'large', title: 'Large Bouquets', sub: 'Generous mixed bouquets — $110 each.' },
   ],
   items: [
@@ -142,6 +142,23 @@ export const products = {
       blurb: 'A cool-toned bouquet of indigo, lilac, sky-blue and dusty-pink lilies.',
       description:
         'A dreamy mixed bouquet in cool dusk tones — deep indigo, sky and powder blue, soft lilac, dusty pink and crisp white lilies layered with curling greenery and wrapped in sheer tissue and a powder-blue satin ribbon. A bigger, moodier piece that feels like the very last light of a summer evening.',
+    },
+    // Test-only item. `category`/`size` deliberately don't match the shop's
+    // groups, so it stays off the /shop grid and "you might also like" rails —
+    // but it is still buyable directly at /shop/donation for a real-Stripe
+    // test transaction. Remove (or set price back) before going fully live.
+    {
+      slug: 'donation',
+      name: 'Donation',
+      category: 'Test',
+      size: 'test',
+      price: 1,
+      image: '',
+      images: [],
+      hasPhoto: false,
+      blurb: 'A $1 test item for verifying the live Stripe checkout. Not a real product.',
+      description:
+        'This is a $1 placeholder used to run a real payment through the live Stripe account end to end. It is hidden from the shop on purpose. Choose “Pick up” at checkout to keep the total at exactly $1 (delivery options add a shipping fee).',
     },
   ],
 }
