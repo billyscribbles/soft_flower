@@ -4,7 +4,7 @@ export const productPanels = [
   {
     id: 'shipping',
     title: 'Shipping & delivery',
-    body: 'Ready-made pieces ship in 2 to 3 business days. We post Australia-wide with tracked shipping. Every order is wrapped in soft tissue inside a cushioned box so it arrives looking perfect.',
+    body: 'Ready-made pieces ship in 2 to 3 business days. We post Australia-wide with tracked shipping — express is $15 (1–3 business days) and standard is $10 (3–6 business days). Every order is wrapped in soft tissue inside a cushioned box so it arrives looking perfect.',
   },
   {
     id: 'care',

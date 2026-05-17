@@ -4,11 +4,11 @@ export const faq = {
   items: [
     {
       q: 'How long until my order arrives?',
-      a: 'Ready-made pieces ship within 2–3 business days from our Melbourne studio. Custom orders take 1–3 weeks depending on size. Australia-wide delivery is 2–5 days — we ship within Australia only. We will send a tracking link the moment your order goes out.',
+      a: 'Ready-made pieces ship within 2–3 business days from our Melbourne studio. Custom orders take 1–3 weeks depending on size. For Australia-wide delivery, express shipping is $15 (1–3 business days) and standard shipping is $10 (3–6 business days) — we ship within Australia only. We will send a tracking link the moment your order goes out.',
     },
     {
       q: 'Can my flowers be left at the door if no one is home?',
-      a: 'Yes — and that is one of the lovely things about soft florals. They do not wilt, do not need water, and do not mind a hot or cold doorstep. We pack everything in a cushioned box so it is happy waiting until someone gets home.',
+      a: 'Yes — and that is one of the lovely things about soft florals. They do not wilt, do not need water, and do not mind a hot or cold doorstep.',
     },
     {
       q: 'Can I change or cancel my order after placing it?',
@@ -24,7 +24,7 @@ export const faq = {
     },
     {
       q: 'How do I care for them?',
-      a: 'That is the best part — you barely do anything. Keep them out of direct sunlight to prevent fading, and give them a gentle dust with a soft brush or hairdryer on cool setting every few months. They will look perfect for years.',
+      a: 'That is the best part — you barely do anything. Keep them out of direct sunlight to prevent fading, and give them a gentle dust with a soft brush every few months. They will look perfect for years.',
     },
     {
       q: 'Do you take custom orders?',
