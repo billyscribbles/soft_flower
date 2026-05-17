@@ -45,6 +45,9 @@ loadDotEnv()
 const PORT = process.env.PORT || 8787
 const IS_PROD = process.env.NODE_ENV === 'production'
 const STRIPE_SECRET_KEY = process.env.STRIPE_SECRET_KEY
+// Opt-in: allow a test key in production for a staging deploy where other
+// people pay with fake cards. Leave UNSET on the real live shop.
+const ALLOW_TEST_KEYS = /^(1|true|yes)$/i.test(process.env.ALLOW_TEST_KEYS || '')
 
 if (!STRIPE_SECRET_KEY) {
   const msg =
@@ -55,11 +58,26 @@ if (!STRIPE_SECRET_KEY) {
   }
   console.warn(`[server] WARNING: ${msg} /api/create-payment-intent will return 503.`)
 } else if (IS_PROD && STRIPE_SECRET_KEY.startsWith('sk_test_')) {
-  console.error('[server] FATAL: a Stripe TEST key is set in production. Use a live key.')
-  process.exit(1)
+  if (ALLOW_TEST_KEYS) {
+    console.warn(
+      '[server] WARNING: production build running on a Stripe TEST key ' +
+        '(ALLOW_TEST_KEYS is set). This is a staging deploy — no real money ' +
+        'moves. Unset ALLOW_TEST_KEYS and use a live key to go live.',
+    )
+  } else {
+    console.error(
+      '[server] FATAL: a Stripe TEST key is set in production. Use a live ' +
+        'key, or set ALLOW_TEST_KEYS=true for a staging deploy.',
+    )
+    process.exit(1)
+  }
 }
 
 const stripe = STRIPE_SECRET_KEY ? new Stripe(STRIPE_SECRET_KEY) : null
+// True when this build cannot take real money: no key, a test key, or the
+// staging override is on.
+const isLivePayments =
+  Boolean(stripe) && STRIPE_SECRET_KEY.startsWith('sk_live_')
 
 // --- Catalogue: flatten every purchasable slug into one price lookup. ---
 const catalogue = new Map()
@@ -80,7 +98,11 @@ const app = express()
 app.use(express.json({ limit: '64kb' }))
 
 app.get('/api/health', (req, res) => {
-  res.json({ ok: true, stripe: Boolean(stripe) })
+  res.json({
+    ok: true,
+    stripe: Boolean(stripe),
+    mode: isLivePayments ? 'live' : 'test',
+  })
 })
 
 app.post('/api/create-payment-intent', async (req, res) => {
