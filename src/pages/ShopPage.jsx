@@ -12,6 +12,7 @@ export default function ShopPage() {
         path="/shop"
       />
       <Products
+        grouped
         as="h1"
         className="section--page-top"
         eyebrow="The shop"

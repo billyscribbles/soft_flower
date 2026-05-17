@@ -9,6 +9,32 @@
   gap: 32px;
 }
 
+.products__group + .products__group {
+  margin-top: 72px;
+}
+
+.products__group-head {
+  max-width: 640px;
+  margin-bottom: 36px;
+}
+
+.products__group-title {
+  font-family: var(--font-display);
+  font-size: clamp(24px, 2.6vw, 32px);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  color: var(--color-text);
+  line-height: 1.15;
+}
+
+.products__group-sub {
+  font-family: var(--font-body);
+  font-size: 16px;
+  color: var(--color-text-soft);
+  line-height: 1.6;
+  margin-top: 8px;
+}
+
 .products__card {
   padding: 0;
   overflow: hidden;
@@ -123,6 +149,8 @@
 @media (max-width: 768px)  {
   .products__grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
   .products__head { margin-bottom: 40px; }
+  .products__group + .products__group { margin-top: 52px; }
+  .products__group-head { margin-bottom: 28px; }
   .products__more { margin-top: 40px; }
 }
 @media (max-width: 480px)  {
