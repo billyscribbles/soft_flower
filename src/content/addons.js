@@ -1,6 +1,10 @@
 // Add-ons offered alongside any order. Slugs are referenced via URL params
 // when a customer adds them to their enquiry from a product page.
 export const addons = {
+  // Hidden from the product page for now — flip to true to bring the
+  // add-ons section back. The slugs stay in the server price catalogue
+  // either way, so any add-on already in a cart still checks out.
+  enabled: false,
   eyebrow: 'Often added',
   heading: 'Make it extra special.',
   items: [

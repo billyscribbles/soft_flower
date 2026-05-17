@@ -143,12 +143,14 @@ export default function ProductPage() {
               <div className="product-page__price">{formatAUD(product.price)}</div>
               <p className="product-page__desc">{product.description}</p>
 
-              <AddOns
-                selected={selectedAddons}
-                notes={addonNotes}
-                onToggle={toggleAddon}
-                onNoteChange={handleNoteChange}
-              />
+              {addonsContent.enabled && (
+                <AddOns
+                  selected={selectedAddons}
+                  notes={addonNotes}
+                  onToggle={toggleAddon}
+                  onNoteChange={handleNoteChange}
+                />
+              )}
 
               <div className="product-page__quantity" role="group" aria-label="Quantity">
                 <span className="product-page__quantity-label">Quantity</span>
