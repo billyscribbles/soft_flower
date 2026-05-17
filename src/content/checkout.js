@@ -115,6 +115,19 @@ export const checkout = {
     shippingFree: 'Free',
     pickup: 'Pickup',
     total: 'Total',
+    coupon: {
+      label: 'Have a coupon code?',
+      placeholder: 'Enter code',
+      apply: 'Apply',
+      applied: 'applied',
+      remove: 'Remove',
+      discountLabel: 'Discount',
+      errors: {
+        empty: 'Enter a coupon code first.',
+        unknown: 'We don’t recognise that code.',
+        expired: 'That code has expired.',
+      },
+    },
   },
   confirmation: {
     eyebrow: 'Order received',
