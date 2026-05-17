@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import { useEffect, useLayoutEffect, lazy, Suspense } from 'react'
+import { MotionConfig } from 'framer-motion'
 import Navbar from './components/Navbar.jsx'
 import Footer from './components/Footer.jsx'
 import CartDrawer from './components/CartDrawer.jsx'
@@ -68,30 +69,34 @@ function ScrollToTop() {
 
 export default function App() {
   return (
-    <BrowserRouter>
-      <ScrollToTop />
-      <a className="skip-link" href="#main-content">Skip to content</a>
-      <Navbar />
-      <div id="main-content" tabIndex={-1}>
-        <Suspense fallback={null}>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/shop" element={<ShopPage />} />
-            <Route path="/shop/:slug" element={<ProductPage />} />
-            <Route path="/about" element={<AboutPage />} />
-            <Route path="/contact" element={<ContactPage />} />
-            <Route path="/events" element={<EventsPage />} />
-            <Route path="/cart" element={<CartPage />} />
-            <Route path="/checkout" element={<CheckoutPage />} />
-            <Route path="/order/thanks" element={<OrderConfirmationPage />} />
-            <Route path="/privacy" element={<LegalPage type="privacy" />} />
-            <Route path="/terms" element={<LegalPage type="terms" />} />
-            <Route path="*" element={<NotFoundPage />} />
-          </Routes>
-        </Suspense>
-      </div>
-      <CartDrawer />
-      <Footer />
-    </BrowserRouter>
+    // reducedMotion="user" drops the scroll-in transform/offset animations
+    // for visitors who ask for reduced motion, keeping only gentle opacity.
+    <MotionConfig reducedMotion="user">
+      <BrowserRouter>
+        <ScrollToTop />
+        <a className="skip-link" href="#main-content">Skip to content</a>
+        <Navbar />
+        <div id="main-content" tabIndex={-1}>
+          <Suspense fallback={null}>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/shop" element={<ShopPage />} />
+              <Route path="/shop/:slug" element={<ProductPage />} />
+              <Route path="/about" element={<AboutPage />} />
+              <Route path="/contact" element={<ContactPage />} />
+              <Route path="/events" element={<EventsPage />} />
+              <Route path="/cart" element={<CartPage />} />
+              <Route path="/checkout" element={<CheckoutPage />} />
+              <Route path="/order/thanks" element={<OrderConfirmationPage />} />
+              <Route path="/privacy" element={<LegalPage type="privacy" />} />
+              <Route path="/terms" element={<LegalPage type="terms" />} />
+              <Route path="*" element={<NotFoundPage />} />
+            </Routes>
+          </Suspense>
+        </div>
+        <CartDrawer />
+        <Footer />
+      </BrowserRouter>
+    </MotionConfig>
   )
 }

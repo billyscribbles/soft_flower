@@ -127,7 +127,7 @@ export default function Contact({
             <span className="section-eyebrow">Custom orders & hellos</span>
             <h2 className="section-label">Tell us what you're dreaming up.</h2>
             <p className="section-sub">
-              Custom bouquets, wedding pieces, gift orders, or just a friendly hello — we reply within one business day.
+              Custom bouquets, wedding pieces, gift orders, or just a friendly hello. We reply within one business day.
             </p>
           </div>
         )}

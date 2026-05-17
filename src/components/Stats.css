@@ -1,11 +1,6 @@
-.story {
-  padding: 88px 0;
-}
-
-.story--alt {
-  background: var(--color-bg-alt);
-}
-
+/* Padding and the alt background come from the shared .section /
+ * .section--alt utilities so the vertical rhythm matches every other
+ * section, including the 1024px step. */
 .story__inner {
   max-width: 760px;
   margin: 0 auto;
@@ -38,12 +33,10 @@
 }
 
 @media (max-width: 768px) {
-  .story { padding: 56px 0; }
   .story__body { font-size: 16px; }
 }
 
 @media (max-width: 480px) {
-  .story { padding: 48px 0; }
   .story__body { font-size: 15px; }
   .story__signature { margin-top: 20px; }
 }

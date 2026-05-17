@@ -196,3 +196,12 @@
   .hero__cta-primary { flex: 1; text-align: center; }
   .hero__trust-item { font-size: 12px; }
 }
+
+/* Honor reduced-motion: the headline animates in from opacity 0, so the
+ * fallback must restore visibility, not just stop the motion. */
+@media (prefers-reduced-motion: reduce) {
+  .hero__fade-up {
+    opacity: 1;
+    animation: none;
+  }
+}

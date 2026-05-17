@@ -5,7 +5,7 @@ import './Stats.css'
 export default function Story({ tone }) {
   const isAlt = tone === 'alt'
   return (
-    <section className={`story${isAlt ? ' story--alt' : ''}`}>
+    <section className={`story section${isAlt ? ' section--alt' : ''}`}>
       <div className="container">
         <motion.div
           className="story__inner"

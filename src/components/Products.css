@@ -105,6 +105,10 @@
 .products__add {
   margin-top: 12px;
   width: 100%;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 12px 18px;
   background: transparent;
   color: var(--color-text);
