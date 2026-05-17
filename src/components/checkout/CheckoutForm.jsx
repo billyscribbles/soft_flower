@@ -138,14 +138,14 @@ export default function CheckoutForm({ deliveryMethod, onDeliveryMethodChange, o
       <fieldset className="checkout-form__section">
         <legend>{checkout.delivery.legend}</legend>
         <div className="checkout-form__methods">
-          {checkout.delivery.options
-            .filter((opt) => opt.value !== 'pickup' || config.pickupEnabled)
-            .map((opt) => (
+          {checkout.delivery.options.map((opt) => {
+            const comingSoon = opt.value === 'pickup' && !config.pickupEnabled
+            return (
               <label
                 key={opt.value}
                 className={`checkout-form__method${
                   deliveryMethod === opt.value ? ' checkout-form__method--active' : ''
-                }`}
+                }${comingSoon ? ' checkout-form__method--disabled' : ''}`}
               >
                 <input
                   type="radio"
@@ -153,13 +153,20 @@ export default function CheckoutForm({ deliveryMethod, onDeliveryMethodChange, o
                   value={opt.value}
                   checked={deliveryMethod === opt.value}
                   onChange={(e) => onDeliveryMethodChange(e.target.value)}
+                  disabled={comingSoon}
                 />
                 <div>
-                  <span className="checkout-form__method-label">{opt.label}</span>
-                  <span className="checkout-form__method-note">{opt.note}</span>
+                  <span className="checkout-form__method-label">
+                    {opt.label}
+                    {comingSoon && <span className="checkout-form__method-badge">Coming soon</span>}
+                  </span>
+                  <span className="checkout-form__method-note">
+                    {comingSoon ? 'Pickup isn’t available just yet — check back soon.' : opt.note}
+                  </span>
                 </div>
               </label>
-            ))}
+            )
+          })}
         </div>
       </fieldset>
 

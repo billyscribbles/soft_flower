@@ -6,6 +6,6 @@ export const checkoutConfig = {
   leadTimeDays: 3,
   flatShippingAUD: 10,
   freeShippingThresholdAUD: 150,
-  pickupEnabled: true,
+  pickupEnabled: false,
   currency: 'AUD',
 }
