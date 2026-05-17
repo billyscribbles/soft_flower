@@ -36,9 +36,18 @@ function buildLines(pi) {
 
   if (m.notes) lines.push('', `Notes:     ${m.notes}`)
 
+  lines.push('', `Subtotal:  ${money(m.subtotal)}`)
+
+  if (m.coupon_code) {
+    lines.push(
+      `Coupon:    ${m.coupon_code}${m.coupon_label ? ` (${m.coupon_label})` : ''}`,
+    )
+  }
+  if (m.discount && Number(m.discount) > 0) {
+    lines.push(`Discount:  -${money(m.discount)}`)
+  }
+
   lines.push(
-    '',
-    `Subtotal:  ${money(m.subtotal)}`,
     `Shipping:  ${money(m.shipping_fee)}`,
     `Total:     ${money(m.total)}`,
   )
