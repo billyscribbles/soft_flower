@@ -18,6 +18,7 @@ import { products } from './src/content/products.js'
 import { addons } from './src/content/addons.js'
 import { checkoutConfig } from './src/config/checkout.config.js'
 import { computeSubtotal, computeShipping } from './src/lib/cart-totals.js'
+import { sendOrderEmail } from './src/lib/order-email.js'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
@@ -45,6 +46,11 @@ loadDotEnv()
 const PORT = process.env.PORT || 8787
 const IS_PROD = process.env.NODE_ENV === 'production'
 const STRIPE_SECRET_KEY = process.env.STRIPE_SECRET_KEY
+// Used to verify Stripe webhook signatures and to email each paid order to the
+// shop owner. Missing either just disables the order-notification email — the
+// payment flow itself is unaffected.
+const STRIPE_WEBHOOK_SECRET = process.env.STRIPE_WEBHOOK_SECRET
+const RESEND_API_KEY = process.env.RESEND_API_KEY
 // Opt-in: allow a test key in production for a staging deploy where other
 // people pay with fake cards. Leave UNSET on the real live shop.
 const ALLOW_TEST_KEYS = /^(1|true|yes)$/i.test(process.env.ALLOW_TEST_KEYS || '')
@@ -79,6 +85,19 @@ const stripe = STRIPE_SECRET_KEY ? new Stripe(STRIPE_SECRET_KEY) : null
 const isLivePayments =
   Boolean(stripe) && STRIPE_SECRET_KEY.startsWith('sk_live_')
 
+// Order-notification email. Both pieces are needed: the webhook secret to
+// trust the event, the Resend key to send the mail. Warn (don't crash) if
+// either is missing — the shop still takes payments, the owner just won't get
+// an email until both are set.
+if (!STRIPE_WEBHOOK_SECRET || !RESEND_API_KEY) {
+  console.warn(
+    '[server] WARNING: order-notification email is OFF ' +
+      `(STRIPE_WEBHOOK_SECRET ${STRIPE_WEBHOOK_SECRET ? 'set' : 'missing'}, ` +
+      `RESEND_API_KEY ${RESEND_API_KEY ? 'set' : 'missing'}). ` +
+      'Paid orders will not be emailed to the shop owner.',
+  )
+}
+
 // --- Catalogue: flatten every purchasable slug into one price lookup. ---
 const catalogue = new Map()
 for (const item of products.items) {
@@ -95,12 +114,53 @@ if (addons.cardOnly) {
 }
 
 const app = express()
+
+// Stripe webhook — MUST be registered before express.json(): signature
+// verification needs the raw, unparsed request body.
+app.post(
+  '/api/stripe-webhook',
+  express.raw({ type: 'application/json' }),
+  async (req, res) => {
+    if (!stripe || !STRIPE_WEBHOOK_SECRET) {
+      return res.status(503).end()
+    }
+
+    let event
+    try {
+      event = stripe.webhooks.constructEvent(
+        req.body,
+        req.headers['stripe-signature'],
+        STRIPE_WEBHOOK_SECRET,
+      )
+    } catch (err) {
+      console.error('[server] webhook signature check failed:', err?.message || err)
+      return res.status(400).send(`Webhook Error: ${err?.message || 'invalid signature'}`)
+    }
+
+    if (event.type === 'payment_intent.succeeded') {
+      try {
+        await sendOrderEmail(event.data.object)
+        console.log(
+          `[server] order email sent for ${event.data.object?.metadata?.order_ref || event.data.object?.id}`,
+        )
+      } catch (err) {
+        // Non-2xx → Stripe retries delivery, so a transient failure recovers.
+        console.error('[server] order email failed:', err?.message || err)
+        return res.status(500).end()
+      }
+    }
+
+    res.json({ received: true })
+  },
+)
+
 app.use(express.json({ limit: '64kb' }))
 
 app.get('/api/health', (req, res) => {
   res.json({
     ok: true,
     stripe: Boolean(stripe),
+    resend: Boolean(STRIPE_WEBHOOK_SECRET && RESEND_API_KEY),
     mode: isLivePayments ? 'live' : 'test',
   })
 })
