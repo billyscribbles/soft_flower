@@ -26,6 +26,10 @@ export const checkout = {
     heading: 'Delivery details.',
     sub: 'Tell us where it is going and when you need it by, then pay securely below.',
   },
+  testMode: {
+    banner:
+      '✿ Test mode — no real payment is taken. Pay with card 4242 4242 4242 4242, any future expiry and any CVC.',
+  },
   payment: {
     legend: 'Payment',
     heading: 'Pay securely',
