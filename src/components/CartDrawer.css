@@ -21,7 +21,8 @@
   position: absolute;
   top: 0;
   right: 0;
-  height: 100%;
+  height: 100vh;
+  height: 100dvh;
   width: min(440px, 100%);
   background: var(--color-bg);
   display: flex;
@@ -39,6 +40,7 @@
   align-items: center;
   padding: 24px 28px;
   border-bottom: 1px solid var(--color-border);
+  flex-shrink: 0;
 }
 
 .cart-drawer__heading {
@@ -66,6 +68,7 @@
 
 .cart-drawer__body {
   flex: 1;
+  min-height: 0;
   overflow-y: auto;
   padding: 8px 28px;
 }
@@ -95,6 +98,7 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
+  flex-shrink: 0;
 }
 
 .cart-drawer__subtotal {
