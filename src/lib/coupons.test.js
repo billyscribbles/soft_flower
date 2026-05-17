@@ -101,4 +101,12 @@ describe('applyCoupon', () => {
     const coupon = { code: 'X', type: 'percent', value: undefined }
     expect(applyCoupon({ coupon, subtotal: 100, shipping: 12 }).discount).toBe(0)
   })
+
+  it('returns no discount when subtotal is not a number', () => {
+    const coupon = { code: 'X', type: 'percent', value: 10 }
+    expect(applyCoupon({ coupon, subtotal: NaN, shipping: 12 })).toEqual({
+      discount: 0,
+      shippingAfter: 12,
+    })
+  })
 })
