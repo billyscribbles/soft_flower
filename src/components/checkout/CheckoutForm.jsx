@@ -8,7 +8,12 @@ import './CheckoutForm.css'
 // Collects delivery details, then asks the server to open a Stripe
 // PaymentIntent. On success it hands the clientSecret + order summary up to
 // CheckoutPage, which reveals the payment step.
-export default function CheckoutForm({ deliveryMethod, onDeliveryMethodChange, onIntentReady }) {
+export default function CheckoutForm({
+  deliveryMethod,
+  coupon = null,
+  onDeliveryMethodChange,
+  onIntentReady,
+}) {
   const { items } = useCart()
   const { checkout: config } = site
 
@@ -57,6 +62,7 @@ export default function CheckoutForm({ deliveryMethod, onDeliveryMethodChange, o
       customer: { name: form.name, email: form.email, phone: form.phone },
       shipping: address || {},
       notes: form.notes,
+      couponCode: coupon ? coupon.code : undefined,
       idempotencyKey: crypto.randomUUID(),
     }
 
@@ -83,7 +89,11 @@ export default function CheckoutForm({ deliveryMethod, onDeliveryMethodChange, o
         totals: {
           subtotal: data.subtotal,
           shipping: data.shippingFee,
+          discount: data.discount || 0,
           total: data.amount,
+          coupon: data.couponCode
+            ? { code: data.couponCode, label: data.couponLabel }
+            : null,
         },
         placedAt: new Date().toISOString(),
       }
