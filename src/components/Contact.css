@@ -43,7 +43,7 @@
   transition: color var(--transition-fast);
 }
 
-.contact__details a:hover { color: var(--color-accent-dark); }
+.contact__details a:hover { color: var(--color-accent-deep); }
 
 .contact__form {
   display: flex;
@@ -99,14 +99,13 @@
 
 .contact__field input:focus,
 .contact__field textarea:focus {
-  outline: none;
-  border-bottom-color: var(--color-accent-dark);
+  border-bottom-color: var(--color-accent-deep);
 }
 
 .contact__submit {
   align-self: center;
   background: var(--color-text);
-  color: #fff;
+  color: var(--color-on-dark);
   font-size: 14px;
   font-weight: 500;
   letter-spacing: 0.02em;
@@ -117,7 +116,7 @@
 }
 
 .contact__submit:hover:not(:disabled) {
-  background: #000;
+  background: var(--color-ink-deep);
   transform: translateY(-1px);
 }
 

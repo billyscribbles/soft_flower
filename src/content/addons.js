@@ -20,12 +20,6 @@ export const addons = {
       blurb: 'Premium tissue, satin ribbon and a small wax seal. Looks beautiful unwrapped.',
     },
     {
-      slug: 'bud-vase',
-      name: 'Mini bud vase',
-      price: 18,
-      blurb: 'A small handmade ceramic bud vase to display single stems or short bunches.',
-    },
-    {
       slug: 'care-card',
       name: 'Care card',
       price: 0,

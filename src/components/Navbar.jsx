@@ -143,26 +143,28 @@ export default function Navbar() {
         className={`navbar__mobile${menuOpen ? ' open' : ''}`}
         aria-label="Mobile navigation"
       >
-        {nav.map((l) => (
-          <Link
-            key={l.to}
-            to={l.to}
-            className="navbar__mobile-link"
-            onClick={() => setMenuOpen(false)}
-          >
-            {l.label}
-          </Link>
-        ))}
-        {cta && (
-          <Link to={cta.to} onClick={() => setMenuOpen(false)}>
-            <button className="navbar__mobile-cta">{cta.label}</button>
-          </Link>
-        )}
-        <CartLink
-          className="navbar__mobile-cart"
-          to="/cart"
-          label="Go to cart"
-        />
+        <div className="navbar__mobile-inner">
+          {nav.map((l) => (
+            <Link
+              key={l.to}
+              to={l.to}
+              className="navbar__mobile-link"
+              onClick={() => setMenuOpen(false)}
+            >
+              {l.label}
+            </Link>
+          ))}
+          {cta && (
+            <Link to={cta.to} onClick={() => setMenuOpen(false)}>
+              <button className="navbar__mobile-cta">{cta.label}</button>
+            </Link>
+          )}
+          <CartLink
+            className="navbar__mobile-cart"
+            to="/cart"
+            label="Go to cart"
+          />
+        </div>
       </nav>
     </header>
   )

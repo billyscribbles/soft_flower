@@ -8,14 +8,15 @@ export default function ShopPage() {
     <main>
       <SEO
         title="Shop"
-        description="Shop handmade pipe cleaner bouquets, single stems, flower frames, bud vases, gift sets, and DIY kits. Every piece twisted by hand."
+        description="Shop handmade pipe cleaner bouquets: allergy-free forever flowers, each one twisted by hand."
         path="/shop"
       />
       <Products
+        as="h1"
         className="section--page-top"
         eyebrow="The shop"
         heading="Every little flower we make."
-        sub="Our full collection of forever flowers — bouquets, frames, bud vases, gift sets and DIY kits. Each one twisted, shaped and styled by hand."
+        sub="Our full collection of handmade forever bouquets. Each one twisted, shaped and styled by hand."
       />
       <FAQ />
       <Contact />

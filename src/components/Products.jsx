@@ -5,8 +5,9 @@ import { useCart } from '../context/CartContext.jsx'
 import MediaPlaceholder from './MediaPlaceholder.jsx'
 import './Products.css'
 
-export default function Products({ featuredOnly = false, limit, excludeSlug, category, heading, sub, eyebrow, className = '' }) {
+export default function Products({ featuredOnly = false, limit, excludeSlug, category, heading, sub, eyebrow, className = '', as = 'h2' }) {
   const { addItem } = useCart()
+  const HeadingTag = as
 
   let items = products.items
   if (category) items = items.filter((p) => p.category === category)
@@ -21,7 +22,7 @@ export default function Products({ featuredOnly = false, limit, excludeSlug, cat
           {(eyebrow ?? products.eyebrow) && (
             <span className="section-eyebrow">{eyebrow ?? products.eyebrow}</span>
           )}
-          <h2 className="section-label">{heading ?? products.heading}</h2>
+          <HeadingTag className="section-label">{heading ?? products.heading}</HeadingTag>
           {(sub ?? products.sub) && (
             <p className="section-sub">{sub ?? products.sub}</p>
           )}

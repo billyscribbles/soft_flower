@@ -174,8 +174,8 @@
 }
 
 .product-page__quantity-stepper button {
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
   border-radius: var(--radius-full);
   background: transparent;
   color: var(--color-text);
@@ -208,7 +208,7 @@
   justify-content: center;
   padding: 16px 32px;
   background: var(--color-text);
-  color: #fff;
+  color: var(--color-on-dark);
   font-weight: 500;
   font-size: 14px;
   letter-spacing: 0.02em;
@@ -217,7 +217,7 @@
 }
 
 .product-page__cta-primary:hover {
-  background: #000;
+  background: var(--color-ink-deep);
   transform: translateY(-1px);
 }
 
@@ -237,6 +237,11 @@
 
 .product-page__cta-secondary:hover {
   border-color: var(--color-text);
+}
+
+.product-page__cta-secondary.is-saved {
+  border-color: var(--color-text);
+  color: var(--color-accent-deep);
 }
 
 .product-page__accordion {

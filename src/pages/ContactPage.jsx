@@ -15,7 +15,7 @@ export default function ContactPage() {
           </p>
         </div>
       </section>
-      <Contact />
+      <Contact hideHead />
     </main>
   )
 }

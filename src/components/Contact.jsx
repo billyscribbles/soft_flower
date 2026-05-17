@@ -209,12 +209,12 @@ export default function Contact({
             {status === 'submitting' ? 'Sending…' : 'Send message →'}
           </button>
           {status === 'success' && (
-            <p className="contact__status contact__status--success">
-              Thanks — we'll be in touch shortly.
+            <p className="contact__status contact__status--success" role="status">
+              Thanks, we'll be in touch shortly.
             </p>
           )}
           {status === 'error' && (
-            <p className="contact__status contact__status--error">
+            <p className="contact__status contact__status--error" role="alert">
               Something went wrong. Email us directly at {site.contact.email}.
             </p>
           )}

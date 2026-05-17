@@ -33,7 +33,7 @@ export const legal = {
       },
       {
         heading: 'Orders & custom work',
-        body: 'Ready-made pieces ship in 2–3 business days. Custom bouquets and frames take 1–3 weeks depending on size. We confirm timelines in writing before we start.',
+        body: 'Ready-made pieces ship in 2–3 business days. Custom bouquets take 1–3 weeks depending on size. We confirm timelines in writing before we start.',
       },
       {
         heading: 'Care & longevity',

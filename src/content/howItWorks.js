@@ -6,7 +6,7 @@ export const howItWorks = {
     {
       number: '',
       title: 'Arrives ready to display',
-      body: 'Unwrap, fluff the petals with your fingertips, and pop it straight into a vase or frame. No water, no trimming — just lift and enjoy.',
+      body: 'Unwrap, fluff the petals with your fingertips, and pop it straight into a vase. No water, no trimming, just lift and enjoy.',
     },
     {
       number: '',

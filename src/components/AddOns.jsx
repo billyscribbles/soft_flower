@@ -80,6 +80,7 @@ export default function AddOns({
                     rows="3"
                     value={noteValue}
                     placeholder={item.notePlaceholder}
+                    aria-label={`Note for ${item.name}`}
                     onChange={(e) => onNoteChange?.(item.slug, e.target.value)}
                   />
                   <div

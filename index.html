@@ -9,17 +9,27 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Loaded non-render-blocking: media="print" until onload flips it to all.
+         Inter trimmed to the weights the site actually uses (400/500/600). -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"
+      media="print"
+      onload="this.media='all'"
     />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"
+      />
+    </noscript>
 
     <!-- Fallback SEO — runtime Helmet overrides these from site.config.js -->
     <title>Soft Florals — Handmade Forever Flowers</title>
-    <meta name="description" content="Handmade pipe cleaner flowers that never fade. Allergy-free forever bouquets, frames, and gifts, made by hand in our studio." />
+    <meta name="description" content="Handmade pipe cleaner flowers that never fade. Allergy-free forever bouquets and gifts, made by hand in our studio." />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Soft Florals — Handmade Forever Flowers" />
-    <meta property="og:description" content="Handmade pipe cleaner flowers that never fade. Allergy-free forever bouquets, frames, and gifts." />
+    <meta property="og:description" content="Handmade pipe cleaner flowers that never fade. Allergy-free forever bouquets and gifts." />
     <meta property="og:image" content="/brand/og-image.png" />
   </head>
   <body>

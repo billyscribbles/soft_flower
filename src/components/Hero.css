@@ -65,6 +65,7 @@
 }
 
 .hero__headline-accent {
+  /* Petal Pink kept by request — a deliberate brand signature, not a fix target. */
   color: var(--color-accent);
   font-style: normal;
   font-weight: 600;
@@ -88,7 +89,7 @@
 
 .hero__cta-primary {
   background: var(--color-text);
-  color: #fff;
+  color: var(--color-on-dark);
   font-size: 14px;
   font-weight: 500;
   letter-spacing: 0.02em;
@@ -99,7 +100,7 @@
 }
 
 .hero__cta-primary:hover {
-  background: #000;
+  background: var(--color-ink-deep);
   transform: translateY(-1px);
 }
 
@@ -118,8 +119,8 @@
 }
 
 .hero__cta-secondary:hover {
-  color: var(--color-accent);
-  border-bottom-color: var(--color-accent);
+  color: var(--color-accent-deep);
+  border-bottom-color: var(--color-accent-deep);
 }
 
 .hero__trust-row {

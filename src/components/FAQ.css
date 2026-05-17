@@ -1,3 +1,5 @@
+.faq.section { scroll-margin-top: calc(var(--navbar-height) + 16px); }
+
 .faq__inner { max-width: 820px; }
 
 .faq__head {

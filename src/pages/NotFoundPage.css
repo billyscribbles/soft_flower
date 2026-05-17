@@ -25,7 +25,7 @@
 .notfound__cta {
   display: inline-block;
   background: var(--color-text);
-  color: #fff;
+  color: var(--color-on-dark);
   font-size: 14px;
   font-weight: 500;
   letter-spacing: 0.02em;
@@ -35,7 +35,7 @@
 }
 
 .notfound__cta:hover {
-  background: #000;
+  background: var(--color-ink-deep);
   transform: translateY(-1px);
 }
 

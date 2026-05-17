@@ -46,7 +46,21 @@ function ScrollToTop() {
     }
   }, [])
   useLayoutEffect(() => {
-    if (hash) return
+    if (hash) {
+      // The target may not be mounted yet on a lazy route — retry briefly.
+      const id = hash.slice(1)
+      let frames = 0
+      const tryScroll = () => {
+        const el = document.getElementById(id)
+        if (el) {
+          el.scrollIntoView({ block: 'start', behavior: 'instant' })
+        } else if (frames++ < 30) {
+          requestAnimationFrame(tryScroll)
+        }
+      }
+      tryScroll()
+      return
+    }
     window.scrollTo({ top: 0, left: 0, behavior: 'instant' })
   }, [pathname, hash])
   return null
@@ -56,23 +70,26 @@ export default function App() {
   return (
     <BrowserRouter>
       <ScrollToTop />
+      <a className="skip-link" href="#main-content">Skip to content</a>
       <Navbar />
-      <Suspense fallback={null}>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/shop" element={<ShopPage />} />
-          <Route path="/shop/:slug" element={<ProductPage />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/contact" element={<ContactPage />} />
-          <Route path="/events" element={<EventsPage />} />
-          <Route path="/cart" element={<CartPage />} />
-          <Route path="/checkout" element={<CheckoutPage />} />
-          <Route path="/order/thanks" element={<OrderConfirmationPage />} />
-          <Route path="/privacy" element={<LegalPage type="privacy" />} />
-          <Route path="/terms" element={<LegalPage type="terms" />} />
-          <Route path="*" element={<NotFoundPage />} />
-        </Routes>
-      </Suspense>
+      <div id="main-content" tabIndex={-1}>
+        <Suspense fallback={null}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/shop" element={<ShopPage />} />
+            <Route path="/shop/:slug" element={<ProductPage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+            <Route path="/events" element={<EventsPage />} />
+            <Route path="/cart" element={<CartPage />} />
+            <Route path="/checkout" element={<CheckoutPage />} />
+            <Route path="/order/thanks" element={<OrderConfirmationPage />} />
+            <Route path="/privacy" element={<LegalPage type="privacy" />} />
+            <Route path="/terms" element={<LegalPage type="terms" />} />
+            <Route path="*" element={<NotFoundPage />} />
+          </Routes>
+        </Suspense>
+      </div>
       <CartDrawer />
       <Footer />
     </BrowserRouter>

@@ -120,7 +120,7 @@
 
 .addons__item--on .addons__item-icon {
   background: var(--color-text);
-  color: #fff;
+  color: var(--color-on-dark);
 }
 
 .addons__item-wrap {

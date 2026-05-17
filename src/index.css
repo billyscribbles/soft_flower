@@ -34,6 +34,39 @@ button { cursor: pointer; font-family: var(--font-body); border: none; backgroun
 ul, ol { list-style: none; }
 input, textarea, select { font-family: var(--font-body); }
 
+/* Visible keyboard focus on every interactive element. :where() keeps
+ * specificity at zero so component styles can still opt out deliberately. */
+:where(a, button, input, textarea, select, summary, [tabindex]):focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 3px;
+}
+
+/* Skip link — first tab stop, jumps keyboard users past the nav. */
+.skip-link {
+  position: absolute;
+  left: 16px;
+  top: -120px;
+  z-index: 200;
+  padding: 12px 20px;
+  background: var(--color-text);
+  color: var(--color-on-dark);
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: var(--radius-full);
+  transition: top var(--transition-fast);
+}
+
+.skip-link:focus {
+  top: 16px;
+}
+
+/* The skip-link target is a wrapper, not an interactive element —
+ * it receives focus only programmatically, so suppress the ring. */
+#main-content:focus,
+#main-content:focus-visible {
+  outline: none;
+}
+
 /* Utility classes — all section components reach for these. */
 .container {
   max-width: 1320px;

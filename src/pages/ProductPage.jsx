@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
-import { useParams, Link, Navigate } from 'react-router-dom'
-import { motion } from 'framer-motion'
+import { useParams, Link } from 'react-router-dom'
+import { motion, AnimatePresence } from 'framer-motion'
 import { ChevronDown, ArrowLeft, Heart, Minus, Plus } from 'lucide-react'
 import SEO from '../lib/seo.jsx'
 import Products from '../components/Products.jsx'
@@ -9,10 +9,13 @@ import RecentlyViewed from '../components/RecentlyViewed.jsx'
 import FAQ from '../components/FAQ.jsx'
 import Contact from '../components/Contact.jsx'
 import MediaPlaceholder from '../components/MediaPlaceholder.jsx'
+import NotFoundPage from './NotFoundPage.jsx'
 import { products } from '../content/products.js'
 import { addons as addonsContent } from '../content/addons.js'
+import { productPanels } from '../content/productPanels.js'
 import { useCart } from '../context/CartContext.jsx'
 import { track as trackViewed } from '../lib/recentlyViewed.js'
+import { isSaved, toggle as toggleSaved } from '../lib/savedItems.js'
 import './ProductPage.css'
 
 export default function ProductPage() {
@@ -23,6 +26,7 @@ export default function ProductPage() {
   const [addonNotes, setAddonNotes] = useState({})
   const [quantity, setQuantity] = useState(1)
   const [activeImage, setActiveImage] = useState(0)
+  const [saved, setSaved] = useState(false)
   const { addItem } = useCart()
 
   const gallery = product?.images?.length ? product.images : product?.image ? [product.image] : []
@@ -33,9 +37,10 @@ export default function ProductPage() {
     setAddonNotes({})
     setQuantity(1)
     setActiveImage(0)
+    setSaved(product ? isSaved(product.slug) : false)
   }, [product])
 
-  if (!product) return <Navigate to="/shop" replace />
+  if (!product) return <NotFoundPage />
 
   const toggle = (id) => setOpenSection(openSection === id ? null : id)
   const toggleAddon = (addonSlug) =>
@@ -107,13 +112,13 @@ export default function ProductPage() {
                 )}
               </div>
               {gallery.length > 1 && (
-                <div className="product-page__thumbs" role="tablist" aria-label={`${product.name} images`}>
+                <div className="product-page__thumbs" role="group" aria-label={`${product.name} images`}>
                   {gallery.map((src, idx) => (
                     <button
                       key={src}
                       type="button"
-                      role="tab"
-                      aria-selected={activeImage === idx}
+                      aria-pressed={activeImage === idx}
+                      aria-label={`Show image ${idx + 1} of ${gallery.length}`}
                       className={`product-page__thumb${activeImage === idx ? ' is-active' : ''}`}
                       onClick={() => setActiveImage(idx)}
                       onMouseEnter={() => setActiveImage(idx)}
@@ -176,38 +181,28 @@ export default function ProductPage() {
                     ? `Add ${quantity + selectedAddons.length} to cart →`
                     : `Add ${quantity > 1 ? `${quantity} ` : ''}to cart →`}
                 </button>
-                <button className="product-page__cta-secondary" aria-label="Save for later">
-                  <Heart size={18} strokeWidth={1.8} />
-                  Save
+                <button
+                  type="button"
+                  className={`product-page__cta-secondary${saved ? ' is-saved' : ''}`}
+                  onClick={() => setSaved(toggleSaved(product.slug))}
+                  aria-pressed={saved}
+                  aria-label={saved ? 'Remove from saved items' : 'Save for later'}
+                >
+                  <Heart size={18} strokeWidth={1.8} fill={saved ? 'currentColor' : 'none'} />
+                  {saved ? 'Saved' : 'Save'}
                 </button>
               </div>
 
               <div className="product-page__accordion">
-                {[
-                  {
-                    id: 'shipping',
-                    title: 'Shipping & delivery',
-                    body:
-                      'Ready-made pieces ship in 2–3 business days. We post Australia-wide with tracked shipping. Every order is wrapped in soft tissue inside a cushioned box so it arrives looking perfect.',
-                  },
-                  {
-                    id: 'care',
-                    title: 'Care & longevity',
-                    body:
-                      'Keep your flowers out of direct sunlight to prevent fading. Dust gently with a soft brush or hairdryer on cool setting every few months. They\u2019ll stay beautiful for years.',
-                  },
-                  {
-                    id: 'custom',
-                    title: 'Custom orders',
-                    body:
-                      'Want this piece in different colours or a different size? Send us a message with your brief and we\u2019ll reply within one business day.',
-                  },
-                ].map((s) => (
+                {productPanels.map((s) => (
                   <div key={s.id} className="product-page__acc-item">
                     <button
+                      type="button"
                       className="product-page__acc-head"
                       onClick={() => toggle(s.id)}
                       aria-expanded={openSection === s.id}
+                      aria-controls={`acc-panel-${s.id}`}
+                      id={`acc-head-${s.id}`}
                     >
                       <span>{s.title}</span>
                       <ChevronDown
@@ -216,15 +211,22 @@ export default function ProductPage() {
                         className={`product-page__acc-icon${openSection === s.id ? ' open' : ''}`}
                       />
                     </button>
-                    {openSection === s.id && (
-                      <motion.div
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: 'auto' }}
-                        className="product-page__acc-body"
-                      >
-                        {s.body}
-                      </motion.div>
-                    )}
+                    <AnimatePresence initial={false}>
+                      {openSection === s.id && (
+                        <motion.div
+                          id={`acc-panel-${s.id}`}
+                          role="region"
+                          aria-labelledby={`acc-head-${s.id}`}
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: 'auto' }}
+                          exit={{ opacity: 0, height: 0 }}
+                          transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                          className="product-page__acc-body"
+                        >
+                          {s.body}
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </div>
                 ))}
               </div>

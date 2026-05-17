@@ -102,7 +102,7 @@
 
 .events__cta:hover {
   background: var(--color-text);
-  color: #fff;
+  color: var(--color-on-dark);
   border-color: var(--color-text);
 }
 

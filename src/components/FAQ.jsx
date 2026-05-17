@@ -8,7 +8,7 @@ export default function FAQ() {
   const [open, setOpen] = useState(null)
 
   return (
-    <section className="faq section">
+    <section className="faq section" id="faq">
       <div className="container faq__inner">
         <div className="faq__head">
           {faq.eyebrow && <span className="section-eyebrow">{faq.eyebrow}</span>}
@@ -21,9 +21,12 @@ export default function FAQ() {
             return (
               <li key={item.q} className={`faq__item${isOpen ? ' open' : ''}`}>
                 <button
+                  type="button"
                   className="faq__question"
                   onClick={() => setOpen(isOpen ? null : i)}
                   aria-expanded={isOpen}
+                  aria-controls={`faq-answer-${i}`}
+                  id={`faq-question-${i}`}
                 >
                   <span>{item.q}</span>
                   <Plus
@@ -37,6 +40,9 @@ export default function FAQ() {
                   {isOpen && (
                     <motion.div
                       className="faq__answer"
+                      id={`faq-answer-${i}`}
+                      role="region"
+                      aria-labelledby={`faq-question-${i}`}
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: 'auto', opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}

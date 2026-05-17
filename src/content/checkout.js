@@ -5,7 +5,7 @@ export const checkout = {
     sub: 'Adjust quantities, remove pieces, or head to checkout when you are ready.',
     empty: {
       heading: 'Your cart is empty.',
-      body: 'Browse our handmade bouquets, frames and gift sets — each one twisted by hand.',
+      body: 'Browse our handmade bouquets and gifts, each one twisted by hand.',
       ctaLabel: 'Shop flowers',
       ctaTo: '/shop',
     },

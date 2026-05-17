@@ -10,13 +10,13 @@ export const testimonials = {
     },
     {
       quote:
-        'Bought the wildflower frame for our wedding table and everyone asked where it came from. Arrived beautifully packaged and it is even prettier in person.',
+        'Ordered a bouquet for our wedding table and everyone asked where it came from. Arrived beautifully packaged and it is even prettier in person.',
       author: 'Maya & Jordan',
       role: 'Melbourne, Australia',
     },
     {
       quote:
-        'The DIY kit is the cutest thing I own. Spent a Sunday making flowers with my daughter and now we both want to make more. 10/10.',
+        'I sent a bouquet to my daughter and she could not believe it was handmade from pipe cleaners. It is the cutest thing, and it will never wilt. 10/10.',
       author: 'Priya S.',
       role: 'Auckland, New Zealand',
     },

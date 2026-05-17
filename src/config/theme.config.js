@@ -12,11 +12,20 @@ export const theme = {
     muted: '#8A8A8A',
     accent: '#F9DEE5',
     'accent-dark': '#D67F8C',
+    // Readable rose for foreground/ink use — passes WCAG AA (~4.7:1 on white).
+    // Petal Pink and Dusty Rose are surface/border colors; this is for text.
+    'accent-deep': '#B5566A',
     'accent-light': '#FDF1F4',
     'accent-glow': 'rgba(249, 222, 229, 0.40)',
     border: 'rgba(0, 0, 0, 0.08)',
     'border-strong': 'rgba(0, 0, 0, 0.16)',
     dark: '#1A1A1A',
+    // Hover state for Ink surfaces — a deepening, not a jump to pure black.
+    'ink-deep': '#0F0F0F',
+    // Text/icon color on Ink surfaces.
+    'on-dark': '#FFFFFF',
+    // Keyboard focus ring.
+    focus: '#1A1A1A',
     'badge-bg': '#1A1A1A',
     'badge-text': '#FFFFFF',
   },
