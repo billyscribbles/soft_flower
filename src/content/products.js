@@ -24,14 +24,23 @@ export const products = {
       category: 'Bouquets',
       price: 60,
       image: '/images/products/soft-purple.png',
-      images: [
-        '/images/products/soft-purple.png',
-        '/images/products/soft-purple-alt.png',
-      ],
+      images: ['/images/products/soft-purple.png'],
       hasPhoto: true,
       blurb: 'A dreamy lavender bouquet of lilies, tulips and a single deep-purple rose.',
       description:
         'A romantic bouquet in every shade of purple — hand-twisted lilac lilies and tulips, crisp white florals and one rich deep-purple rose at the centre, layered with greenery and wrapped in lavender tissue and a cloud of sheer tulle. Finished with a wide satin ribbon. Soft, considered and quietly luxurious.',
+    },
+    {
+      slug: 'soft-pink',
+      name: 'Soft Pink',
+      category: 'Bouquets',
+      price: 60,
+      image: '/images/products/soft-pink.png',
+      images: ['/images/products/soft-pink.png'],
+      hasPhoto: true,
+      blurb: 'A warm coral posy of hand-twisted lilies in blush, coral and crisp white.',
+      description:
+        'A soft bouquet in warm coral tones — hand-twisted lilies in blush and coral pink alongside a crisp white bloom, layered with greenery and wrapped in cream tissue and a cloud of sheer tulle. Finished with a pink satin ribbon. Sweet, warm and quietly luxurious.',
     },
     {
       slug: 'soft-coral',
@@ -41,9 +50,9 @@ export const products = {
       image: '/images/products/soft-coral.png',
       images: ['/images/products/soft-coral.png'],
       hasPhoto: true,
-      blurb: 'A warm coral posy of hand-twisted lilies in blush, coral and crisp white.',
+      blurb: 'A sweet posy of hand-twisted lilies in blush pink, crisp white and a pop of red.',
       description:
-        'A soft bouquet in warm coral tones — hand-twisted lilies in blush and coral pink alongside a crisp white bloom, layered with greenery and wrapped in cream tissue and a cloud of sheer tulle. Finished with a pink satin ribbon. Sweet, warm and quietly luxurious.',
+        'A playful little bouquet built around hand-twisted lilies — soft blush pink blooms, a crisp white flower and delicate lily-of-the-valley sprigs, with one bright red lily for a cheerful pop. Layered with greenery and wrapped in white tissue, then finished with a pink satin ribbon. Sweet, fresh and made entirely by hand.',
     },
     {
       slug: 'soft-pink-pop',
