@@ -30,7 +30,7 @@ export const theme = {
     'badge-text': '#FFFFFF',
   },
   fonts: {
-    display: "'Inter', system-ui, sans-serif",
+    display: "'Bodoni Moda', 'Didot', 'Bodoni 72', serif",
     body: "'Inter', system-ui, sans-serif",
   },
   radii: {

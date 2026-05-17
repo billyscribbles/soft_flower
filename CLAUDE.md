@@ -34,7 +34,7 @@ If the user asks for real checkout, pause and confirm before pulling in commerce
 
 Components stay dumb. All project-specific values live in:
 
-1. **`src/config/theme.config.js`** — colors, fonts, radii, shadows. Booted via `src/lib/applyTheme.js` which flattens to CSS custom properties on `:root`. Components read `var(--color-accent)` etc.
+1. **`src/config/theme.config.js`** — colors, fonts, radii, shadows. Booted via `src/lib/applyTheme.js` which flattens to CSS custom properties on `:root`. Components read `var(--color-accent)` etc. Type is **Bodoni Moda** for display/headings (`var(--font-display)`) and **Inter** for body (`var(--font-body)`) — both loaded from Google Fonts in `index.html`.
 2. **`src/config/site.config.js`** — brand, nav, footer, social, SEO, contact, Formspree ID.
 3. **`src/content/*.js`** — per-section copy (`hero.js`, `services.js`, `testimonials.js`, `faq.js`, etc.), plus a **`flowers.js`** (or `shop.js`) that lists the catalog items.
 
