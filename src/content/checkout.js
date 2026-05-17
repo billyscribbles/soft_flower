@@ -21,18 +21,22 @@ export const checkout = {
     close: 'Close cart',
   },
   page: {
+    seoTitle: 'Checkout',
     eyebrow: 'Checkout',
     heading: 'Delivery details.',
-    sub: 'Tell us where it is going and when you need it by. We will confirm your order within one business day.',
+    sub: 'Tell us where it is going and when you need it by, then pay securely below.',
   },
-  comingSoon: {
-    seoTitle: 'Checkout — coming soon',
-    banner: 'Sorry, checkout is coming soon.',
-    eyebrow: 'Checkout',
-    heading: 'Online payments — coming soon.',
-    sub: 'We are still wiring up online checkout. In the meantime, send us your wishlist and Christine will reply with a custom invoice within one business day.',
-    wishlistHeading: 'Your wishlist',
-    nextCta: 'Request custom invoice →',
+  payment: {
+    legend: 'Payment',
+    heading: 'Pay securely',
+    sub: 'Card details are handled by Stripe — they never touch our servers.',
+    detailsHeading: 'Delivery details',
+    editLabel: 'Edit details',
+    payCta: 'Pay',
+    processing: 'Processing payment…',
+    securedNote: 'Secured by Stripe · GST included',
+    error: 'Your payment could not be completed. Please check your card details and try again.',
+    configError: 'Online payment is not available right now. Please contact us to place your order.',
   },
   delivery: {
     legend: 'Delivery method',
@@ -86,8 +90,8 @@ export const checkout = {
     linkTo: '/terms',
   },
   submit: {
-    idle: 'Place order →',
-    submitting: 'Placing order…',
+    idle: 'Continue to payment →',
+    submitting: 'Setting up payment…',
     error: 'Something went wrong. Please try again or email us directly.',
   },
   summary: {
@@ -102,7 +106,8 @@ export const checkout = {
   confirmation: {
     eyebrow: 'Order received',
     heading: 'Thank you — your order is in.',
-    sub: 'Christine will be in touch within one business day to confirm payment and the finer details. A summary of your order is below.',
+    sub: 'Your payment went through and a receipt is on its way to your inbox. Christine will start twisting your flowers and be in touch to confirm the finer details. A summary of your order is below.',
+    verifying: 'Confirming your payment…',
     referenceLabel: 'Order reference',
     deliveryLabel: 'Delivery',
     dateLabel: 'Preferred date',

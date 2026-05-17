@@ -1,88 +1,89 @@
 import { useState } from 'react'
 import { Link, Navigate } from 'react-router-dom'
 import SEO from '../lib/seo.jsx'
-import Contact from '../components/Contact.jsx'
+import CheckoutForm from '../components/checkout/CheckoutForm.jsx'
+import CheckoutSummary from '../components/checkout/CheckoutSummary.jsx'
+import PaymentStep from '../components/checkout/PaymentStep.jsx'
 import { useCart } from '../context/CartContext.jsx'
+import { site } from '../config/site.config.js'
 import { checkout } from '../content/checkout.js'
-import { formatAUD } from '../lib/money.js'
+import { computeShipping, computeTotal } from '../lib/cart-totals.js'
 import './CheckoutPage.css'
 
 export default function CheckoutPage() {
   const { items, subtotal } = useCart()
-  const [showForm, setShowForm] = useState(false)
+  const { checkout: config } = site
+  const { page } = checkout
 
-  if (items.length === 0) {
+  const [deliveryMethod, setDeliveryMethod] = useState('delivery')
+  // null while filling in details; set once the server opens a PaymentIntent.
+  const [intent, setIntent] = useState(null)
+
+  // Once a PaymentIntent is open, the cart may empty mid-payment — don't
+  // bounce to /cart while a payment is in progress.
+  if (items.length === 0 && !intent) {
     return <Navigate to="/cart" replace />
   }
 
-  const cartParam = items.map((i) => `${i.slug}:${i.quantity}`).join(',')
-  const { comingSoon } = checkout
+  const shipping = computeShipping({
+    subtotal,
+    deliveryMethod,
+    flatRate: config.flatShippingAUD,
+    freeThreshold: config.freeShippingThresholdAUD,
+  })
+  const total = computeTotal({ subtotal, shipping })
+
+  const onPayment = Boolean(intent)
 
   return (
     <main className="checkout-page">
-      <SEO title={comingSoon.seoTitle} path="/checkout" />
+      <SEO title={page.seoTitle} path="/checkout" />
 
       <section className="checkout-page__section section">
         <div className="container">
-          <div className="checkout-page__banner">{comingSoon.banner}</div>
-
           <div className="checkout-page__head">
-            <span className="section-eyebrow">{comingSoon.eyebrow}</span>
-            <h1 className="section-label">{comingSoon.heading}</h1>
-            <p className="section-sub">{comingSoon.sub}</p>
+            <span className="section-eyebrow">{page.eyebrow}</span>
+            <h1 className="section-label">{page.heading}</h1>
+            <p className="section-sub">{page.sub}</p>
           </div>
 
-          <div className="checkout-page__panel">
-            <h2 className="checkout-page__panel-heading">{comingSoon.wishlistHeading}</h2>
-            <ul className="checkout-page__items">
-              {items.map((item) => (
-                <li key={item.slug} className="checkout-page__item">
-                  <span className="checkout-page__item-name">
-                    {item.name}
-                    <span className="checkout-page__item-qty"> × {item.quantity}</span>
-                  </span>
-                  <span className="checkout-page__item-price">
-                    {formatAUD(item.price * item.quantity)}
-                  </span>
-                </li>
-              ))}
-            </ul>
+          <div className="checkout-page__grid">
+            <div className="checkout-page__main">
+              {/* The form stays mounted (just hidden) during payment so
+                  "Edit details" returns to it with everything still filled. */}
+              <div hidden={onPayment}>
+                <CheckoutForm
+                  deliveryMethod={deliveryMethod}
+                  onDeliveryMethodChange={setDeliveryMethod}
+                  onIntentReady={setIntent}
+                />
+              </div>
 
-            <div className="checkout-page__subtotal">
-              <span>
-                {checkout.summary.subtotal}
-                <sup className="checkout-page__subtotal-mark">*</sup>
-              </span>
-              <span>{formatAUD(subtotal)}</span>
+              {onPayment && (
+                <PaymentStep
+                  clientSecret={intent.clientSecret}
+                  order={intent.order}
+                  orderRef={intent.orderRef}
+                  total={intent.total}
+                  onEdit={() => setIntent(null)}
+                />
+              )}
+
+              <Link to="/cart" className="checkout-page__back">
+                ← Back to cart
+              </Link>
             </div>
-            <p className="checkout-page__subtotal-note">{checkout.summary.subtotalNote}</p>
 
-            {!showForm && (
-              <button
-                type="button"
-                className="checkout-page__cta"
-                onClick={() => setShowForm(true)}
-              >
-                {comingSoon.nextCta}
-              </button>
-            )}
-
-            <Link to="/cart" className="checkout-page__back">
-              ← Back to cart
-            </Link>
+            <CheckoutSummary
+              items={items}
+              subtotal={subtotal}
+              shipping={shipping}
+              total={total}
+              deliveryMethod={deliveryMethod}
+            />
           </div>
         </div>
       </section>
-
-      {showForm && (
-        <Contact
-          tone="plain"
-          cartParam={cartParam}
-          autoFocusName
-          hideHead
-          includeAddress
-        />
-      )}
     </main>
   )
 }

@@ -1,6 +1,8 @@
 // Single source of truth for brand identity, nav, SEO, integrations.
 // Every new site starts by editing this file.
 
+import { checkoutConfig } from './checkout.config.js'
+
 export const site = {
   banner: {
     enabled: true,
@@ -91,11 +93,5 @@ export const site = {
     gaId: import.meta.env.VITE_GA_ID || '',
   },
 
-  checkout: {
-    leadTimeDays: 3,
-    flatShippingAUD: 10,
-    freeShippingThresholdAUD: 150,
-    pickupEnabled: true,
-    currency: 'AUD',
-  },
+  checkout: checkoutConfig,
 }
