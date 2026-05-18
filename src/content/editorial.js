@@ -11,8 +11,8 @@ export const editorial = [
     reverse: false,
   },
   {
-    image: '/images/flowers/pink-bouquet-livingroom.png',
-    alt: 'A handmade pipe cleaner bouquet of pink and white flowers in a glass vase on a marble coffee table',
+    image: '/images/flowers/wrapped-bouquet-kitchen.png',
+    alt: 'A handmade pipe cleaner bouquet of pink, purple and white flowers wrapped in paper with a lilac ribbon on a marble counter',
     eyebrow: 'Custom orders',
     heading: 'Made for your moment.',
     body: 'Wedding pieces, anniversary keepsakes, gifts for the people who matter — tell us what you have in mind and we will make it by hand in our Melbourne studio.',
