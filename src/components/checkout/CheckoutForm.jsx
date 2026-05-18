@@ -25,7 +25,6 @@ export default function CheckoutForm({
     suburb: '',
     state: 'VIC',
     postcode: '',
-    notes: '',
     agreeTerms: false,
   })
   const [status, setStatus] = useState('idle')
@@ -61,7 +60,6 @@ export default function CheckoutForm({
       deliveryMethod,
       customer: { name: form.name, email: form.email, phone: form.phone },
       shipping: address || {},
-      notes: form.notes,
       couponCode: coupon ? coupon.code : undefined,
       idempotencyKey: crypto.randomUUID(),
     }
@@ -84,7 +82,6 @@ export default function CheckoutForm({
         contact: { name: form.name, email: form.email, phone: form.phone },
         deliveryMethod,
         address,
-        notes: form.notes,
         items,
         totals: {
           subtotal: data.subtotal,
@@ -226,17 +223,6 @@ export default function CheckoutForm({
           <p>{checkout.pickup.body}</p>
         </div>
       )}
-
-      <fieldset className="checkout-form__section">
-        <legend>{checkout.notes.label}</legend>
-        <textarea
-          className="checkout-form__textarea"
-          rows={4}
-          placeholder={checkout.notes.placeholder}
-          value={form.notes}
-          onChange={update('notes')}
-        />
-      </fieldset>
 
       <label className="checkout-form__terms">
         <input

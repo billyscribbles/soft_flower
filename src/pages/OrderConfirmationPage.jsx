@@ -157,7 +157,7 @@ export default function OrderConfirmationPage() {
   }
 
   // --- Full summary (in-page card payment) ---
-  const { contact, address, deliveryMethod, notes, items, totals } = order
+  const { contact, address, deliveryMethod, items, totals } = order
   const isPickup = deliveryMethod === 'pickup'
 
   return (
@@ -207,12 +207,6 @@ export default function OrderConfirmationPage() {
                     <br />
                     {address.suburb} {address.state} {address.postcode}
                   </dd>
-                </div>
-              )}
-              {notes && (
-                <div className="order-page__notes">
-                  <dt>{confirmation.notesLabel}</dt>
-                  <dd>{notes}</dd>
                 </div>
               )}
             </dl>

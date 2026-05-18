@@ -93,10 +93,6 @@ export const checkout = {
       phone: 'Phone',
     },
   },
-  notes: {
-    label: 'Notes (optional)',
-    placeholder: 'Card message, colour preferences, special timing — anything you would like us to know.',
-  },
   terms: {
     label: 'I have read and agree to the',
     linkLabel: 'terms',
@@ -143,7 +139,6 @@ export const checkout = {
     },
     addressLabel: 'Ship to',
     pickupLabel: 'Pickup',
-    notesLabel: 'Notes',
     ctaLabel: 'Back to shop',
     ctaTo: '/shop',
     fallback: {
