@@ -2,8 +2,8 @@
 // Mirrors feelingfloral.com.au's Weddings / Events / Corporates pattern.
 export const editorial = [
   {
-    image: '/images/flowers/blue-bouquet-kitchen.png',
-    alt: 'A handmade pipe cleaner bouquet of blue and white flowers in a glass vase on a kitchen counter',
+    image: '/images/flowers/red-bouquet-kitchen.png',
+    alt: 'A handmade pipe cleaner bouquet of red and pink flowers in a white vase on a kitchen counter',
     eyebrow: 'Bouquets',
     heading: 'Handmade bouquets, kept forever.',
     body: 'Every piece is twisted by hand, petal by petal — wrapped in soft cream paper and ready to display straight from the box. No water, no wilting, just flowers that stay.',
