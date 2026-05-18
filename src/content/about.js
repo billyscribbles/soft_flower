@@ -14,7 +14,7 @@ export const aboutSections = [
     alt: 'A row of finished pipe cleaner bouquets in soft blue, red, pink, purple and peach, packed into kraft paper carry bags ready to be delivered',
     eyebrow: 'The bouquets',
     heading: 'Wrapped, packed and ready to gift.',
-    body: 'Each finished bouquet is tucked into a kraft carry bag with care — soft, lightweight and ready to travel. They never wilt, never need water, and look just as bright on the kitchen bench a year from now.',
+    body: 'Each finished bouquet is tucked into a cardboard box with care. They never wilt, never need water, and look just as bright on the kitchen bench a year from now.',
     reverse: true,
   },
 ]

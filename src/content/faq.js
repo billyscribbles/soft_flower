@@ -11,10 +11,6 @@ export const faq = {
       a: 'Yes — and that is one of the lovely things about soft florals. They do not wilt, do not need water, and do not mind a hot or cold doorstep.',
     },
     {
-      q: 'Can I change or cancel my order after placing it?',
-      a: 'Absolutely, as long as we have not started making it yet. Send us a message within 24 hours of ordering and we will adjust colours, swap items, change the delivery address, or cancel the order. Once your piece is in progress we cannot change the design, but we can usually still tweak shipping details.',
-    },
-    {
       q: 'Will my arrangement look exactly like the photo?',
       a: 'Almost — but not exactly. Every flower is twisted and shaped by hand, so each piece is gently unique. Stems sit slightly differently, petals lean their own way, and colours can shift a touch between batches. The overall feel, palette and size will match the photo; the little details are part of the handmade charm.',
     },
@@ -32,7 +28,7 @@ export const faq = {
     },
     {
       q: 'Can I return a flower?',
-      a: 'Because everything is handmade to order, we do not offer returns on custom pieces. If something arrives damaged in transit though, we will always make it right — just send us a photo within 7 days.',
+      a: 'Because everything is handmade to order, we do not offer returns. If something arrives damaged in transit though, we will always make it right — just send us a photo within 7 days.',
     },
   ],
 }

@@ -41,7 +41,6 @@ export const site = {
         title: 'Shop',
         links: [
           { label: 'All flowers', to: '/shop' },
-          { label: 'Bouquets', to: '/shop' },
         ],
       },
       {
@@ -56,7 +55,6 @@ export const site = {
         title: 'Info',
         links: [
           { label: 'Shipping & care', to: '/shop#faq' },
-          { label: 'FAQ', to: '/shop#faq' },
           { label: 'Privacy', to: '/privacy' },
           { label: 'Terms', to: '/terms' },
         ],

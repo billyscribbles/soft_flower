@@ -7,7 +7,7 @@ export const products = {
   sub: 'A little collection of single-tone posies and bigger mixed bouquets. Each one twisted, shaped and styled in our studio.',
   groups: [
     { size: 'medium', title: 'Medium Bouquets', sub: 'Single-tone bouquets.' },
-    { size: 'large', title: 'Large Bouquets', sub: 'Generous mixed bouquets — $110 each.' },
+    { size: 'large', title: 'Large Bouquets', sub: 'Generous mixed bouquets.' },
   ],
   items: [
     {
